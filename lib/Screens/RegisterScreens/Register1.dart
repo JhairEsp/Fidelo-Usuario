@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import "package:fidelo/Screens/screens.dart";
+import 'package:fidelo/Screens/screens.dart';
 
-class Register extends StatelessWidget {
+class Register1 extends StatelessWidget {
   final TextEditingController textController1 = TextEditingController();
   final TextEditingController textController2 = TextEditingController();
   final TextEditingController textController3 = TextEditingController();
@@ -491,7 +491,13 @@ class Register extends StatelessWidget {
                                 minimumSize: Size(60, 60),
                                 padding: EdgeInsets.zero,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Register2(),
+                                    ));
+                              },
                               child: Icon(
                                 Icons.arrow_forward,
                                 color: Colors.white,

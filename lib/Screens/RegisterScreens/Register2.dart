@@ -1,7 +1,7 @@
 import 'package:fidelo/Screens/screens.dart';
 import 'package:flutter/material.dart';
 
-class Register extends StatelessWidget {
+class Register2 extends StatelessWidget {
   final TextEditingController textController1 = TextEditingController();
   final TextEditingController textController2 = TextEditingController();
   final TextEditingController textController3 = TextEditingController();
@@ -516,7 +516,7 @@ class Register extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => Login(),
+                                        builder: (context) => Register1(),
                                       ));
                                 },
                                 child: Text(

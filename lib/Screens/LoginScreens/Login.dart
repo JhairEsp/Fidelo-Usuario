@@ -329,7 +329,7 @@ class Login extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => Register(),
+                                        builder: (context) => Register1(),
                                       ));
                                   // Agregar aquí la acción que deseas realizar al hacer clic en el hipervínculo
                                 },
