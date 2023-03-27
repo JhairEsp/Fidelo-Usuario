@@ -1,4 +1,3 @@
-import 'package:fidelo/Screens/RegisterScreens/Register.dart';
 import "package:fidelo/Screens/screens.dart";
 import 'package:flutter/material.dart';
 
