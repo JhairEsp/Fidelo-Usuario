@@ -61,15 +61,13 @@ class Register extends StatelessWidget {
           child: Stack(
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(-11, 0),
+                    alignment: AlignmentDirectional(0, 0),
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(-11, 0),
+                          alignment: AlignmentDirectional(0, 0),
                           child: Container(
                             width: double.infinity,
                             height: 350,
