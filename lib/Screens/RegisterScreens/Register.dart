@@ -45,6 +45,15 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+          child: AppBar(
+            backgroundColor: Color(0xFF2033DA),
+            automaticallyImplyLeading: false,
+            actions: [],
+            centerTitle: false,
+            elevation: 0,
+          ),
+          preferredSize: Size.fromHeight(1)),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: GestureDetector(
