@@ -1,5 +1,5 @@
 import "package:fidelo/Screens/LoginScreens/ForgotPassword.dart";
-import "package:fidelo/Screens/RegisterScreens/Register.dart";
+import 'package:fidelo/Screens/RegisterScreens/Register1.dart';
 import "package:flutter/material.dart";
 
 class Login extends StatelessWidget {
@@ -32,7 +32,6 @@ class Login extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
           child: Stack(
             children: [
               Align(

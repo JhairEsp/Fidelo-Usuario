@@ -1,3 +1,4 @@
+import 'package:fidelo/Screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatelessWidget {
@@ -500,6 +501,35 @@ class Register extends StatelessWidget {
                                 size: 30,
                               ),
                             )),
+                        Align(
+                          alignment: AlignmentDirectional(0, 0.95),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Ya tienes cuenta?',
+                                style: TextStyle(
+                                    fontFamily: "Poppins", color: Colors.black),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Login(),
+                                      ));
+                                },
+                                child: Text(
+                                  'Iniciar Sesión',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFFFF0000),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
