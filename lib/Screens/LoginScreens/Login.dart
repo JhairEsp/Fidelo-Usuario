@@ -42,6 +42,13 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF2033DA),
+        automaticallyImplyLeading: false,
+        actions: [],
+        centerTitle: false,
+        elevation: 0,
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: GestureDetector(
@@ -52,7 +59,7 @@ class _LoginState extends State<Login> {
                 child: Container(
                   width: double.infinity,
                   height: 370,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFF2033DA),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
@@ -61,7 +68,7 @@ class _LoginState extends State<Login> {
                       topRight: Radius.circular(0),
                     ),
                   ),
-                  child: Align(
+                  child: const Align(
                     alignment: AlignmentDirectional(0, -0.4),
                     child: Text(
                       'Fidelo',
@@ -75,8 +82,8 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0, -0.43),
+              const Align(
+                alignment: AlignmentDirectional(0, -0.5),
                 child: Text(
                   'Iniciar Sesión',
                   style: TextStyle(
@@ -88,14 +95,14 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0, 0.85),
+                alignment: const AlignmentDirectional(0, 0.85),
                 child: SingleChildScrollView(
                   child: Container(
                     width: 274,
                     height: 420,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 6,
                           color: Color(0x33000000),
@@ -106,7 +113,7 @@ class _LoginState extends State<Login> {
                     ),
                     child: Stack(
                       children: [
-                        Align(
+                        const Align(
                           alignment: AlignmentDirectional(-0.75, -0.75),
                           child: Text(
                             'Correo Electronico',
@@ -119,7 +126,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0, -0.55),
+                          alignment: const AlignmentDirectional(0, -0.55),
                           child: Container(
                             width: 246,
                             height: 50,
@@ -134,7 +141,7 @@ class _LoginState extends State<Login> {
                               controller: _emailController,
                               autofocus: true,
                               obscureText: false,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: ' Correo Electronico',
                                 hintStyle: TextStyle(
                                   color: Color.fromARGB(100, 87, 99, 108),
@@ -144,20 +151,20 @@ class _LoginState extends State<Login> {
                                 ),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
+                                    color: Colors.black,
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
+                                    color: Colors.black,
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -167,31 +174,31 @@ class _LoginState extends State<Login> {
                                     color: Color(0x00000000),
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
+                                    color: Colors.black,
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
                               ),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
-                                color: Color.fromARGB(100, 87, 99, 108),
+                                color: Colors.black,
                               ),
                             ),
                           ),
                         ),
-                        Align(
+                        const Align(
                           alignment: AlignmentDirectional(-0.8, -0.27),
                           child: Text(
                             'Contraseña',
@@ -204,7 +211,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0, -0.05),
+                          alignment: const AlignmentDirectional(0, -0.05),
                           child: Container(
                             width: 246,
                             height: 50,
@@ -218,8 +225,8 @@ class _LoginState extends State<Login> {
                             child: TextField(
                               controller: _passwordController,
                               autofocus: true,
-                              obscureText: false,
-                              decoration: InputDecoration(
+                              obscureText: true,
+                              decoration: const InputDecoration(
                                 hintText: ' Contraseña',
                                 hintStyle: TextStyle(
                                   color: Color.fromARGB(100, 87, 99, 108),
@@ -232,7 +239,7 @@ class _LoginState extends State<Login> {
                                     color: Color(0x00000000),
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -242,7 +249,7 @@ class _LoginState extends State<Login> {
                                     color: Color(0x00000000),
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -252,7 +259,7 @@ class _LoginState extends State<Login> {
                                     color: Color(0x00000000),
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -262,13 +269,13 @@ class _LoginState extends State<Login> {
                                     color: Color(0x00000000),
                                     width: 1,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
                                 ),
                               ),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
                                 fontFamily: "Poppins",
@@ -278,7 +285,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-0.75, 0.21),
+                          alignment: const AlignmentDirectional(-0.75, 0.21),
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -286,7 +293,7 @@ class _LoginState extends State<Login> {
                                   MaterialPageRoute(
                                       builder: (context) => ForgotPassword()));
                             },
-                            child: Text(
+                            child: const Text(
                               'Olvidaste tu contraseña?',
                               style: TextStyle(
                                 color: Colors.black,
@@ -297,7 +304,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0, 0.6),
+                          alignment: const AlignmentDirectional(0, 0.6),
                           child: ElevatedButton(
                             onPressed: () => signIn(),
                             child: Text(
@@ -321,11 +328,11 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0, 0.8),
+                          alignment: const AlignmentDirectional(0, 0.8),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Text(
+                              const Text(
                                 '             No tienes una cuenta?',
                                 style: TextStyle(
                                   color: Colors.black,
@@ -342,7 +349,7 @@ class _LoginState extends State<Login> {
                                       ));
                                   // Agregar aquí la acción que deseas realizar al hacer clic en el hipervínculo
                                 },
-                                child: Text(
+                                child: const Text(
                                   'Registrate',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',

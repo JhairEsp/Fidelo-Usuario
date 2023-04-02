@@ -1,4 +1,4 @@
-import 'package:fidelo/Screens/LoginScreens/Login.dart';
+import "package:fidelo/Screens/screens.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
