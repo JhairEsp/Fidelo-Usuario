@@ -1,10 +1,30 @@
 import "package:fidelo/Screens/LoginScreens/ForgotPassword.dart";
 import 'package:fidelo/Screens/RegisterScreens/Register1.dart';
+import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 
-class Login extends StatelessWidget {
-  final TextEditingController textController1 = TextEditingController();
-  final TextEditingController textController2 = TextEditingController();
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final _emailController = TextEditingController();
+
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
   String? validateTextField1(String? value) {
     if (value == null || value.isEmpty) {
       return "El campo no puede estar vacío";
@@ -17,13 +37,6 @@ class Login extends StatelessWidget {
       return "El campo no puede estar vacío";
     }
     return null;
-  }
-
-  @override
-  void dispose() {
-    // Importante: siempre hay que desechar el controlador al finalizar
-    textController1.dispose();
-    textController2.dispose();
   }
 
   @override
@@ -117,8 +130,8 @@ class Login extends StatelessWidget {
                                 color: Colors.black,
                               ),
                             ),
-                            child: TextFormField(
-                              controller: textController1,
+                            child: TextField(
+                              controller: _emailController,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -175,7 +188,6 @@ class Login extends StatelessWidget {
                                 fontFamily: 'Poppins',
                                 color: Color.fromARGB(100, 87, 99, 108),
                               ),
-                              validator: validateTextField1,
                             ),
                           ),
                         ),
@@ -203,8 +215,8 @@ class Login extends StatelessWidget {
                                 color: Colors.black,
                               ),
                             ),
-                            child: TextFormField(
-                              controller: textController2,
+                            child: TextField(
+                              controller: _passwordController,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -262,7 +274,6 @@ class Login extends StatelessWidget {
                                 fontFamily: "Poppins",
                                 letterSpacing: 0.15,
                               ),
-                              validator: validateTextField2,
                             ),
                           ),
                         ),
@@ -288,9 +299,7 @@ class Login extends StatelessWidget {
                         Align(
                           alignment: AlignmentDirectional(0, 0.6),
                           child: ElevatedButton(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
+                            onPressed: () => signIn(),
                             child: Text(
                               'Login',
                               style: TextStyle(

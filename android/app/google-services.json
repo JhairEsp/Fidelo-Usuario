@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "517180676427",
+    "project_id": "fidelo-c291c",
+    "storage_bucket": "fidelo-c291c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517180676427:android:0b7b1521b27b9c335830ce",
+        "android_client_info": {
+          "package_name": "com.example.fidelo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517180676427-sq07fdprpl7cinhqo3m5679lagi8es92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-2s9ZeqhA_0dVKRrbgYenjJnL1Gi5grw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517180676427-sq07fdprpl7cinhqo3m5679lagi8es92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
