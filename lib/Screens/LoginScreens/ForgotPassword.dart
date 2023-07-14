@@ -24,6 +24,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       showDialog(
         context: context,
+        barrierDismissible: false, // No se cierra al presionar fuera del diálogo
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text('Correo Enviado'),
@@ -48,24 +49,29 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFF2033DA), // Color del botón
+                    textStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30), // Radio del botón
+                    ),
+                    minimumSize: Size(180, 50),
+                  ),
                   child: Text('Volver al inicio de sesión'),
                 ),
               ],
             ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Cerrar'),
-              ),
-            ],
+            actions: [],
           );
         },
       );
     } catch (e) {
       showDialog(
         context: context,
+        barrierDismissible: false, // No se cierra al presionar fuera del diálogo
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text('Error'),
@@ -207,13 +213,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     resetPassword(email);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF2033DA),
+                    primary: Color(0xFF2033DA), // Color del botón
                     textStyle: TextStyle(
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(30), // Radio del botón
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     minimumSize: Size(180, 50),
