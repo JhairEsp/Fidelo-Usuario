@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CheckYourEmail extends StatelessWidget {
+  final String email;
+
+  CheckYourEmail({required this.email});
+
+  Future<void> _openEmailApp() async {
+    final emailUrl = 'mailto:$email';
+    if (await canLaunch(emailUrl)) {
+      await launch(emailUrl);
+    } else {
+      throw 'No se pudo abrir la aplicación de correo electrónico.';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +69,7 @@ class CheckYourEmail extends StatelessWidget {
                   Align(
                     alignment: AlignmentDirectional(0, -0.1),
                     child: Text(
-                      'Recibirá pasos para recuperar su contrseña',
+                      'Recibirá pasos para recuperar su contraseña',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color.fromARGB(100, 87, 99, 108),
@@ -67,9 +81,7 @@ class CheckYourEmail extends StatelessWidget {
                   Align(
                     alignment: AlignmentDirectional(0, 0.15),
                     child: ElevatedButton(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
+                      onPressed: _openEmailApp,
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF2033DA),
                         padding: EdgeInsets.zero,
