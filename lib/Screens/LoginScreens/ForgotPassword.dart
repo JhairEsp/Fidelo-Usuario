@@ -27,6 +27,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         barrierDismissible: false, // No se cierra al presionar fuera del diálogo
         builder: (BuildContext context) {
           return AlertDialog(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             title: Text('Correo Enviado'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
