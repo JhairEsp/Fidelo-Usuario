@@ -116,7 +116,7 @@ class Register1 extends StatelessWidget {
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0, 0.9),
+                alignment: AlignmentDirectional(0, 0.4),
                 child: SingleChildScrollView(
                   child: Container(
                     width: 274,
