@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fidelo/Screens/screens.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Register2 extends StatefulWidget {
   @override
@@ -8,10 +9,9 @@ class Register2 extends StatefulWidget {
 }
 
 class _Register2State extends State<Register2> {
-  final TextEditingController textController1 = TextEditingController();
-  final TextEditingController textController2 = TextEditingController();
-  final TextEditingController textController3 = TextEditingController();
-  final _auth = FirebaseAuth.instance;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _repasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   String? validateTextField1(String? value) {
@@ -37,20 +37,75 @@ class _Register2State extends State<Register2> {
 
   @override
   void dispose() {
-    textController1.dispose();
-    textController2.dispose();
-    textController3.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _repasswordController.dispose();
     super.dispose();
   }
 
-  void registerUser(String email, String password) async {
+  Future<bool> fetchAccountExists(String email) async {
     try {
-      final newUser = await _auth.createUserWithEmailAndPassword(
+      final UserCredential? userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
-        password: password,
+        password: 'dummyPassword',
       );
-      if (newUser != null) {
-        // El registro fue exitoso
+      // Si no se produce ninguna excepción, significa que la cuenta no existe
+      // así que procedemos a eliminar el usuario recién creado
+      await userCredential?.user?.delete();
+      return false;
+    } catch (e) {
+      // Si se produce una excepción, significa que la cuenta ya existe
+      return true;
+    }
+  }
+
+  Future<void> signUp() async {
+    try {
+      bool accountExists = await fetchAccountExists(_emailController.text.trim());
+      if (accountExists) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              title: Center(child: Text('Error')),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('La cuenta ya existe'),
+                  SizedBox(height: 20),
+                  Image.network(
+                    'https://cdn-icons-png.flaticon.com/256/9213/9213333.png',
+                    width: 100,
+                    height: 100,
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Cierra el AlertDialog
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFF2033DA), // Color del botón
+                      textStyle: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30), // Radio del botón
+                      ),
+                      minimumSize: Size(180, 50),
+                    ),
+                    child: Text('Ok'),
+                  ),
+                ],
+              ),
+              actions: [],
+            );
+          },
+        );
+      } else {
+        // Registro exitoso
         print('Usuario registrado con éxito');
       }
     } catch (e) {
@@ -176,7 +231,7 @@ class _Register2State extends State<Register2> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: textController1,
+                              controller: _emailController,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -263,7 +318,7 @@ class _Register2State extends State<Register2> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: textController2,
+                              controller: _passwordController,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -350,7 +405,7 @@ class _Register2State extends State<Register2> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: textController3,
+                              controller: _repasswordController,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -422,16 +477,106 @@ class _Register2State extends State<Register2> {
                               padding: EdgeInsets.zero,
                             ),
                             onPressed: () {
-                              if (_formKey.currentState?.validate() ?? false) {
-                                final email = textController1.text;
-                                final password = textController2.text;
-                                registerUser(email, password);
+                              if (_repasswordController.text == _passwordController.text) {
+                                signUp();
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                                      title: Center(child: Text("Registro")),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text('Registrado Correctamente'),
+                                          SizedBox(height: 20),
+                                          Image.network(
+                                            'https://cdn-icons-png.flaticon.com/256/753/753399.png',
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                          SizedBox(height: 20),
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                              Navigator.push(context, 
+                                MaterialPageRoute(builder: (context)=>Login(),
+                                )
+                                ); 
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Color(0xFF2033DA), // Color del botón
+                                              textStyle: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.white,
+                                              ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30), // Radio del botón
+                                              ),
+                                              minimumSize: Size(180, 50),
+                                            ),
+                                            child: Text('Iniciar Sesion'),
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [],
+                                    );
+                                  },
+                                );                               
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                                      title: Center(child: Text('Error')),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text('Las contraseñas no coinciden'),
+                                          SizedBox(height: 20),
+                                          Image.network(
+                                            'https://cdn-icons-png.flaticon.com/256/9213/9213333.png',
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                          SizedBox(height: 20),
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop(); // Cierra el AlertDialog
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Color(0xFF2033DA), // Color del botón
+                                              textStyle: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.white,
+                                              ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30), // Radio del botón
+                                              ),
+                                              minimumSize: Size(180, 50),
+                                            ),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [],
+                                    );
+                                  },
+                                );
                               }
                             },
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                              size: 30,
+                            child: Padding(
+                              padding: EdgeInsets.only(right: 8.0, left: 8.0), // Ajusta el espacio según tus necesidades
+                              child: Text(
+                                'Registrarse',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
                             ),
                           ),
                         ),
