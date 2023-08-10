@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:fidelo/models/usuario.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import 'package:percent_indicator/percent_indicator.dart';
@@ -20,7 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final url = Uri.parse("http://192.168.0.9:4000/users");
-  late Future<Usuario> usuario;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +32,9 @@ class _HomePageState extends State<HomePage> {
           child: Align(
             alignment: AlignmentDirectional(0, 0),
             child: FutureBuilder(
-              future: usuario,
+
               builder: (context,snapshot) {
-                final Usuario userData = snapshot.data!;
+                
                 return Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -58,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                     ),
                     Text(
-                      "${userData.nombre}"+" "+"${userData.apellidopat}",
+                      "",
                       style: TextStyle(
                             fontFamily: 'Readex Pro',
                             color: Colors.white,
@@ -559,19 +557,9 @@ class _HomePageState extends State<HomePage> {
 @override
 void initState() {
   super.initState();
-  usuario =getUsuario();
+  
 }
 
-Future<Usuario> getUsuario() async{
-  final res = await http.get(url);
-  if(res.statusCode == 200){
-    final Map<String, dynamic> jsonUsuario = jsonDecode(res.body);
-    final Usuario usuario = Usuario.fromJson(jsonUsuario);
-    return usuario;
-  }else{
-    throw Exception("Error en la solicitud HTTP");
-  }
 
-}
 
 }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fidelo/Screens/LoginScreens/Login.dart';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key});
@@ -19,77 +17,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     super.dispose();
   }
 
-  Future<void> resetPassword(String email) async {
-    try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-      showDialog(
-        context: context,
-        barrierDismissible: false, // No se cierra al presionar fuera del diálogo
-        builder: (BuildContext context) {
-          return AlertDialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            title: Text('Correo Enviado'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Se envió un correo electrónico de restablecimiento de contraseña a $email'),
-                SizedBox(height: 20),
-                Image.network(
-                  'https://cdn-icons-png.flaticon.com/512/3486/3486426.png',
-                  width: 100,
-                  height: 100,
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Login(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF2033DA), // Color del botón
-                    textStyle: TextStyle(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30), // Radio del botón
-                    ),
-                    minimumSize: Size(180, 50),
-                  ),
-                  child: Text('Volver al inicio de sesión'),
-                ),
-              ],
-            ),
-            actions: [],
-          );
-        },
-      );
-    } catch (e) {
-      showDialog(
-        context: context,
-        barrierDismissible: false, // No se cierra al presionar fuera del diálogo
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Error'),
-            content: Text('Error al enviar el correo electrónico de restablecimiento de contraseña: $e'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Cerrar'),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -213,7 +140,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ElevatedButton(
                   onPressed: () {
                     final email = _emailController.text;
-                    resetPassword(email);
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFF2033DA), // Color del botón

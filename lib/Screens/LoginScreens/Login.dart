@@ -1,6 +1,5 @@
 import 'package:fidelo/Screens/LoginScreens/ForgotPassword.dart';
 import 'package:fidelo/Screens/RegisterScreens/Register1.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -12,12 +11,6 @@ class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-  }
 
   @override
   void dispose() {
@@ -293,7 +286,7 @@ class _LoginState extends State<Login> {
                     Align(
                       alignment: const AlignmentDirectional(0, 0.6),
                       child: ElevatedButton(
-                        onPressed: signIn,
+                        onPressed: null,
                         child: Text(
                           'Login',
                           style: TextStyle(
