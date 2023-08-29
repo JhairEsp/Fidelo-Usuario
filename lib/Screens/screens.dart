@@ -1,7 +1,9 @@
+
+
+
+//HomePage
+export 'package:fidelo/Screens/HomeScreens/HomePage.dart';
 //LoginScreens
-
-import 'package:fidelo/Screens/RegisterScreens/Register2.dart';
-
 export 'package:fidelo/Screens/LoginScreens/CreateNewPassword.dart';
 export 'package:fidelo/Screens/LoginScreens/CheckYourEmail.dart';
 export 'package:fidelo/Screens/LoginScreens/ForgotPassword.dart';

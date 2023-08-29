@@ -1,8 +1,6 @@
-import 'package:fidelo/Screens/Main_page.dart';
 import "package:fidelo/Screens/screens.dart";
 import 'package:flutter/material.dart';
 
-import 'Screens/main_page.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:firebase_core/firebase_core.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MainPage());
+    return  MaterialApp(debugShowCheckedModeBanner: false, home: Login());
   }
 }
