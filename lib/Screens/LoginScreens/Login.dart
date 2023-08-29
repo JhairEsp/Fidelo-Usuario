@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'package:fidelo/Screens/screens.dart';
+import "package:fidelo/models/Auth.dart";
 import 'package:fidelo/Screens/LoginScreens/ForgotPassword.dart';
 import 'package:fidelo/Screens/RegisterScreens/Register1.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
 
 class Login extends StatefulWidget {
   @override
@@ -18,7 +22,16 @@ class _LoginState extends State<Login> {
     _passwordController.dispose();
     super.dispose();
   }
+  
+Future<void> _login() async {
+  Auth.login(context, _emailController.text, _passwordController.text);
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => HomePage()), 
+  );
+}
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -286,7 +299,7 @@ class _LoginState extends State<Login> {
                     Align(
                       alignment: const AlignmentDirectional(0, 0.6),
                       child: ElevatedButton(
-                        onPressed: null,
+                        onPressed: _login,
                         child: Text(
                           'Login',
                           style: TextStyle(
@@ -311,7 +324,7 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 10),
                     Align(
-                      alignment: const AlignmentDirectional(0, 0.8),
+                      alignment: const AlignmentDirectional(0, 0.10),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [

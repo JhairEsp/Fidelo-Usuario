@@ -1,5 +1,5 @@
-
 import 'package:fidelo/Screens/screens.dart';
+import 'package:fidelo/models/Auth.dart';
 import 'package:flutter/material.dart';
 
 class Register2 extends StatefulWidget {
@@ -10,7 +10,6 @@ class Register2 extends StatefulWidget {
 class _Register2State extends State<Register2> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   String? validateTextField1(String? value) {
@@ -27,24 +26,69 @@ class _Register2State extends State<Register2> {
     return null;
   }
 
-  String? validateTextField3(String? value) {
-    if (value == null || value.isEmpty) {
-      return "El campo no puede estar vacío";
+  Future<void> _register() async {
+    final result = await Auth.register(_emailController.text, _passwordController.text);
+    if (result.containsKey("error")) {
+      showDialog(
+      context: context, 
+      builder: (context) => AlertDialog(
+        title: Text("Error"),
+        content: Text("Registro Fallido"),
+        actions: [
+          ElevatedButton(onPressed: (){
+            Navigator.of(context).pop();
+          }, child: Text("Ok")),
+        ],
+      )
+      ); 
+    }else{
+          showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          title: Center(child: Text("Registro")),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Registrado Correctamente'),
+              SizedBox(height: 20),
+              Image.network(
+                'https://cdn-icons-png.flaticon.com/256/11487/11487186.png',
+                width: 100,
+                height: 100,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Cierra el AlertDialog
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => Login()),
+                  ); 
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF2033DA),
+                  textStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: Colors.white,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  minimumSize: Size(180, 50),
+                ),
+                child: Text('Iniciar Sesión'),
+              ),
+            ],
+          ),
+          actions: [],
+        );
+      },
+    );
     }
-    return null;
   }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    _repasswordController.dispose();
-    super.dispose();
-  }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -313,91 +357,6 @@ class _Register2State extends State<Register2> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-0.86, -0.14),
-                          child: Text(
-                            'Confirmar contraseña',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0, 0.05),
-                          child: Container(
-                            width: 246,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: Colors.black,
-                              ),
-                            ),
-                            child: TextFormField(
-                              controller: _repasswordController,
-                              autofocus: true,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                hintText: ' Confirmar Contraseña',
-                                hintStyle: TextStyle(
-                                  color: Color.fromARGB(100, 87, 99, 108),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                              ),
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w300,
-                              ),
-                              validator: validateTextField3,
-                            ),
-                          ),
-                        ),
-                        Align(
                           alignment: AlignmentDirectional(0, 0.40),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -409,96 +368,7 @@ class _Register2State extends State<Register2> {
                               padding: EdgeInsets.zero,
                             ),
                             onPressed: () {
-                              if (_repasswordController.text == _passwordController.text) {
-                                
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                                      title: Center(child: Text("Registro")),
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text('Registrado Correctamente'),
-                                          SizedBox(height: 20),
-                                          Image.network(
-                                            'https://cdn-icons-png.flaticon.com/256/753/753399.png',
-                                            width: 100,
-                                            height: 100,
-                                          ),
-                                          SizedBox(height: 20),
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                              Navigator.push(context, 
-                                MaterialPageRoute(builder: (context)=>Login(),
-                                )
-                                ); 
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              primary: Color(0xFF2033DA), // Color del botón
-                                              textStyle: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.white,
-                                              ),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(30), // Radio del botón
-                                              ),
-                                              minimumSize: Size(180, 50),
-                                            ),
-                                            child: Text('Iniciar Sesion'),
-                                          ),
-                                        ],
-                                      ),
-                                      actions: [],
-                                    );
-                                  },
-                                );                               
-                              } else {
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                                      title: Center(child: Text('Error')),
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text('Las contraseñas no coinciden'),
-                                          SizedBox(height: 20),
-                                          Image.network(
-                                            'https://cdn-icons-png.flaticon.com/256/9213/9213333.png',
-                                            width: 100,
-                                            height: 100,
-                                          ),
-                                          SizedBox(height: 20),
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pop(); // Cierra el AlertDialog
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              primary: Color(0xFF2033DA), // Color del botón
-                                              textStyle: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.white,
-                                              ),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(30), // Radio del botón
-                                              ),
-                                              minimumSize: Size(180, 50),
-                                            ),
-                                            child: Text('Ok'),
-                                          ),
-                                        ],
-                                      ),
-                                      actions: [],
-                                    );
-                                  },
-                                );
-                              }
+                              _register();
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 8.0, left: 8.0), // Ajusta el espacio según tus necesidades
