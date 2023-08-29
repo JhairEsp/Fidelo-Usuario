@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:http/http.dart' as http;
+import 'package:fidelo/models/Auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -182,6 +183,13 @@ class _HomePageState extends State<HomePage> {
                                 CardItem('Tarjeta 2', 30.0, 'Categoría 2'),
                                 // Agrega más tarjetas aquí
                               ]),
+                              IconButton(
+                      icon: Icon(Icons.exit_to_app),
+                      onPressed: () {
+                        Auth.logout(context);
+                        print("pasa por aqui");
+                      },
+                    ),
                             ],
                           ),
                         ),
