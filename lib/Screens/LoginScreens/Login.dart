@@ -226,7 +226,7 @@ Future<void> _login() async {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: Colors.black,
                               width: 1,
                             ),
                             borderRadius: BorderRadius.only(
@@ -322,40 +322,43 @@ Future<void> _login() async {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
                     Align(
-                      alignment: const AlignmentDirectional(0, 0.10),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Text(
-                            '             No tienes una cuenta?',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Poppins',
-                              fontSize: 12,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Register1(),
-                                ),
-                              );
-                            },
-                            child: const Text(
-                              'Registrate',
+                      alignment: const AlignmentDirectional(1, 0.20),
+                      child: Center(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const Text(
+                              '             No tienes una cuenta?',
                               style: TextStyle(
+                                color: Colors.black,
                                 fontFamily: 'Poppins',
-                                color: Color(0xFFFF0000),
                                 fontSize: 12,
-                                decoration: TextDecoration.underline,
                               ),
                             ),
-                          )
-                        ],
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Register1(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                'Registrate',
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFFFF0000),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],

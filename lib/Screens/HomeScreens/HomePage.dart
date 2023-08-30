@@ -5,6 +5,8 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:http/http.dart' as http;
 import 'package:fidelo/models/Auth.dart';
 
+import '../screens.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -14,7 +16,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final url = Uri.parse("http://192.168.0.9:4000/users");
+ /* Future<void> _logout() async {
+  final logoutUrl = Uri.parse('http://192.168.0.101:4000/api/auth/logout');
+  final response = await http.post(logoutUrl);
+
+  if (response.statusCode == 200) {
+    // Logout successful, you can perform any necessary actions here
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Login()), // Navegar a la pantalla de inicio de sesión
+    );
+  } else {
+    // Handle error if logout was not successful
+    print('Logout failed');
+  }
+}
+*/
 
   @override
   Widget build(BuildContext context) {
@@ -183,13 +200,31 @@ class _HomePageState extends State<HomePage> {
                                 CardItem('Tarjeta 2', 30.0, 'Categoría 2'),
                                 // Agrega más tarjetas aquí
                               ]),
-                              IconButton(
-                      icon: Icon(Icons.exit_to_app),
-                      onPressed: () {
-                        Auth.logout(context);
-                        print("pasa por aqui");
-                      },
-                    ),
+ElevatedButton(
+  onPressed: () => Auth.logout(context), // Utiliza una función anónima
+  child: Text(
+    'Cerrar Sesión',
+    style: TextStyle(
+      fontSize: 18,
+      fontFamily: 'Poppins',
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+  style: ElevatedButton.styleFrom(
+    primary: Color(0xFF2033DA),
+    onPrimary: Colors.white,
+    padding: EdgeInsets.symmetric(
+      vertical: 20,
+      horizontal: 60,
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+  ),
+),
+
+
                             ],
                           ),
                         ),

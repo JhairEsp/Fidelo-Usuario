@@ -1,5 +1,6 @@
 import "dart:convert";
 import 'dart:core';
+import 'dart:math';
 import 'package:fidelo/Screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -62,21 +63,21 @@ class Auth{
     }
   }
 
-static Future<void> logout(BuildContext context) async {
-  final url = Uri.parse("http://192.168.0.101:4000/api/auth/logout");
-  final response = await http.get(url);
+
+//LOGOUT
+  static Future logout(BuildContext context) async {
+  final logoutUrl = Uri.parse('http://192.168.0.101:4000/api/auth/logout');
+  final response = await http.post(logoutUrl);
+
   if (response.statusCode == 200) {
-    Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
-  }else{
-    showDialog(context: context, builder: (context)=>AlertDialog(
-      title: Text("Error"),
-      content: Text("No se pudo cerrar sesion"),
-      actions: [
-        ElevatedButton(onPressed: (){
-          Navigator.of(context).pop();
-        }, child: Text("Cerrar"))
-      ],
-    ));
+    // Logout successful, you can perform any necessary actions here
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Login()), // Navegar a la pantalla de inicio de sesión
+    );
+  } else {
+    // Handle error if logout was not successful
+    print('Logout failed');
   }
 }
 
