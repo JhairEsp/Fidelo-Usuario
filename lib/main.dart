@@ -1,5 +1,8 @@
+
 import "package:fidelo/Screens/screens.dart";
 import 'package:flutter/material.dart';
+
+import 'Screens/LoginScreens/Login2.dart';
 
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:firebase_core/firebase_core.dart';
@@ -20,6 +23,6 @@ class MyApp extends StatelessWidget {
         "/login" : (context) => Login(),
       },
       debugShowCheckedModeBanner: false, 
-      home: Login());
+      home: Login2());
   }
 }

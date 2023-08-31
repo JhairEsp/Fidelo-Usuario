@@ -200,31 +200,29 @@ class _HomePageState extends State<HomePage> {
                                 CardItem('Tarjeta 2', 30.0, 'Categoría 2'),
                                 // Agrega más tarjetas aquí
                               ]),
-ElevatedButton(
-  onPressed: () => Auth.logout(context), // Utiliza una función anónima
-  child: Text(
-    'Cerrar Sesión',
-    style: TextStyle(
-      fontSize: 18,
-      fontFamily: 'Poppins',
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
-    ),
-  ),
-  style: ElevatedButton.styleFrom(
-    primary: Color(0xFF2033DA),
-    onPrimary: Colors.white,
-    padding: EdgeInsets.symmetric(
-      vertical: 20,
-      horizontal: 60,
-    ),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(30),
-    ),
-  ),
-),
-
-
+                              ElevatedButton(
+                                 onPressed: () => Auth.logout(context), // Utiliza una función anónima
+                                child: Text(
+                                  'Cerrar Sesión',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFF2033DA),
+                                  onPrimary: Colors.white,
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 20,
+                                    horizontal: 60,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),

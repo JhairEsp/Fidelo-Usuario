@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:fidelo/Screens/screens.dart';
 import "package:fidelo/models/Auth.dart";
 import 'package:fidelo/Screens/LoginScreens/ForgotPassword.dart';
