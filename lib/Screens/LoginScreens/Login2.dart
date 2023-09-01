@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../models/Auth.dart';
-import '../screens.dart';
+import "package:fidelo/Screens/screens.dart";
+
+import '../RegisterScreens/Register12.dart'; // Asegúrate de importar la pantalla de registro aquí.
 
 class Login2 extends StatefulWidget {
   @override
@@ -134,84 +136,84 @@ class _Login2State extends State<Login2> {
                     ),
                   ),
                 ),
-Opacity(
-  opacity: 0.6,
-  child: Padding(
-    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
-    child: Container(
-      width: 300,
-      height: 60,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Color(0x00F1F4F8),
-          width: 2,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-            child: Icon(
-              Icons.person,
-              color: Colors.black,
-              size: 24,
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-              child: Stack(
-                alignment: AlignmentDirectional.centerEnd,
-                children: [
-                  TextFormField(
-                    controller: _emailController,
-                    autofocus: true,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      labelText: 'Correo Electrónico',
-                      labelStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w200,
-                        color: Colors.black,
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
                       ),
-                      hintStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w200,
-                        color: Colors.grey,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                              child: Stack(
+                                alignment: AlignmentDirectional.centerEnd,
+                                children: [
+                                  TextFormField(
+                                    controller: _emailController,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Correo Electrónico',
+                                      labelStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w200,
+                                        color: Colors.black,
+                                      ),
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w200,
+                                        color: Colors.grey,
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: TextStyle(fontSize: 16),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _emailError = !_validateEmail(value) &&
+                                            _emailController.text.isNotEmpty;
+                                      });
+                                    },
+                                  ),
+                                  if (_emailError)
+                                    Text(
+                                      'Correo electrónico no válido',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      focusedErrorBorder: InputBorder.none,
                     ),
-                    style: TextStyle(fontSize: 16),
-                    onChanged: (value) {
-                      setState(() {
-                        _emailError = !_validateEmail(value) &&
-                            _emailController.text.isNotEmpty;
-                      });
-                    },
                   ),
-                  if (_emailError)
-                    Text(
-                      'Correo electrónico no válido',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 12,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    ),
-  ),
-),
+                ),
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
@@ -342,7 +344,7 @@ Opacity(
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Register1()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Register12())); // Utiliza la clase Register12 como widget
                       },
                       child: Text(
                         'Registrate aquí',

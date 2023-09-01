@@ -61,8 +61,7 @@ static Future<http.Response> login(
       MaterialPageRoute(builder: (context) => Login2()), // Navegar a la pantalla de inicio de sesión
     );
   } else {
-    // Handle error if logout was not successful
-    print('Logout failed');
+  print("error de logueo");
   }
 }
 

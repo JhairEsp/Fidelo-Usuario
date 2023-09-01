@@ -1,3 +1,4 @@
+import 'package:fidelo/Screens/LoginScreens/Login2.dart';
 import 'package:fidelo/Screens/screens.dart';
 import 'package:fidelo/models/Auth.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class _Register2State extends State<Register2> {
                   Navigator.of(context).pop(); // Cierra el AlertDialog
                   Navigator.push(
                     context, 
-                    MaterialPageRoute(builder: (context) => Login()),
+                    MaterialPageRoute(builder: (context) => Login2()),
                   ); 
                 },
                 style: ElevatedButton.styleFrom(
