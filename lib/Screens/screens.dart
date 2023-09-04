@@ -1,6 +1,5 @@
-
-
-
+//ProfileScreen
+export 'package:fidelo/Screens/ProfileScreen/ProfileScreen.dart';
 //HomePage
 export 'package:fidelo/Screens/HomeScreens/HomePage.dart';
 //LoginScreens

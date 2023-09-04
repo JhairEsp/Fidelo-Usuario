@@ -1,10 +1,7 @@
-import 'package:fidelo/Screens/screens.dart';
-import "package:fidelo/models/Auth.dart";
-import 'package:fidelo/Screens/LoginScreens/ForgotPassword.dart';
-import 'package:fidelo/Screens/RegisterScreens/Register1.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart'as http;
 
+import '../../models/Auth.dart';
+import "package:fidelo/Screens/screens.dart";
 class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
@@ -13,7 +10,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  bool _showPassword = false;
+  bool _emailError = false;
 
   @override
   void dispose() {
@@ -21,350 +19,345 @@ class _LoginState extends State<Login> {
     _passwordController.dispose();
     super.dispose();
   }
-  
-Future<void> _login() async {
-  Auth.login(context, _emailController.text, _passwordController.text);
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(builder: (context) => HomePage()), 
-  );
-}
 
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF2033DA),
-        automaticallyImplyLeading: false,
-        actions: [],
-        centerTitle: false,
-        elevation: 0,
-      ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Align(
-              alignment: AlignmentDirectional(-0.11, -1.3),
-              child: Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.55,
-                decoration: BoxDecoration(
-                  color: Color(0xFF2033DA),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(0),
-                  ),
-                ),
-                child: Align(
-                  alignment: AlignmentDirectional(0, -0.4),
-                  child: Text(
-                    'Fidelo',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: "Pacifico",
-                      fontSize: 100,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0, -0.5),
-              child: Text(
-                'Iniciar Sesión',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0, 0.4), // Ajusta la posición vertical
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.85,
-                height: MediaQuery.of(context).size.height * 0.45,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: 6,
-                      color: Color(0x33000000),
-                      offset: Offset(0, 2),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  children: [
-                    SizedBox(height: 30),
-                    const Align(
-                      alignment: AlignmentDirectional(-0.75, -0.75),
-                      
-                      child: Text(
-                        'Correo Electronico',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          letterSpacing: 0.15,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                      ),
-                      child: TextField(
-                        controller: _emailController,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText: ' Correo Electronico',
-                          hintStyle: TextStyle(
-                            color: Color.fromARGB(100, 87, 99, 108),
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                            letterSpacing: 0.25,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                        ),
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Poppins',
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 15),
-                    const Align(
-                      alignment: AlignmentDirectional(-0.8, -0.27),
-                      child: Text(
-                        'Contraseña',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: "Poppins",
-                          fontSize: 16,
-                          letterSpacing: 0.15,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                      ),
-                      child: TextField(
-                        controller: _passwordController,
-                        autofocus: true,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: ' Contraseña',
-                          hintStyle: TextStyle(
-                            color: Color.fromARGB(100, 87, 99, 108),
-                            fontFamily: "Poppins",
-                            fontSize: 14,
-                            letterSpacing: 0.25,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                        ),
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: "Poppins",
-                          letterSpacing: 0.15,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Align(
-                      alignment: const AlignmentDirectional(-0.75, 0.21),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ForgotPassword(),
-                            ),
-                          );
-                        },
-                        child: const Text(
-                          'Olvidaste tu contraseña?',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Align(
-                      alignment: const AlignmentDirectional(0, 0.6),
-                      child: ElevatedButton(
-                        onPressed: _login,
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontFamily: 'Poppins',
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF2033DA),
-                          onPrimary: Colors.white,
-                          padding: EdgeInsets.symmetric(
-                            vertical: 20,
-                            horizontal: 60,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Align(
-                      alignment: const AlignmentDirectional(1, 0.20),
-                      child: Center(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Text(
-                              '             No tienes una cuenta?',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Poppins',
-                                fontSize: 12,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Register1(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'Registrate',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: Color(0xFFFF0000),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+  void _togglePasswordVisibility() {
+    setState(() {
+      _showPassword = !_showPassword;
+    });
+
+    // Cambiar el estado nuevamente después de 1 segundo
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        _showPassword = !_showPassword;
+      });
+    });
+  }
+
+  bool _validateEmail(String email) {
+    // Verificar si el correo electrónico contiene el símbolo "@"
+    return email.contains('@');
+  }
+
+  Future<void> _login() async {
+    // Validar el correo electrónico antes de iniciar sesión
+    if (!_validateEmail(_emailController.text)) {
+      setState(() {
+        _emailError = true;
+      });
+      return;
+    }
+
+    // Restablecer el estado de error del correo electrónico
+    setState(() {
+      _emailError = false;
+    });
+
+    final response = await Auth.login(
+      context,
+      _emailController.text,
+      _passwordController.text,
+    );
+
+    if (response.statusCode == 200) {
+      // Login successful, navigate to HomePage()
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } else {
+      // Login failed, show an error dialog
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Error"),
+          content: Text("Inicio de sesión fallido. Por favor, verifica tus credenciales."),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
             ),
           ],
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: Colors.deepPurple[600],
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        'https://cdn-icons-png.flaticon.com/256/3190/3190397.png',
+                        width: 200,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: Text(
+                    'BIENVENIDO DE VUELTA',
+                    style: TextStyle(
+                      fontFamily: 'Readex Pro',
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                  child: Text(
+                    'Inicia sesión con tu cuenta',
+                    style: TextStyle(
+                      fontFamily: 'Readex Pro',
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                              child: Stack(
+                                alignment: AlignmentDirectional.centerEnd,
+                                children: [
+                                  TextFormField(
+                                    controller: _emailController,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Correo Electrónico',
+                                      labelStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w200,
+                                        color: Colors.black,
+                                      ),
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w200,
+                                        color: Colors.grey,
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: TextStyle(fontSize: 16),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _emailError = !_validateEmail(value) &&
+                                            _emailController.text.isNotEmpty;
+                                      });
+                                    },
+                                  ),
+                                  if (_emailError)
+                                    Text(
+                                      'Correo electrónico no válido',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.lock,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _passwordController,
+                                autofocus: true,
+                                obscureText: !_showPassword,
+                                decoration: InputDecoration(
+                                  labelText: 'Contraseña',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w200,
+                                    color: Colors.black,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w200,
+                                    color: Colors.grey,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: _togglePasswordVisibility,
+                            icon: Icon(
+                              _showPassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.7,
+                  child: Align(
+                    alignment: AlignmentDirectional(0.60, 0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
+                      child: Text(
+                        'Olvidaste tu contraseña?',
+                        style: TextStyle(
+                          fontFamily: 'Readex Pro',
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _login();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.deepPurple,
+                      onPrimary: Colors.white,
+                      elevation: 3,
+                      side: BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      minimumSize: Size(250, 45),
+                      padding: EdgeInsets.symmetric(horizontal: 24),
+                    ),
+                    child: Text(
+                      'LOGIN',
+                      style: TextStyle(
+                        fontFamily: 'Readex Pro',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0, 0),
+                      child: Text(
+                        'No tienes cuenta?',
+                        style: TextStyle(
+                          fontFamily: 'Readex Pro',
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Register1())); // Utiliza la clase Register12 como widget
+                      },
+                      child: Text(
+                        'Registrate aquí',
+                        style: TextStyle(
+                          fontFamily: 'Readex Pro',
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

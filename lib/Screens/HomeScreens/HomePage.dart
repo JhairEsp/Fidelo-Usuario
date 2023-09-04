@@ -1,10 +1,5 @@
-import 'package:fidelo/Widgets/Cards.dart';
 import 'package:flutter/material.dart';
-import "package:font_awesome_flutter/font_awesome_flutter.dart";
-import 'package:percent_indicator/percent_indicator.dart';
-import 'package:http/http.dart' as http;
-import 'package:fidelo/models/Auth.dart';
-
+import 'package:google_nav_bar/google_nav_bar.dart';
 import '../screens.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,116 +8,180 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
- /* Future<void> _logout() async {
-  final logoutUrl = Uri.parse('http://192.168.0.101:4000/api/auth/logout');
-  final response = await http.post(logoutUrl);
 
-  if (response.statusCode == 200) {
-    // Logout successful, you can perform any necessary actions here
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Login()), // Navegar a la pantalla de inicio de sesión
-    );
-  } else {
-    // Handle error if logout was not successful
-    print('Logout failed');
-  }
-}
-*/
+final busquedaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
+      return GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2033DA),
+        backgroundColor: Colors.white,
         body: SafeArea(
           top: true,
-          child: Align(
-            alignment: const AlignmentDirectional(0, 0),
-            child: FutureBuilder(
-              builder: (context, snapshot) {
-                return Column(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: 400,
+                height: 245,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.9, 0),
-                      child: FaIcon(
-                        FontAwesomeIcons.solidBell,
-                        color: Colors.black,
-                        size: 34,
-                      ),
-                    ),
-                    const Text(
-                      'Bienvenido',
-                      style: TextStyle(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Text(
-                      "",
-                      style: TextStyle(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 60, 0, 0),
+                                  child: Text(
+                                    'Bienvenido',
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.black,
+                                          fontSize: 25,
+                                        ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        19, 10, 0, 0),
+                                    child: Text(
+                                      '\$nombre.api',
+                                      textAlign: TextAlign.justify,
+                                      style: TextStyle(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 25,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Align(
+                            alignment: AlignmentDirectional(1, 0),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 15, 20, 0),
+                              child: Container(
+                                width: 160,
+                                height: 160,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.network(
+                                  'https://cdn-icons-png.flaticon.com/256/64/64572.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 9, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                       child: Container(
-                        width: 366,
-                        height: 54,
+                        width: 300,
+                        height: 50,
                         decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                            color: Colors.black,
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 0),
-                              child: Container(
-                                width: 300,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey,
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                child: const Align(
-                                  alignment: AlignmentDirectional(-1, 0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 0, 0, 0),
-                                    child: Text(
-                                      'Buscador',
-                                      style: TextStyle(
-                                        color: Colors.black,
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: busquedaController,
+                                    autofocus: false,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Buscador',
+                                      labelStyle: TextStyle(
                                         fontSize: 14,
-                                        fontWeight: FontWeight.normal,
+                                        color: Color.fromARGB(100, 87, 99, 108),
+                                      ),
+                                      hintStyle: TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color.fromARGB(100, 87, 99, 108),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color.fromARGB(100, 87, 99, 108),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color.fromARGB(100, 87, 99, 108),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color.fromARGB(100, 87, 99, 108),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(30),
                                       ),
                                     ),
+                                    style:
+                                        TextStyle(
+                                          fontSize: 14,
+                                        ),
                                   ),
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(1, 0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    15, 0, 0, 0),
-                                child: FaIcon(
-                                  FontAwesomeIcons.search,
-                                  color: Colors.black,
-                                  size: 24,
+                            Flexible(
+                              child: Align(
+                                alignment: AlignmentDirectional(1, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 15, 0),
+                                  child: Icon(
+                                    Icons.search,
+                                    color: Color.fromARGB(100, 87, 99, 108),
+                                    size: 24,
+                                  ),
                                 ),
                               ),
                             ),
@@ -130,107 +189,151 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(0),
-                              topLeft: Radius.circular(40),
-                              topRight: Radius.circular(40),
-                            ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 400,
+                  height: 250,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                        child: Text(
+                          'EMPRESAS DISPONIBLES',
+                          style: TextStyle(
+                            fontSize: 14,
                           ),
-                          child: Column(
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(-1, 0),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0, 6, 0, 0),
-                                child: Container(
-                                  width: 300,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFFFBF00),
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.56, -0.8),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  30, 3, 0, 0),
-                                          child: Text(
-                                            'Tus monedas:\n\nCanjear Aqui',
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.56, -0.8),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10, 0, 0, 0),
-                                          child: Text(
-                                            '[M]', //reemplazar por numero de monedas
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 0, 0),
+                                  child: Container(
+                                    width: 200,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
                                   ),
                                 ),
                               ),
-                              Cards([  // Reemplaza esta lista con tus datos de tarjetas
-                                CardItem('Tarjeta 1', 20.0, 'Categoría 1'),
-                                CardItem('Tarjeta 2', 30.0, 'Categoría 2'),
-                                // Agrega más tarjetas aquí
-                              ]),
-                              ElevatedButton(
-                                 onPressed: () => Auth.logout(context), // Utiliza una función anónima
-                                child: Text(
-                                  'Cerrar Sesión',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 0, 0),
+                                  child: Container(
+                                    width: 200,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
                                   ),
                                 ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFF2033DA),
-                                  onPrimary: Colors.white,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 20,
-                                    horizontal: 60,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 0, 0),
+                                  child: Container(
+                                    width: 200,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
                                   ),
                                 ),
-                              )
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 0, 0),
+                                  child: Container(
+                                    width: 200,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                );
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: Container(
+          color: Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            child: GNav(
+              backgroundColor: Colors.black,
+              color: Colors.white,
+              activeColor: Colors.white,
+              tabBackgroundColor: Colors.grey.shade800,
+              gap: 8,
+              onTabChange: (index){
+              switch (index) {
+              case 0:
+                
+                break;
+              case 1:
+                
+                break;
+              case 2:
+                
+                break;
+              case 3:
+                
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
+                break;
+              default:
+            }
               },
+              padding: EdgeInsets.all(16),
+              tabs: [
+                GButton(icon: Icons.home, text: "Home",),
+                GButton(icon: Icons.qr_code , text:"Qr" ,),
+                GButton(icon: Icons.notifications, text: "Notificaciones",),
+                GButton(icon: Icons.person_pin, text: "Mi cuenta",),
+              ],
+              selectedIndex: 0,
             ),
           ),
         ),

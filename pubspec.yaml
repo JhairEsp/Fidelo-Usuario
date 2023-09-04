@@ -33,6 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.5.0
+  google_nav_bar: ^5.0.6
   http: ^1.1.0
   login_model: ^0.0.1
   percent_indicator: ^4.2.3

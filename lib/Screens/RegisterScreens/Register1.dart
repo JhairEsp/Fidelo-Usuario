@@ -1,515 +1,320 @@
 import 'package:flutter/material.dart';
-import 'package:fidelo/Screens/screens.dart';
+import 'package:fidelo/Screens/RegisterScreens/Register2.dart';
 
-class Register1 extends StatelessWidget {
-  final TextEditingController textController1 = TextEditingController();
-  final TextEditingController textController2 = TextEditingController();
-  final TextEditingController textController3 = TextEditingController();
-  final TextEditingController textController4 = TextEditingController();
-  String? validateTextField1(String? value) {
-    if (value == null || value.isEmpty) {
-      return "El campo no puede estar vacío";
-    }
-    return null;
-  }
-
-  String? validateTextField2(String? value) {
-    if (value == null || value.isEmpty) {
-      return "El campo no puede estar vacío";
-    }
-    return null;
-  }
-
-  String? validateTextField3(String? value) {
-    if (value == null || value.isEmpty) {
-      return "El campo no puede estar vacío";
-    }
-    return null;
-  }
-
-  String? validateTextField4(String? value) {
-    if (value == null || value.isEmpty) {
-      return "El campo no puede estar vacío";
-    }
-    return null;
-  }
-
+class Register1 extends StatefulWidget {
   @override
-  void dispose() {
-    // Importante: siempre hay que desechar el controlador al finalizar
-    textController1.dispose();
-    textController2.dispose();
-    textController3.dispose();
-    textController4.dispose();
-  }
+  State<Register1> createState() => _Register1State();
+}
+
+class _Register1State extends State<Register1> {
+  final _nombreController = TextEditingController();
+  final _apellidopaternoController = TextEditingController();
+  final _apellidomaternoController = TextEditingController();
+  final _dniController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          child: AppBar(
-            backgroundColor: Color(0xFF2033DA),
-            automaticallyImplyLeading: false,
-            actions: [],
-            centerTitle: false,
-            elevation: 0,
-          ),
-          preferredSize: Size.fromHeight(1)),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: GestureDetector(
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0, 0),
-                          child: Container(
-                            width: double.infinity,
-                            height: 350,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF2033DA),
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(30),
-                                bottomRight: Radius.circular(30),
-                                topLeft: Radius.circular(0),
-                                topRight: Radius.circular(0),
-                              ),
-                            ),
-                            child: Stack(
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0, -0.4),
-                                  child: Text(
-                                    'Fidelo',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: 'Pacifico',
-                                      fontSize: 100,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0, 0.198),
-                                  child: Text(
-                                    'Registrarse',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: Colors.deepPurple[600],
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 130, 0, 0),
+                    child: Text(
+                      'Registro',
+                      style: TextStyle(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        fontSize: 50,
+                      ),
                     ),
                   ),
-                ],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0, 0.4 ),
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: 274,
-                    height: 450,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 6,
-                          color: Color(0x33000000),
-                          offset: Offset(0, 2),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(30),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    child: Text(
+                      'Crea tu cuenta',
+                      style: TextStyle(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                      ),
                     ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(-0.86, -0.9),
-                          child: Text(
-                            'Nombre',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Poppins',
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 15),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
                               color: Colors.black,
+                              size: 24,
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0, -0.75),
-                          child: Container(
-                            width: 246,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: Colors.black,
-                              ),
-                            ),
-                            child: TextFormField(
-                                controller: textController1,
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _nombreController,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: ' Nombre',
+                                  labelText: 'Nombre',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
                                   hintStyle: TextStyle(
-                                    color: Color.fromARGB(100, 87, 99, 108),
-                                    fontFamily: "Poppins",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                    letterSpacing: 0.25,
+                                    fontSize: 16,
                                   ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _apellidopaternoController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Apellido Paterno',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
                                   ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
                                 ),
                                 style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w300,
+                                  fontSize: 16,
                                 ),
-                                validator: validateTextField1),
+                              ),
+                            ),
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.86, -0.5),
-                          child: Text(
-                            'Apellido Paterno',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              fontFamily: 'Poppins',
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
                               color: Colors.black,
+                              size: 24,
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0, -0.35),
-                          child: Container(
-                            width: 246,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: Colors.black,
-                              ),
-                            ),
-                            child: TextFormField(
-                              controller: textController2,
-                              autofocus: true,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                hintText: ' Apellido Paterno',
-                                hintStyle: TextStyle(
-                                  color: Color.fromARGB(100, 87, 99, 108),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                  letterSpacing: 0.25,
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _apellidomaternoController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Apellido Materno',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
                                 ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                style: TextStyle(
+                                  fontSize: 16,
                                 ),
                               ),
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w300,
-                              ),
-                              validator: validateTextField2,
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.86, -0.14),
-                          child: Text(
-                            'Apellido Materno',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              fontFamily: 'Poppins',
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
                               color: Colors.black,
+                              size: 24,
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0, 0.05),
-                          child: Container(
-                            width: 246,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: Colors.black,
-                              ),
-                            ),
-                            child: TextFormField(
-                              controller: textController3,
-                              autofocus: true,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                hintText: ' Apellido Paterno',
-                                hintStyle: TextStyle(
-                                  color: Color.fromARGB(100, 87, 99, 108),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _dniController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'DNI',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
                                 ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                style: TextStyle(
+                                  fontSize: 16,
                                 ),
                               ),
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w300,
-                              ),
-                              validator: validateTextField3,
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Register13()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      elevation: 3,
+                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.navigate_next,
+                          color: Colors.white,
+                          size: 15,
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.86, 0.25),
-                          child: Text(
-                            'DNI',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                            ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Continuar',
+                          style: TextStyle(
+                            fontFamily: 'Readex Pro',
+                            color: Colors.white,
                           ),
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0, 0.45),
-                          child: Container(
-                            width: 246,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                color: Colors.black,
-                              ),
-                            ),
-                            child: TextFormField(
-                              controller: textController4,
-                              autofocus: true,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                hintText: ' DNI',
-                                hintStyle: TextStyle(
-                                  color: Color.fromARGB(100, 87, 99, 108),
-                                  fontFamily: "Poppins",
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                  letterSpacing: 0.25,
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
-                                ),
-                              ),
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                letterSpacing: 0.15,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w300,
-                              ),
-                              validator: validateTextField4,
-                            ),
-                          ),
-                        ),
-                        Align(
-                            alignment: AlignmentDirectional(0, 0.85),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFF2033DA),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                minimumSize: Size(60, 60),
-                                padding: EdgeInsets.zero,
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Register2(),
-                                    ));
-                              },
-                              child: Icon(
-                                Icons.arrow_forward,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            )),
                       ],
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

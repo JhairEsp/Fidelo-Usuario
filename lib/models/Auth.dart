@@ -1,11 +1,10 @@
 import "dart:convert";
 import 'dart:core';
-import 'dart:math';
 import 'package:fidelo/Screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../Screens/LoginScreens/Login2.dart';
+import '../Screens/LoginScreens/Login.dart';
 
 class Auth{
   //LOGIN
@@ -58,7 +57,7 @@ static Future<http.Response> login(
     // Logout successful, you can perform any necessary actions here
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Login2()), // Navegar a la pantalla de inicio de sesión
+      MaterialPageRoute(builder: (context) => Login()), // Navegar a la pantalla de inicio de sesión
     );
   } else {
   print("error de logueo");
