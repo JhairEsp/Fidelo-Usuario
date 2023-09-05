@@ -1,17 +1,16 @@
 import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
-import 'package:fidelo/Screens/RegisterScreens/Register3.dart';
 import 'package:flutter/material.dart';
 import 'package:fidelo/Screens/screens.dart';
 
-class Register2 extends StatefulWidget {
+class Register3 extends StatefulWidget {
   @override
-  State<Register2> createState() => _Register2State();
+  State<Register3> createState() => _Register3State();
 }
 
-class _Register2State extends State<Register2> {
-  final _nombreController = TextEditingController();
-  final _apellidopaternoController = TextEditingController();
-  final _apellidomaternoController = TextEditingController();
+class _Register3State extends State<Register3> {
+  final _telefonoController = TextEditingController();
+  final _dniController = TextEditingController();
+  final _distritoController = TextEditingController();
 
 
 
@@ -83,11 +82,11 @@ Opacity(
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
-                                controller: _nombreController,
+                                controller: _telefonoController,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Nombre',
+                                  labelText: 'Numero de Telefono',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -138,11 +137,11 @@ Opacity(
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
-                                controller: _apellidopaternoController,
+                                controller: _dniController,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Apellido Paterno',
+                                  labelText: 'Numero de DNI',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -195,11 +194,11 @@ Opacity(
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
-                                controller: _apellidomaternoController,
+                                controller: _distritoController,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Apellido Materno',
+                                  labelText: 'Indique su Distrito',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -226,13 +225,13 @@ Opacity(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      final String nombre = _nombreController.text;
-                      final String apellidoPaterno =_apellidopaternoController.text;
-                      final String apellidoMaterno = _apellidomaternoController.text;
-                      CreateProfile().Datos1(nombre, apellidoPaterno, apellidoMaterno);
+                      final String telefono= _telefonoController.text;
+                      final String dni =_distritoController.text;
+                      final String distrito = _distritoController.text;
+                      CreateProfile().Datos2(telefono, dni, distrito);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Register3()),
+                        MaterialPageRoute(builder: (context) => HomePage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

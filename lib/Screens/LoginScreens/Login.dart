@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../models/Auth.dart';
 import "package:fidelo/Screens/screens.dart";
+import '../../models/Auth.dart';
 class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
@@ -341,7 +340,7 @@ class _LoginState extends State<Login> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Register1())); // Utiliza la clase Register12 como widget
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Register1())); 
                       },
                       child: Text(
                         'Registrate aquí',

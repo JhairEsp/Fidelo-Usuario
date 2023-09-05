@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import '../Profiles/CreateProfile.dart';
 import '../screens.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +14,28 @@ class _HomePageState extends State<HomePage> {
 
 final busquedaController = TextEditingController();
 
+  String nombre = "";
+  String apellidoPaterno = "";
+  String apellidoMaterno = "";
+  String telefono = "";
+  String dni = "";
+  String distrito = "";
+  CreateProfile createProfile = CreateProfile(); // Crear una instancia de CreateProfile
+  @override
+  void initState() {
+    super.initState();
+    // Llama a getProfileById y actualiza las variables con los datos del perfil
+    createProfile.getProfileById().then((profileData) {
+      setState(() {
+        nombre = profileData['nombre'] ?? "";
+        apellidoPaterno = profileData['apellidopat'] ?? "";
+        apellidoMaterno = profileData['apellidomat'] ?? "";
+        telefono = profileData['telefono'] ?? "";
+        dni = profileData['documento'] ?? "";
+        distrito = profileData['distrito'] ?? "";
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
       return GestureDetector(
@@ -63,7 +86,7 @@ final busquedaController = TextEditingController();
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         19, 10, 0, 0),
                                     child: Text(
-                                      '\$nombre.api',
+                                      '$nombre',
                                       textAlign: TextAlign.justify,
                                       style: TextStyle(
                                             fontFamily: 'Readex Pro',
