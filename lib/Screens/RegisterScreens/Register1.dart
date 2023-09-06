@@ -576,7 +576,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                       final String documento = _documentoController.text;
                       final String distrito = _distritoController.text;
                       await CreateProfile().UserProfile(email, nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
-                      Navigator.push(context, MaterialPageRoute(builder: ((context) => HomePage())));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage(),));
                     },
                     style: ElevatedButton.styleFrom(
                       elevation: 3,

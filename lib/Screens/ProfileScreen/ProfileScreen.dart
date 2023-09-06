@@ -1,16 +1,52 @@
+import 'dart:convert';
+
 import 'package:fidelo/Screens/HomeScreens/HomePage.dart';
 import 'package:fidelo/models/Auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:http/http.dart'as http;
+import '../../models/GlobalVariables.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
-
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
-
 class _ProfileScreenState extends State<ProfileScreen> {
+    String nombre="";
+    String apellidoPaterno="";
+    String apellidoMaterno ="";
+    @override
+    void initState() {
+    super.initState();
+    obtenerPerfil();
+  }
+    Future<void> obtenerPerfil() async {
+    String? id = GlobalVariables.idProfile;
+    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$id');
+
+    try {
+      final response = await http.get(
+        apiUrl,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> profileData = jsonDecode(response.body);
+
+        setState(() {
+          nombre = profileData['nombre'];
+          apellidoPaterno=profileData["apellidopat"];
+          apellidoMaterno=profileData["apellidomat"];
+        });
+      } else {
+        print('Error al obtener el perfil. Código de estado: ${response.statusCode}');
+      }
+    } catch (error) {
+      print('Error en la solicitud: $error');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -49,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                               child: Text(
-                                'Nombre+Apellido',
+                                "$nombre+" +"$apellidoPaterno",
                                 style: TextStyle(
                                       fontFamily: 'Readex Pro',
                                       fontSize: 16,

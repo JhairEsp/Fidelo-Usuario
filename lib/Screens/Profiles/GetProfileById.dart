@@ -1,9 +1,11 @@
+import 'package:fidelo/models/GlobalVariables.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert'; // Importa la biblioteca 'dart:convert' para trabajar con JSON
 
 class GetProfileByID {
   Future getProfile(String profileId) async {
-    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$profileId');
+    String? id = GlobalVariables.idProfile; 
+    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$id');
 
     try {
       final response = await http.get(

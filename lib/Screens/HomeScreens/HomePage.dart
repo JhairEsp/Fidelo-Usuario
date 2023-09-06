@@ -1,9 +1,10 @@
-import 'package:fidelo/Screens/Profiles/GetProfileById.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import '../Profiles/CreateProfile.dart';
+import '../../models/GlobalVariables.dart';
 import '../screens.dart';
-
+import 'package:http/http.dart'as http;
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -12,12 +13,39 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  String nombre = "";
 
 final busquedaController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    obtenerPerfil();
+  }
+    Future<void> obtenerPerfil() async {
+    String? id = GlobalVariables.idProfile;
+    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$id');
+
+    try {
+      final response = await http.get(
+        apiUrl,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> profileData = jsonDecode(response.body);
+
+        setState(() {
+          nombre = profileData['nombre'];
+        });
+      } else {
+        print('Error al obtener el perfil. Código de estado: ${response.statusCode}');
+      }
+    } catch (error) {
+      print('Error en la solicitud: $error');
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -69,7 +97,7 @@ final busquedaController = TextEditingController();
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         19, 10, 0, 0),
                                     child: Text(
-                                      "",
+                                      "$nombre",
                                       textAlign: TextAlign.justify,
                                       style: TextStyle(
                                             fontFamily: 'Readex Pro',

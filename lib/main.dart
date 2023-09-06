@@ -1,7 +1,6 @@
-
 import "package:fidelo/Screens/screens.dart";
 import 'package:flutter/material.dart';
-
+import 'package:fidelo/models/GlobalVariables.dart';
 import 'Screens/LoginScreens/Login.dart';
 
 //import 'package:cloud_firestore/cloud_firestore.dart';
