@@ -1,8 +1,8 @@
+import 'package:fidelo/Screens/HomeScreens/HomePage.dart';
 import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
-import 'package:fidelo/Screens/RegisterScreens/Register2.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
+import "package:fidelo/Screens/screens.dart";
 import '../../models/Auth.dart';
 import '../LoginScreens/Login.dart'; // Importa la biblioteca para manejar el retraso
 
@@ -12,9 +12,20 @@ class Register1 extends StatefulWidget {
 }
 
 class _Register1State extends State<Register1> with TickerProviderStateMixin {
+  //datos
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _repasswordController = TextEditingController();
+  final _nombreController = TextEditingController();
+  final _apellidopatController = TextEditingController();
+  final _apellidomatController = TextEditingController();
+  final _telefonoController = TextEditingController();
+  final _documentoController = TextEditingController();
+  final _distritoController = TextEditingController();
+
+
+
+  //verificadores
   bool _emailError = false;
   bool _passwordError = false;
   bool _isPasswordVisible = false; // Variable para controlar la visibilidad de la contraseña
@@ -110,7 +121,6 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
           ),
         );
       } else {
-        await CreateProfile().emailProfile(_emailController.text);
         showDialog(
           context: context,
           barrierDismissible: false,
@@ -132,11 +142,515 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pop(); // Cierra el AlertDialog
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Register2()),
-                      );
+                      showDialog(
+  context: context,
+  builder: (BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          backgroundColor: Colors.deepPurple[600],
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                    child: Text(
+                      'Completa tus datos',
+                      style: TextStyle(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    child: Image.network(
+                      'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _nombreController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Nombre',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _apellidopatController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Apellido Paterno',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _apellidomatController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Apellido Materno',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                    showDialog(
+  context: context,
+  builder: (BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          backgroundColor: Colors.deepPurple[600],
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                    child: Text(
+                      'Completa tus datos',
+                      style: TextStyle(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    child: Image.network(
+                      'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _telefonoController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Numero de Telefono',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _documentoController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Numero de DNI',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: 0.6,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Color(0x00F1F4F8),
+                          width: 2,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              child: TextFormField(
+                                controller: _distritoController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Indique su Distrito',
+                                  labelStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      final String email = _emailController.text;
+                      final String nombre = _nombreController.text;
+                      final String apellidoPaterno = _apellidopatController.text;
+                      final String apellidoMaterno = _apellidomatController.text;
+                      final String telefono = _telefonoController.text;
+                      final String documento = _documentoController.text;
+                      final String distrito = _distritoController.text;
+                      await CreateProfile().UserProfile(email, nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
+                      Navigator.push(context, MaterialPageRoute(builder: ((context) => HomePage())));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      elevation: 3,
+                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.navigate_next,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Continuar',
+                          style: TextStyle(
+                            fontFamily: 'Readex Pro',
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  },
+);
+
+                    },
+                    style: ElevatedButton.styleFrom(
+                      elevation: 3,
+                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.navigate_next,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Continuar',
+                          style: TextStyle(
+                            fontFamily: 'Readex Pro',
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  },
+);
+
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFF2033DA),

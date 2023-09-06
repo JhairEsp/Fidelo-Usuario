@@ -229,11 +229,7 @@ Opacity(
                       final String nombre = _nombreController.text;
                       final String apellidoPaterno =_apellidopaternoController.text;
                       final String apellidoMaterno = _apellidomaternoController.text;
-                      CreateProfile().Datos1(nombre, apellidoPaterno, apellidoMaterno);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Register3()),
-                      );
+                      //aqui va el siguiente showdialog
                     },
                     style: ElevatedButton.styleFrom(
                       elevation: 3,

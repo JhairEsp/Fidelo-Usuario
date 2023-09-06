@@ -228,11 +228,7 @@ Opacity(
                       final String telefono= _telefonoController.text;
                       final String dni =_distritoController.text;
                       final String distrito = _distritoController.text;
-                      CreateProfile().Datos2(telefono, dni, distrito);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                      );
+                    //aqui va el siguiente showdialog
                     },
                     style: ElevatedButton.styleFrom(
                       elevation: 3,
