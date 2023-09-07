@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../Screens/LoginScreens/Login.dart';
+import 'GlobalVariables.dart';
 
 class Auth{
   //LOGIN
@@ -19,8 +20,8 @@ static Future<http.Response> login(
       "contrasena": password,
     });
     final response = await http.post(url, headers: headers, body: body);
-    return response; // Devuelve la respuesta al método llamador
-  }
+    return response; 
+      }
 
 
 //REGISTRO
@@ -64,4 +65,28 @@ static Future<http.Response> login(
   }
 }
 
+Future<void> obtenerIdProfile(String email, String password) async {
+  final url = Uri.parse("http://192.168.0.101:4000/api/auth/login");
+  final headers = {
+    "Content-Type": "application/json",
+  };
+  final body = jsonEncode({
+    "usuario": email,
+    "contrasena": password,
+  });
+  final response = await http.post(url, headers: headers, body: body);
+
+  if (response.statusCode == 200) {
+    final responseData = jsonDecode(response.body);
+    // Busca el valor de "_id" en la respuesta
+    final idProfile = responseData["_id"];
+
+    // Guarda el valor en la variable global
+    GlobalVariables.idProfile = idProfile;
+  } else {
+    // Maneja el error si la solicitud no fue exitosa
+    print("Error en la solicitud: ${response.statusCode}");
+    // También puedes lanzar una excepción o realizar otras acciones de manejo de errores aquí
+  }
+}
 }
