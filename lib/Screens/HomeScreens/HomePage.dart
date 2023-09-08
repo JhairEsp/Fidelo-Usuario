@@ -1,9 +1,8 @@
 import 'dart:convert';
-
 import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
 import 'package:fidelo/Screens/QRScreens/QRScreens.dart';
+import 'package:fidelo/Widgets/NavBar.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import '../../models/GlobalVariables.dart';
 import '../screens.dart';
 import 'package:http/http.dart'as http;
@@ -77,11 +76,11 @@ final busquedaController = TextEditingController();
                         children: [
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 60, 0, 0),
                                     child: Text(
@@ -95,14 +94,14 @@ final busquedaController = TextEditingController();
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: const AlignmentDirectional(0, 0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           19, 10, 0, 0),
                                       child: Text(
                                         "$nombre",
                                         textAlign: TextAlign.justify,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                               fontFamily: 'Readex Pro',
                                               fontSize: 25,
                                             ),
@@ -115,15 +114,15 @@ final busquedaController = TextEditingController();
                           ),
                           Flexible(
                             child: Align(
-                              alignment: AlignmentDirectional(1, 0),
+                              alignment: const AlignmentDirectional(1, 0),
                               child: Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 15, 20, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 15, 20, 0),
                                 child: Container(
                                   width: 160,
                                   height: 160,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.network(
@@ -137,7 +136,7 @@ final busquedaController = TextEditingController();
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Container(
                           width: 300,
                           height: 50,
@@ -155,7 +154,7 @@ final busquedaController = TextEditingController();
                               Expanded(
                                 child: Padding(
                                   padding:
-                                      EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                      const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                   child: Container(
                                     width: double.infinity,
                                     child: TextFormField(
@@ -164,36 +163,36 @@ final busquedaController = TextEditingController();
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Buscador',
-                                        labelStyle: TextStyle(
+                                        labelStyle: const TextStyle(
                                           fontSize: 14,
                                           color: Color.fromARGB(100, 87, 99, 108),
                                         ),
-                                        hintStyle: TextStyle(
+                                        hintStyle: const TextStyle(
                                           fontSize: 14,
                                         ),
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color.fromARGB(100, 87, 99, 108),
                                             width: 2,
                                           ),
                                           borderRadius: BorderRadius.circular(30),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color.fromARGB(100, 87, 99, 108),
                                             width: 2,
                                           ),
                                           borderRadius: BorderRadius.circular(30),
                                         ),
                                         errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color.fromARGB(100, 87, 99, 108),
                                             width: 2,
                                           ),
                                           borderRadius: BorderRadius.circular(30),
                                         ),
                                         focusedErrorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color.fromARGB(100, 87, 99, 108),
                                             width: 2,
                                           ),
@@ -201,14 +200,14 @@ final busquedaController = TextEditingController();
                                         ),
                                       ),
                                       style:
-                                          TextStyle(
+                                          const TextStyle(
                                             fontSize: 14,
                                           ),
                                     ),
                                   ),
                                 ),
                               ),
-                              Flexible(
+                              const Flexible(
                                 child: Align(
                                   alignment: AlignmentDirectional(1, 0),
                                   child: Padding(
@@ -230,14 +229,14 @@ final busquedaController = TextEditingController();
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                   child: Container(
                     width: 400,
                     height: 250,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
-                        BoxShadow(
+                        const BoxShadow(
                           blurRadius: 4,
                           color: Color(0x33000000),
                           offset: Offset(0, 2),
@@ -248,7 +247,7 @@ final busquedaController = TextEditingController();
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
+                        const Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Text(
                             'EMPRESAS DISPONIBLES',
@@ -258,16 +257,16 @@ final busquedaController = TextEditingController();
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1, 0),
+                          alignment: const AlignmentDirectional(-1, 0),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0),
+                                  alignment: const AlignmentDirectional(0, 0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         5, 5, 0, 0),
                                     child: Container(
                                       width: 200,
@@ -280,9 +279,9 @@ final busquedaController = TextEditingController();
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0),
+                                  alignment: const AlignmentDirectional(0, 0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         5, 5, 0, 0),
                                     child: Container(
                                       width: 200,
@@ -295,9 +294,9 @@ final busquedaController = TextEditingController();
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0),
+                                  alignment: const AlignmentDirectional(0, 0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         5, 5, 0, 0),
                                     child: Container(
                                       width: 200,
@@ -310,9 +309,9 @@ final busquedaController = TextEditingController();
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0),
+                                  alignment: const AlignmentDirectional(0, 0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         5, 5, 0, 0),
                                     child: Container(
                                       width: 200,
@@ -333,17 +332,17 @@ final busquedaController = TextEditingController();
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Card(
-                          margin : EdgeInsets.fromLTRB(0, 5, 0, 0),
+                          margin : const EdgeInsets.fromLTRB(0, 5, 0, 0),
                               color: Colors.black,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                               shadowColor: Colors.black,
-                                                            child: SizedBox(
+                                                            child: const SizedBox(
                                 width: 350, // Ancho deseado
                                 height: 150, // Alto deseado
                                   child: Padding(
@@ -359,11 +358,11 @@ final busquedaController = TextEditingController();
                               ),
                             ),
                             Card(
-                                margin : EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                margin : const EdgeInsets.fromLTRB(0, 5, 0, 0),
                               color: Colors.black,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                               shadowColor: Colors.black,
-                                                            child: SizedBox(
+                                                            child: const SizedBox(
                                 width: 350, // Ancho deseado
                                 height: 150, // Alto deseado
                                   child: Padding(
@@ -379,11 +378,11 @@ final busquedaController = TextEditingController();
                               ),
                             ),
                         Card(
-                              margin : EdgeInsets.fromLTRB(0, 5, 0, 0),
+                              margin : const EdgeInsets.fromLTRB(0, 5, 0, 0),
                               color: Colors.black,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                               shadowColor: Colors.black,
-                                                            child: SizedBox(
+                                                            child: const SizedBox(
                                 width: 350, // Ancho deseado
                                 height: 150, // Alto deseado
                                   child: Padding(
@@ -407,44 +406,17 @@ final busquedaController = TextEditingController();
             ),
           ),
         ),
-        bottomNavigationBar: Container(
-          color: Colors.black,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-            child: GNav(
-              backgroundColor: Colors.black,
-              color: Colors.white,
-              activeColor: Colors.white,
-              tabBackgroundColor: Colors.grey.shade800,
-              gap: 8,
-              onTabChange: (index){
-              switch (index) {
-              case 0:
-                print("Estamos en el Home");
-                break;
-              case 1:
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>QRScreen()));
-                break;
-              case 2:
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>notificaciones()));
-                break;
-              case 3:
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
-                break;
-              default:
+        bottomNavigationBar: CustomBottomNavigationBar(
+          selectedIndex: 0, 
+          onTabChange: (index){
+            switch(index){
+              case 0 : null; break;
+              case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
+              case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
+              case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen())); break;
             }
-              },
-              padding: EdgeInsets.all(16),
-              tabs: [
-                GButton(icon: Icons.home, text: "Home",),
-                GButton(icon: Icons.qr_code , text:"Qr" ,),
-                GButton(icon: Icons.notifications, text: "Notificaciones",),
-                GButton(icon: Icons.person_pin, text: "Mi cuenta",),
-              ],
-              selectedIndex: 0,
-            ),
+          }
           ),
-        ),
       ),
     );
   }

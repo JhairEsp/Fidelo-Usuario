@@ -13,12 +13,12 @@ class CreateProfile {
       "correoElectronico": email,
       "nombre": nombre,
       "apellidopat": apellidoPaterno,
-      "apellidomat": apellidoMaterno,
+      "apellidomat": apellidoMaterno, 
       "telefono": telefono,
       "documento": dni,
       "distrito": distrito,
     };
-
+    
     try {
       final response = await http.post(
         apiUrl,
@@ -27,7 +27,6 @@ class CreateProfile {
           'Content-Type': 'application/json',
         },
       );
-
       if (response.statusCode == 200) {
         // El perfil se creó correctamente, puedes manejar la respuesta aquí.
         final responseBody = jsonDecode(response.body);

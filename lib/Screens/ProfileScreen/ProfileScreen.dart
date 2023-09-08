@@ -1,11 +1,14 @@
 import 'dart:convert';
 
 import 'package:fidelo/Screens/HomeScreens/HomePage.dart';
+import 'package:fidelo/Widgets/NavBar.dart';
 import 'package:fidelo/models/Auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:http/http.dart'as http;
 import '../../models/GlobalVariables.dart';
+import '../NotificacionesScreens/NotificacionScreen.dart';
+import '../QRScreens/QRScreens.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -301,35 +304,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ),
-                bottomNavigationBar: Container(
-          color: Colors.black,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-            child: GNav(
-              backgroundColor: Colors.black,
-              color: Colors.white,
-              activeColor: Colors.white,
-              tabBackgroundColor: Colors.grey.shade800,
-              gap: 8,
-              onTabChange: (index){
-                switch (index) {
-                  case 0:
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-                    break;
-                  default:
-                }
-              },
-              padding: EdgeInsets.all(16),
-              tabs: [
-                GButton(icon: Icons.home, text: "Home",),
-                GButton(icon: Icons.qr_code , text:"Qr" ,),
-                GButton(icon: Icons.notifications, text: "Notificaciones",),
-                GButton(icon: Icons.person_pin, text: "Mi cuenta",),
-              ],
-              selectedIndex: 3,
-            ),
+                bottomNavigationBar: CustomBottomNavigationBar(
+          selectedIndex: 0, 
+          onTabChange: (index){
+            switch(index){
+              case 0 : Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),)); break;
+              case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
+              case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
+              case 3: null; break;
+            }
+          }
           ),
-        )
       ),
     );
   }
