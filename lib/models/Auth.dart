@@ -79,7 +79,7 @@ Future<void> obtenerIdProfile(String email, String password) async {
   if (response.statusCode == 200) {
     final responseData = jsonDecode(response.body);
     // Busca el valor de "_id" en la respuesta
-    final idProfile = responseData["_id"];
+    final idProfile = responseData["user"];
 
     // Guarda el valor en la variable global
     GlobalVariables.idProfile = idProfile;

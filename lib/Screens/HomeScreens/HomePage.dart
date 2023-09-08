@@ -24,8 +24,8 @@ final busquedaController = TextEditingController();
     obtenerPerfil();
   }
     Future<void> obtenerPerfil() async {
-    String? id = GlobalVariables.idProfile;
-    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$id');
+    String? user = "64fb94517b5c1b26ac92ece4";
+    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$user');
 
     try {
       final response = await http.get(

@@ -36,7 +36,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
     super.initState();
     _passwordVisibilityController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -88,14 +88,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Error"),
-          content: Text("Por favor, corrige los errores antes de continuar."),
+          title: const Text("Error"),
+          content: const Text("Por favor, corrige los errores antes de continuar."),
           actions: [
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("Ok"),
+              child: const Text("Ok"),
             ),
           ],
         ),
@@ -108,14 +108,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text("Error"),
-            content: Text("Registro Fallido"),
+            title: const Text("Error"),
+            content: const Text("Registro Fallido"),
             actions: [
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text("Ok"),
+                child: const Text("Ok"),
               ),
             ],
           ),
@@ -128,18 +128,18 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
             return AlertDialog(
               shape:
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-              title: Center(child: Text("Registro")),
+              title: const Center(child: Text("Registro")),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Registrado Correctamente'),
-                  SizedBox(height: 20),
+                  const Text('Registrado Correctamente'),
+                  const SizedBox(height: 20),
                   Image.network(
                     'https://cdn-icons-png.flaticon.com/256/11487/11487186.png',
                     width: 100,
                     height: 100,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       showDialog(
@@ -157,7 +157,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
+                const Align(
                   alignment: AlignmentDirectional(0, 0),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -174,7 +174,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                     child: Image.network(
                       'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
                       width: 100,
@@ -185,7 +185,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -193,14 +193,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -210,12 +210,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
                                 controller: _nombreController,
                                 autofocus: true,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Nombre',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
@@ -228,7 +228,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   errorBorder: InputBorder.none,
                                   focusedErrorBorder: InputBorder.none,
                                 ),
-                                style: TextStyle(fontSize: 16),
+                                style: const TextStyle(fontSize: 16),
                               ),
                             ),
                           ),
@@ -240,7 +240,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -248,14 +248,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -265,12 +265,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
                                 controller: _apellidopatController,
                                 autofocus: true,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Apellido Paterno',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
@@ -283,7 +283,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   errorBorder: InputBorder.none,
                                   focusedErrorBorder: InputBorder.none,
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
@@ -297,7 +297,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -305,14 +305,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -322,12 +322,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
                                 controller: _apellidomatController,
                                 autofocus: true,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Apellido Materno',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
@@ -340,7 +340,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   errorBorder: InputBorder.none,
                                   focusedErrorBorder: InputBorder.none,
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
@@ -352,7 +352,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: ElevatedButton(
                     onPressed: () {
                     showDialog(
@@ -370,7 +370,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
+                const Align(
                   alignment: AlignmentDirectional(0, 0),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -387,7 +387,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                     child: Image.network(
                       'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
                       width: 100,
@@ -398,7 +398,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -406,14 +406,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -423,12 +423,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
                                 controller: _telefonoController,
                                 autofocus: true,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Numero de Telefono',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
@@ -441,7 +441,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   errorBorder: InputBorder.none,
                                   focusedErrorBorder: InputBorder.none,
                                 ),
-                                style: TextStyle(fontSize: 16),
+                                style: const TextStyle(fontSize: 16),
                               ),
                             ),
                           ),
@@ -453,7 +453,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -461,14 +461,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -478,12 +478,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
                                 controller: _documentoController,
                                 autofocus: true,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Numero de DNI',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
@@ -496,7 +496,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   errorBorder: InputBorder.none,
                                   focusedErrorBorder: InputBorder.none,
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
@@ -510,7 +510,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -518,14 +518,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -535,12 +535,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                               child: TextFormField(
                                 controller: _distritoController,
                                 autofocus: true,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Indique su Distrito',
                                   labelStyle: TextStyle(
                                     fontSize: 16,
@@ -553,7 +553,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   errorBorder: InputBorder.none,
                                   focusedErrorBorder: InputBorder.none,
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
@@ -565,7 +565,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: ElevatedButton(
                     onPressed: () async {
                       final String email = _emailController.text;
@@ -576,16 +576,16 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                       final String documento = _documentoController.text;
                       final String distrito = _distritoController.text;
                       await CreateProfile().UserProfile(email, nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage(),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage(),));
                     },
                     style: ElevatedButton.styleFrom(
                       elevation: 3,
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
@@ -617,12 +617,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                     },
                     style: ElevatedButton.styleFrom(
                       elevation: 3,
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
@@ -653,17 +653,17 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
 
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF2033DA),
-                      textStyle: TextStyle(
+                      primary: const Color(0xFF2033DA),
+                      textStyle: const TextStyle(
                         fontFamily: 'Poppins',
                         color: Colors.white,
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      minimumSize: Size(180, 50),
+                      minimumSize: const Size(180, 50),
                     ),
-                    child: Text("Continuar"),
+                    child: const Text("Continuar"),
                   ),
                 ],
               ),
@@ -687,7 +687,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Align(
+                const Align(
                   alignment: AlignmentDirectional(0, 0),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 130, 0, 0),
@@ -701,7 +701,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                Opacity(
+                const Opacity(
                   opacity: 0.6,
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
@@ -717,7 +717,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 15),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 15),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -725,14 +725,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -742,7 +742,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                               child: Stack(
                                 alignment: AlignmentDirectional.centerEnd,
                                 children: [
@@ -751,7 +751,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                     onChanged: _validateEmail, // Validar correo electrónico mientras se escribe
                                     autofocus: true,
                                     obscureText: false,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       labelText: 'Correo Electrónico',
                                       labelStyle: TextStyle(
                                         fontSize: 16,
@@ -768,11 +768,11 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                       errorBorder: InputBorder.none,
                                       focusedErrorBorder: InputBorder.none,
                                     ),
-                                    style: TextStyle(fontSize: 16),
+                                    style: const TextStyle(fontSize: 16),
                                     validator: emailValidator,
                                   ),
                                   if (_emailError)
-                                    Text(
+                                    const Text(
                                       'Correo no válido',
                                       style: TextStyle(
                                         color: Colors.red,
@@ -791,7 +791,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -799,14 +799,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -816,7 +816,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                               child: TextFormField(
                                 controller: _passwordController,
                                 onChanged: _validatePassword, // Validar contraseña mientras se escribe
@@ -824,12 +824,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                 obscureText: !_isPasswordVisible, // Usa el valor de _isPasswordVisible
                                 decoration: InputDecoration(
                                   labelText: 'Contraseña',
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w200,
                                     color: Colors.black,
                                   ),
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w200,
                                     color: Colors.grey,
@@ -854,7 +854,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                     ),
                                   ),
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                                 validator: passwordValidator,
@@ -869,7 +869,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                 Opacity(
                   opacity: 0.6,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                     child: Container(
                       width: 300,
                       height: 60,
@@ -877,14 +877,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Color(0x00F1F4F8),
+                          color: const Color(0x00F1F4F8),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Icon(
                               Icons.person,
@@ -894,7 +894,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                               child: TextFormField(
                                 controller: _repasswordController,
                                 onChanged: _validatePassword, // Validar contraseña mientras se escribe
@@ -902,12 +902,12 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                 obscureText: !_isPasswordVisible, // Usa el valor de _isPasswordVisible
                                 decoration: InputDecoration(
                                   labelText: 'Confirmar Contraseña',
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w200,
                                     color: Colors.black,
                                   ),
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w200,
                                     color: Colors.grey,
@@ -932,7 +932,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                     ),
                                   ),
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                                 validator: repasswordValidator,
@@ -951,7 +951,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                       MaterialPageRoute(builder: (context) => Login()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     "¿Ya tienes cuenta? Inicia Sesión",
                     style: TextStyle(
                       decoration: TextDecoration.underline,
@@ -960,7 +960,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: ElevatedButton(
                     onPressed: () {
                       if (!_emailError && !_passwordError) {
@@ -971,14 +971,14 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                     style: ElevatedButton.styleFrom(
                       primary: Colors.deepPurple,
                       elevation: 3,
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
+                      children: [
                         Text("Registrar")
                         // Espacio entre el icono y el texto (ajusta según sea necesario)
                       ],

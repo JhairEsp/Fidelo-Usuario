@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:fidelo/Screens/Profiles/GetProfileById.dart';
 import 'package:http/http.dart' as http;
 
 import '../../models/GlobalVariables.dart';
@@ -30,7 +29,7 @@ class CreateProfile {
       if (response.statusCode == 200) {
         // El perfil se creó correctamente, puedes manejar la respuesta aquí.
         final responseBody = jsonDecode(response.body);
-        final profileId = responseBody["_id"]; // Aquí obtenemos la ID del perfil
+        final profileId = responseBody["user"]; // Aquí obtenemos la ID del perfil
         GlobalVariables.idProfile = profileId; // Asigna la ID del perfil a la variable global
         print('Email creado con éxito. ID del perfil: $profileId');
         //;
