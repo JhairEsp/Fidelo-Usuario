@@ -6,7 +6,7 @@ import '../../models/GlobalVariables.dart';
 class CreateProfile {
 
   Future<String?> UserProfile(String email, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String dni, String distrito) async {
-    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile');
+    final apiUrl = Uri.parse("http://192.168.0.101:4000/api/profile");
 
     final requestBody = {
       "correoElectronico": email,
