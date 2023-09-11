@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:fidelo/Screens/screens.dart';
 import '../../models/Auth.dart';
@@ -12,6 +13,13 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  //CreateProfile 
+  final _nombreController = TextEditingController();
+  final _apellidopatController = TextEditingController();
+  final _apellidomatController = TextEditingController();
+  final _telefonoController = TextEditingController();
+  final _documentoController = TextEditingController();
+  final _distritoController = TextEditingController();
   bool _showPassword = false;
   bool _emailError = false;
 
@@ -64,13 +72,7 @@ Future<void> _login() async {
   if (response.statusCode == 200) {
     // Llamada a obtenerIdProfile para obtener el valor _id
     await _auth.obtenerIdProfile(_emailController.text, _passwordController.text);
-    
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ),
-    );
+Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePage()));
   } else {
     // Login failed, show an error dialog
     showDialog(

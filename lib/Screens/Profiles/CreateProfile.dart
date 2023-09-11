@@ -1,49 +1,40 @@
 import 'dart:convert';
+
+import 'package:fidelo/models/GlobalVariables.dart';
 import 'package:http/http.dart' as http;
 
-import '../../models/GlobalVariables.dart';
-
 class CreateProfile {
+  Future<void> enviarDatos() async {
+  final url = 'http://192.168.0.101:4000/api/profile';
+  final String? cookie = GlobalVariables.cookie;
+  final headers = {'Content-Type': 'application/json', 'Cookie': '$cookie'};
 
-  Future<String?> UserProfile(String email, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String dni, String distrito) async {
-    final apiUrl = Uri.parse("http://192.168.0.101:4000/api/profile");
+  final Map<String, dynamic> data = {
+    "nombre": "Jhairprueba3",
+    "apellidopat": "Espinoza",
+    "apellidomat": "Rios",
+    "telefono": "999777555",
+    "documento": "003433434",
+    "distrito": "Independencia"
+  };
 
-    final requestBody = {
-      "correoElectronico": email,
-      "nombre": nombre,
-      "apellidopat": apellidoPaterno,
-      "apellidomat": apellidoMaterno, 
-      "telefono": telefono,
-      "documento": dni,
-      "distrito": distrito,
-    };
-    
-    try {
-      final response = await http.post(
-        apiUrl,
-        body: jsonEncode(requestBody),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      );
-      if (response.statusCode == 200) {
-        // El perfil se creó correctamente, puedes manejar la respuesta aquí.
-        final responseBody = jsonDecode(response.body);
-        final profileId = responseBody["user"]; // Aquí obtenemos la ID del perfil
-        GlobalVariables.idProfile = profileId; // Asigna la ID del perfil a la variable global
-        print('Email creado con éxito. ID del perfil: $profileId');
-        //;
-        return profileId;
-        // Puedes guardar profileId en un lugar accesible para otras partes de tu aplicación
-      } else {
-        // Error al crear el perfil, puedes manejar el error aquí.
-        print('Error al crear el email. Código de estado: ${response.statusCode}');
-        return null;
-      }
-    } catch (error) {
-      // Maneja los errores de solicitud aquí.
-      print('Error en la solicitud: $error');
-      return null;
+  try {
+    final response = await http.post(
+      Uri.parse(url),
+      headers: headers,
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode == 200) {
+      // La solicitud fue exitosa, puedes manejar la respuesta aquí si es necesario.
+      print("Solicitud exitosa");
+    } else {
+      // La solicitud no fue exitosa, puedes manejar el error aquí si es necesario.
+      print("Error en la solicitud: ${response.statusCode}");
     }
+  } catch (error) {
+    // Manejar errores de red u otros errores aquí.
+    print("Error: $error");
   }
+}
 }

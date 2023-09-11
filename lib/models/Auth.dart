@@ -10,18 +10,26 @@ import 'GlobalVariables.dart';
 class Auth{
   //LOGIN
 static Future<http.Response> login(
-      BuildContext context, String email, String password) async {
-    final url = Uri.parse("http://192.168.0.101:4000/api/auth/login");
-    final headers = {
-      "Content-Type": "application/json",
-    };
-    final body = jsonEncode({
-      "usuario": email,
-      "contrasena": password,
-    });
-    final response = await http.post(url, headers: headers, body: body);
-    return response; 
-      }
+    BuildContext context, String email, String password) async {
+  final url = Uri.parse("http://192.168.0.101:4000/api/auth/login");
+  final headers = {
+    "Content-Type": "application/json",
+  };
+  final body = jsonEncode({
+    "usuario": email,
+    "contrasena": password,
+  });
+  final response = await http.post(url, headers: headers, body: body);
+  if(response.statusCode == 200){
+    final cookies = response.headers["set-cookie"];
+    GlobalVariables.cookie= cookies;
+    print(GlobalVariables.cookie);
+  }else{
+    print("No pasa nada");
+  }
+  
+  return response;
+}
 
 
 //REGISTRO
@@ -79,10 +87,10 @@ Future<void> obtenerIdProfile(String email, String password) async {
   if (response.statusCode == 200) {
     final responseData = jsonDecode(response.body);
     // Busca el valor de "_id" en la respuesta
-    final idProfile = responseData["user"];
-
+    final idProfile = responseData["id"];
     // Guarda el valor en la variable global
     GlobalVariables.idProfile = idProfile;
+      print("esta es la otra pint"+ idProfile) ;
   } else {
     // Maneja el error si la solicitud no fue exitosa
     print("Error en la solicitud: ${response.statusCode}");
