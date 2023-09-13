@@ -16,14 +16,6 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _repasswordController = TextEditingController();
-  final _nombreController = TextEditingController();
-  final _apellidopatController = TextEditingController();
-  final _apellidomatController = TextEditingController();
-  final _telefonoController = TextEditingController();
-  final _documentoController = TextEditingController();
-  final _distritoController = TextEditingController();
-
-
 
   //verificadores
   bool _emailError = false;
@@ -142,515 +134,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      showDialog(
-  context: context,
-  builder: (BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Scaffold(
-          backgroundColor: Colors.deepPurple[600],
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Align(
-                  alignment: AlignmentDirectional(0, 0),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: Text(
-                      'Completa tus datos',
-                      style: TextStyle(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                    child: Image.network(
-                      'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
-                    child: Container(
-                      width: 300,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: const Color(0x00F1F4F8),
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                              child: TextFormField(
-                                controller: _nombreController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: const InputDecoration(
-                                  labelText: 'Nombre',
-                                  labelStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  hintStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: Container(
-                      width: 300,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: const Color(0x00F1F4F8),
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                              child: TextFormField(
-                                controller: _apellidopatController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: const InputDecoration(
-                                  labelText: 'Apellido Paterno',
-                                  labelStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  hintStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: Container(
-                      width: 300,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: const Color(0x00F1F4F8),
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                              child: TextFormField(
-                                controller: _apellidomatController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: const InputDecoration(
-                                  labelText: 'Apellido Materno',
-                                  labelStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  hintStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                    showDialog(
-  context: context,
-  builder: (BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Scaffold(
-          backgroundColor: Colors.deepPurple[600],
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Align(
-                  alignment: AlignmentDirectional(0, 0),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: Text(
-                      'Completa tus datos',
-                      style: TextStyle(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                    child: Image.network(
-                      'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
-                    child: Container(
-                      width: 300,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: const Color(0x00F1F4F8),
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                              child: TextFormField(
-                                controller: _telefonoController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: const InputDecoration(
-                                  labelText: 'Numero de Telefono',
-                                  labelStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  hintStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: Container(
-                      width: 300,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: const Color(0x00F1F4F8),
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                              child: TextFormField(
-                                controller: _documentoController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: const InputDecoration(
-                                  labelText: 'Numero de DNI',
-                                  labelStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  hintStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: Container(
-                      width: 300,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: const Color(0x00F1F4F8),
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                              child: TextFormField(
-                                controller: _distritoController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: const InputDecoration(
-                                  labelText: 'Indique su Distrito',
-                                  labelStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  hintStyle: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      final String email = _emailController.text;
-                      final String nombre = _nombreController.text;
-                      final String apellidoPaterno = _apellidopatController.text;
-                      final String apellidoMaterno = _apellidomatController.text;
-                      final String telefono = _telefonoController.text;
-                      final String documento = _documentoController.text;
-                      final String distrito = _distritoController.text;
-                    //  await CreateProfile().UserProfile(email, nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage(),));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      elevation: 3,
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.navigate_next,
-                          color: Colors.white,
-                          size: 15,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          'Continuar',
-                          style: TextStyle(
-                            fontFamily: 'Readex Pro',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  },
-);
-
-                    },
-                    style: ElevatedButton.styleFrom(
-                      elevation: 3,
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.navigate_next,
-                          color: Colors.white,
-                          size: 15,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          'Continuar',
-                          style: TextStyle(
-                            fontFamily: 'Readex Pro',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  },
-);
-
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
                     },
                     style: ElevatedButton.styleFrom(
                       primary: const Color(0xFF2033DA),
@@ -663,7 +147,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                       ),
                       minimumSize: const Size(180, 50),
                     ),
-                    child: const Text("Continuar"),
+                    child: const Text("Iniciar Sesión"),
                   ),
                 ],
               ),
@@ -680,22 +164,37 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: Colors.deepPurple[600],
+        backgroundColor: Colors.white,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                  Align(
+                    alignment: AlignmentDirectional(0, 0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          "assets/logo.png",
+                          width: 150,
+                          height: 150,
+                          fit: BoxFit.contain, 
+                        ),
+                      ),
+                    ),
+                  ),
                 const Align(
                   alignment: AlignmentDirectional(0, 0),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 130, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                     child: Text(
                       'Registro',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 50,
                       ),
                     ),
@@ -709,7 +208,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                       'Crea tu cuenta',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -725,7 +224,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: const Color(0x00F1F4F8),
+                          color:  Colors.black,
                           width: 2,
                         ),
                       ),
@@ -761,7 +260,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                       hintStyle: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w200,
-                                        color: Colors.grey,
+                                        color: Colors.black,
                                       ),
                                       enabledBorder: InputBorder.none,
                                       focusedBorder: InputBorder.none,
@@ -799,7 +298,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: const Color(0x00F1F4F8),
+                          color: Colors.black,
                           width: 2,
                         ),
                       ),
@@ -832,7 +331,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   hintStyle: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w200,
-                                    color: Colors.grey,
+                                    color: Colors.black,
                                   ),
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
@@ -850,7 +349,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                       _isPasswordVisible
                                           ? Icons.visibility
                                           : Icons.visibility_off,
-                                      color: Colors.grey,
+                                      color: Colors.black,
                                     ),
                                   ),
                                 ),
@@ -877,7 +376,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: const Color(0x00F1F4F8),
+                          color: Colors.black,
                           width: 2,
                         ),
                       ),
@@ -910,7 +409,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                   hintStyle: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w200,
-                                    color: Colors.grey,
+                                    color: Colors.black,
                                   ),
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
@@ -928,7 +427,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                                       _isPasswordVisible
                                           ? Icons.visibility
                                           : Icons.visibility_off,
-                                      color: Colors.grey,
+                                      color: Colors.black,
                                     ),
                                   ),
                                 ),
@@ -960,7 +459,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                   child: ElevatedButton(
                     onPressed: () {
                       if (!_emailError && !_passwordError) {
@@ -969,8 +468,9 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.deepPurple,
+                      primary: Color.fromARGB(255, 33, 11, 230),
                       elevation: 3,
+                      minimumSize: const Size(250,45),
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),

@@ -5,7 +5,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
   final int selectedIndex;
   final Function(int) onTabChange;
 
-  const CustomBottomNavigationBar({
+  const CustomBottomNavigationBar({super.key, 
     required this.selectedIndex,
     required this.onTabChange,
   });

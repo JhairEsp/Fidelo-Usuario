@@ -1,16 +1,11 @@
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import "package:fidelo/Screens/screens.dart";
 import 'package:flutter/material.dart';
-import 'package:fidelo/models/GlobalVariables.dart';
 import 'Screens/LoginScreens/Login.dart';
-
-//import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
-
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,10 +14,52 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      routes: {
-        "/login" : (context) => Login(),
-      },
+      
       debugShowCheckedModeBanner: false, 
-      home: Login());
+      home: SplashScreen(),
+      
+      );
+      
   }
 }
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+      splash: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF004CC6), Color(0xFF00A7BF)],
+            stops: [0, 1],
+            begin: AlignmentDirectional(0, -1),
+            end: AlignmentDirectional(0, 1),
+          ),
+        ),
+        child:  Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    'assets/logoblanco.png',
+                    width: 300,
+                    height: 200,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+        ])
+        
+      ),
+      backgroundColor: Color(0xFF004CC6),
+      nextScreen: Login(),
+      duration: 2000,
+      splashTransition: SplashTransition.slideTransition,
+    );
+  }
+}
+

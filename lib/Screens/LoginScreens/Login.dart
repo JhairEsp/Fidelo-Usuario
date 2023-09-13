@@ -100,7 +100,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: Colors.deepPurple[600],
+        backgroundColor: Colors.white,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -111,14 +111,14 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                   Align(
                     alignment: AlignmentDirectional(0, 0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          'https://cdn-icons-png.flaticon.com/256/3190/3190397.png',
-                          width: 200,
-                          height: 200,
-                          fit: BoxFit.cover,
+                        child: Image.asset(
+                          "assets/logo.png",
+                          width: 150,
+                          height: 150,
+                          fit: BoxFit.contain, 
                         ),
                       ),
                     ),
@@ -129,7 +129,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                       'BIENVENIDO DE VUELTA',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 25,
                         fontWeight: FontWeight.w600,
                       ),
@@ -141,7 +141,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                       'Inicia sesión con tu cuenta',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -156,7 +156,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: Color(0x00F1F4F8),
+                            color: Colors.black,
                             width: 2,
                           ),
                         ),
@@ -179,7 +179,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                   children: [
                                     TextFormField(
                                       controller: _emailController,
-                                      autofocus: true,
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Correo Electrónico',
@@ -191,7 +191,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                         hintStyle: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w200,
-                                          color: Colors.grey,
+                                          color: Colors.black,
                                         ),
                                         enabledBorder: InputBorder.none,
                                         focusedBorder: InputBorder.none,
@@ -234,7 +234,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: Color(0x00F1F4F8),
+                            color: Colors.black,
                             width: 2,
                           ),
                         ),
@@ -254,7 +254,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                 padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                                 child: TextFormField(
                                   controller: _passwordController,
-                                  autofocus: true,
+                                  autofocus: false,
                                   obscureText: !_showPassword,
                                   decoration: InputDecoration(
                                     labelText: 'Contraseña',
@@ -266,7 +266,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                     hintStyle: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w200,
-                                      color: Colors.grey,
+                                      color: Colors.black,
                                     ),
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
@@ -297,12 +297,12 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                     child: Align(
                       alignment: AlignmentDirectional(0.60, 0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 100),
                         child: Text(
                           'Olvidaste tu contraseña?',
                           style: TextStyle(
                             fontFamily: 'Readex Pro',
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -315,8 +315,8 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                         _login();
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.deepPurple,
-                        onPrimary: Colors.white,
+                        primary: Color.fromARGB(255, 33, 11, 230),
+                        onPrimary: Colors.black,
                         elevation: 3,
                         side: BorderSide(
                           color: Colors.black,
@@ -333,6 +333,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                         style: TextStyle(
                           fontFamily: 'Readex Pro',
                           fontWeight: FontWeight.w600,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -347,7 +348,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                           'No tienes cuenta?',
                           style: TextStyle(
                             fontFamily: 'Readex Pro',
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -362,7 +363,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                           'Registrate aquí',
                           style: TextStyle(
                             fontFamily: 'Readex Pro',
-                            color: Colors.white,
+                            color: Colors.red,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                           ),
@@ -377,8 +378,8 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
             Positioned(
               top: 16,
               left: 16,
-              child: Text("Version 0.0.3",style: TextStyle(
-              color: Colors.white,fontSize: 12,
+              child: Text("Version 0.0.4",style: TextStyle(
+              color: Colors.black,fontSize: 12,
             ),))
           ], 
           ),
