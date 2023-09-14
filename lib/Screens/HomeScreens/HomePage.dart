@@ -29,6 +29,13 @@ import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
   final _telefonoController = TextEditingController();
   final _documentoController = TextEditingController();
   final _distritoController = TextEditingController();
+    String? _selectedDistrict;
+  List<String> _districts = [
+    'Comas',
+    'Independencia',
+    'Distrito 3',
+    // Agrega aquí la lista completa de distritos de Lima
+  ];
     @override
     void initState() {
       super.initState();
@@ -317,175 +324,189 @@ Future<void> obtenerPerfil(BuildContext context) async {
                       ),
                     ),
                   ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
-                      child: Container(
-                        width: 300,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x00F1F4F8),
-                            width: 2,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                                child: TextFormField(
-                                  controller: _telefonoController,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Numero de Telefono',
-                                    labelStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    hintStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+Opacity(
+  opacity: 0.6,
+  child: Padding(
+    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+    child: Container(
+      width: 300,
+      height: 60,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: const Color(0x00F1F4F8),
+          width: 2,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          const Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+            child: Icon(
+              Icons.person,
+              color: Colors.black,
+              size: 24,
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+              child: TextFormField(
+                controller: _telefonoController,
+                autofocus: true,
+                obscureText: false,
+                keyboardType: TextInputType.number,
+                maxLength: 9, // Limitar la entrada a 9 números
+                decoration: const InputDecoration(
+                  labelText: 'Numero de Telefono',
+                  labelStyle: TextStyle(
+                    fontSize: 16,
+                  ),
+                  hintStyle: TextStyle(
+                    fontSize: 16,
+                  ),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  focusedErrorBorder: InputBorder.none,
+                ),
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  ),
+),
+
+Opacity(
+  opacity: 0.6,
+  child: Padding(
+    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+    child: Container(
+      width: 300,
+      height: 60,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: const Color(0x00F1F4F8),
+          width: 2,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          const Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+            child: Icon(
+              Icons.person,
+              color: Colors.black,
+              size: 24,
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+              child: TextFormField(
+                controller: _documentoController,
+                autofocus: true,
+                obscureText: false,
+                keyboardType: TextInputType.number,
+                maxLength: 8, // Limitar la entrada a 8 números
+                decoration: const InputDecoration(
+                  labelText: 'Numero de DNI',
+                  labelStyle: TextStyle(
+                    fontSize: 16,
+                  ),
+                  hintStyle: TextStyle(
+                    fontSize: 16,
+                  ),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  focusedErrorBorder: InputBorder.none,
+                ),
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  ),
+),
+
+                 Opacity(
+      opacity: 0.6,
+      child: Padding(
+        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+        child: Container(
+          width: 300,
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: const Color(0x00F1F4F8),
+              width: 2,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                child: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                  size: 24,
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                  child: DropdownButtonFormField<String>(
+                    value: _selectedDistrict,
+                    onChanged: (newValue) {
+                      setState(() {
+                        _selectedDistrict = newValue;
+                      });
+                    },
+                    items: _districts.map((district) {
+                      return DropdownMenuItem<String>(
+                        value: district,
+                        child: Text(district),
+                      );
+                    }).toList(),
+                    decoration: const InputDecoration(
+                      labelText: 'Indique su Distrito',
+                      labelStyle: TextStyle(
+                        fontSize: 16,
                       ),
+                      hintStyle: TextStyle(
+                        fontSize: 16,
+                      ),
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      focusedErrorBorder: InputBorder.none,
+                    ),
+                    style: const TextStyle(
+                      fontSize: 16,
                     ),
                   ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                      child: Container(
-                        width: 300,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x00F1F4F8),
-                            width: 2,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                                child: TextFormField(
-                                  controller: _documentoController,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Numero de DNI',
-                                    labelStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    hintStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                      child: Container(
-                        width: 300,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x00F1F4F8),
-                            width: 2,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                                child: TextFormField(
-                                  controller: _distritoController,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Indique su Distrito',
-                                    labelStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    hintStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),),
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: ElevatedButton(
@@ -582,363 +603,463 @@ Future<void> obtenerPerfil(BuildContext context) async {
 }
     @override
     Widget build(BuildContext context) {
-        return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            top: true,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: 400,
-                    height: 245,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Align(
-                                alignment: const AlignmentDirectional(0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 60, 0, 0),
-                                      child: Text(
-                                        'Bienvenido',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                              fontFamily: 'Readex Pro',
-                                              color: Colors.black,
-                                              fontSize: 25,
-                                            ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: const AlignmentDirectional(0, 0),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            19, 10, 0, 0),
-                                        child: Text(
-                                          "$nombre",
-                                          textAlign: TextAlign.justify,
-                                          style: const TextStyle(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 25,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+ return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                          child: Text(
+                            "${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",
+                            style: TextStyle(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 24,
                                 ),
-                              ),
-                            ),
-                            Flexible(
-                              child: Align(
-                                alignment: const AlignmentDirectional(1, 0),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsetsDirectional.fromSTEB(0, 15, 20, 0),
-                                  child: Container(
-                                    width: 160,
-                                    height: 160,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      'https://cdn-icons-png.flaticon.com/256/64/64572.png',
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                          child: Container(
-                            width: 300,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                              border: Border.all(
-                                color: Colors.black,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      child: TextFormField(
-                                        controller: busquedaController,
-                                        autofocus: false,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'Buscador',
-                                          labelStyle: const TextStyle(
-                                            fontSize: 14,
-                                            color: Color.fromARGB(100, 87, 99, 108),
-                                          ),
-                                          hintStyle: const TextStyle(
-                                            fontSize: 14,
-                                          ),
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Color.fromARGB(100, 87, 99, 108),
-                                              width: 2,
-                                            ),
-                                            borderRadius: BorderRadius.circular(30),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Color.fromARGB(100, 87, 99, 108),
-                                              width: 2,
-                                            ),
-                                            borderRadius: BorderRadius.circular(30),
-                                          ),
-                                          errorBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Color.fromARGB(100, 87, 99, 108),
-                                              width: 2,
-                                            ),
-                                            borderRadius: BorderRadius.circular(30),
-                                          ),
-                                          focusedErrorBorder: UnderlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Color.fromARGB(100, 87, 99, 108),
-                                              width: 2,
-                                            ),
-                                            borderRadius: BorderRadius.circular(30),
-                                          ),
-                                        ),
-                                        style:
-                                            const TextStyle(
-                                              fontSize: 14,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const Flexible(
-                                  child: Align(
-                                    alignment: AlignmentDirectional(1, 0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 15, 0),
-                                      child: Icon(
-                                        Icons.search,
-                                        color: Color.fromARGB(100, 87, 99, 108),
-                                        size: 24,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(1.00, 0.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              'https://picsum.photos/seed/492/600',
+                              width: 30,
+                              height: 30,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                    child: Container(
-                      width: 400,
-                      height: 250,
+                ),
+                SizedBox(width: 20,),
+                Text("Empresas disponibles"),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+          child: Container(
+            width: 200,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        'https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png',
+                        width: 300,
+                        height: 96,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Container(
+                      width: 200,
+                      height: 54,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          const BoxShadow(
-                            blurRadius: 4,
-                            color: Color(0x33000000),
-                            offset: Offset(0, 2),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(0),
+                        color:
+                            Colors.white,
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                            child: Text(
-                              'EMPRESAS DISPONIBLES',
-                              style: TextStyle(
-                                fontSize: 14,
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Text(
+                                'Apple',
+                                style:
+                                    TextStyle(
+                                      fontSize: 14
+                                    ),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(-1, 0),
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Align(
-                                    alignment: const AlignmentDirectional(0, 0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          5, 5, 0, 0),
-                                      child: Container(
-                                        width: 200,
-                                        height: 200,
-                                        decoration: BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.circular(30),
-                                        ),
-                                      ),
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Text(
+                                'Tecnologia',
+                                style: TextStyle(
+                                      fontFamily: 'Readex Pro',
+                                      color:Colors.grey,
                                     ),
-                                  ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0, 0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          5, 5, 0, 0),
-                                      child: Container(
-                                        width: 200,
-                                        height: 200,
-                                        decoration: BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.circular(30),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0, 0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          5, 5, 0, 0),
-                                      child: Container(
-                                        width: 200,
-                                        height: 200,
-                                        decoration: BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.circular(30),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0, 0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          5, 5, 0, 0),
-                                      child: Container(
-                                        width: 200,
-                                        height: 200,
-                                        decoration: BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.circular(30),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    child: SingleChildScrollView(
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+                Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+          child: Container(
+            width: 200,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        'https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png',
+                        width: 300,
+                        height: 96,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Container(
+                      width: 200,
+                      height: 54,
+                      decoration: BoxDecoration(
+                        color:
+                            Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Card(
-                            margin : const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                color: Colors.black,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                                shadowColor: Colors.black,
-                                                              child: const SizedBox(
-                                  width: 350, // Ancho deseado
-                                  height: 150, // Alto deseado
-                                    child: Padding(
-                                    padding: EdgeInsets.all(16),
-                                    child: Text(
-                                    'Informacion dentro de la Card',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                      ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Text(
+                                'Apple',
+                                style:
+                                    TextStyle(
+                                      fontSize: 14
                                     ),
-                                  ),
-                                ),
                               ),
-                              Card(
-                                  margin : const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                color: Colors.black,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                                shadowColor: Colors.black,
-                                                              child: const SizedBox(
-                                  width: 350, // Ancho deseado
-                                  height: 150, // Alto deseado
-                                    child: Padding(
-                                    padding: EdgeInsets.all(16),
-                                    child: Text(
-                                    'Informacion dentro de la Card',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                      ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Text(
+                                'Tecnologia',
+                                style: TextStyle(
+                                      fontFamily: 'Readex Pro',
+                                      color:Colors.grey,
                                     ),
-                                  ),
-                                ),
                               ),
-                          Card(
-                                margin : const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                color: Colors.black,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                                shadowColor: Colors.black,
-                                                              child: const SizedBox(
-                                  width: 350, // Ancho deseado
-                                  height: 150, // Alto deseado
-                                    child: Padding(
-                                    padding: EdgeInsets.all(16),
-                                    child: Text(
-                                    'Informacion dentro de la Card',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                    
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
           ),
-          bottomNavigationBar: CustomBottomNavigationBar(
+        ),
+                Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+          child: Container(
+            width: 200,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        'https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png',
+                        width: 300,
+                        height: 96,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Container(
+                      width: 200,
+                      height: 54,
+                      decoration: BoxDecoration(
+                        color:
+                            Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Text(
+                                'Apple',
+                                style:
+                                    TextStyle(
+                                      fontSize: 14
+                                    ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Text(
+                                'Tecnologia',
+                                style: TextStyle(
+                                      fontFamily: 'Readex Pro',
+                                      color:Colors.grey,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+                        
+                      ],
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(25, 30, 0, 15),
+                    child: Text(
+                      'Mis Tarjetas',
+                      style:TextStyle(
+                        fontSize: 14
+                      ),
+                    ),
+                  ),
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                        child: Container(
+                          width: 380,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4,
+                                color: Color(0x33000000),
+                                offset: Offset(0, 2),
+                                spreadRadius: 5,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Stack(
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                        child: Container(
+                          width: 380,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4,
+                                color: Color(0x33000000),
+                                offset: Offset(0, 2),
+                                spreadRadius: 0,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Stack(
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 0, 0, 0),
+                                      child: Container(
+                                        width: 70,
+                                        height: 70,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          child: Image.network(
+                                            'https://logodownload.org/wp-content/uploads/2017/10/Starbucks-logo.png',
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 0, 0, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.00, 0.00),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 30, 0, 0),
+                                            child: Text(
+                                              'Starbucks',
+                                              style:
+                                                  TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 12,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.00, 0.00),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 10, 0, 0),
+                                            child: Text(
+                                              'Cafeteria',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 12,
+                                                  )
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.91, 0.04),
+                                child: Icon(
+                                  Icons.navigate_next_outlined,
+                                  color: Colors.black,
+                                  size: 24,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                              
+                            )
+                    ],
+                  ),
+                )),
+              ],
+            ),
+          ),
+        ] ),
+      ),
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
             selectedIndex: 0, 
             onTabChange: (index){
               switch(index){
@@ -949,7 +1070,6 @@ Future<void> obtenerPerfil(BuildContext context) async {
               }
             }
             ),
-        ),
-      );
+      ));
     }
   }
