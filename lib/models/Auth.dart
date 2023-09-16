@@ -48,6 +48,11 @@ static Future<http.Response> login(
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
+      final idProfile = data["id"];
+      GlobalVariables.idProfile = idProfile;
+      print("la id traida de registro es " + idProfile);
+      final cookies = response.headers["set-cookie"];
+      GlobalVariables.cookie = cookies;
       return data;
     } else {
       return {

@@ -113,48 +113,7 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
           ),
         );
       } else {
-        showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              shape:
-                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-              title: const Center(child: Text("Registro")),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text('Registrado Correctamente'),
-                  const SizedBox(height: 20),
-                  Image.network(
-                    'https://cdn-icons-png.flaticon.com/256/11487/11487186.png',
-                    width: 100,
-                    height: 100,
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF2033DA),
-                      textStyle: const TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      minimumSize: const Size(180, 50),
-                    ),
-                    child: const Text("Iniciar Sesión"),
-                  ),
-                ],
-              ),
-              actions: [],
-            );
-          },
-        );
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
       }
     }
   }

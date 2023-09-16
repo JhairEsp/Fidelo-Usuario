@@ -26,41 +26,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   }
 
-  /*Future<void> obtenerPerfil() async {
-    final String? user = GlobalVariables.idProfile;
-    final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$user');
-
-    try {
-      final response = await http.get(
-        apiUrl,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      );
-
-      if (response.statusCode == 200) {
-        final Map<String, dynamic>? profileData = jsonDecode(response.body);
-
-        if (profileData != null) {
-          setState(() {
-            nombre = profileData['nombre'];
-            apellidoPaterno = profileData['apellidoPaterno'];
-            email = profileData['email'];
-          });
-        } else {
-          print("error de buscar datos");
-        }
-      } else {
-        print("error al enviar solicitud : ${response.statusCode}");
-      }
-    } catch (error) {
-      print("Error en la solicitud : $error");
-    }
-  }
-*/
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -70,265 +38,435 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                Align(
+                  alignment: AlignmentDirectional(1.00, 0.00),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 5, 0),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.login,
+                        color: Color(0xFFFF0000),
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Auth.logout(context);
+                      },
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.00, 0.00),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.network(
+                              'https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg',
+                              width: 300,
+                              height: 200,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(1.05, 1.04),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.photo_camera,
+                                color: Color(0xFF0F04E5),
+                                size: 24,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 55, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: Image.network(
-                            'https://picsum.photos/seed/806/600',
-                            width: 150,
-                            height: 180,
-                            fit: BoxFit.cover,
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
+                  child: Text(
+                    'Michilin Rios',
+                    style: TextStyle(
+                          fontFamily: 'Readex Pro',
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 563,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 6,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0),
+                      bottomRight: Radius.circular(0),
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                    border: Border.all(
+                      width: 0.1,
+                    ),
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(10, 20, 0, 0),
+                            child: Text(
+                              'Datos Personales',
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: AlignmentDirectional(0, 0),
-                          child: Column(
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 15),
+                          child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                                child: Text(
-                                  "${GlobalVariables.nombre}",
-                                  style: TextStyle(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16,
+                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                child: Container(
+                                  width: 394,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15, 0, 0, 0),
+                                        child: Icon(
+                                          Icons.person,
+                                          color: Colors.black,
+                                          size: 40,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 0, 0),
+                                        child: Text(
+                                          'Nombre:                   ',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            80, 0, 0, 0),
+                                        child: Text(
+                                          '${GlobalVariables.nombre}',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          )
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                    ],
-                  ),  
-                ),
-                Opacity(
-                  opacity: 0.5,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Icon(
-                          Icons.email,
-                          color: Colors.grey[200],
-                          size: 24,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 15),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                child: Container(
+                                  width: 394,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15, 0, 0, 0),
+                                        child: Icon(
+                                          Icons.person,
+                                          color: Colors.black,
+                                          size: 40,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 0, 0),
+                                        child: Text(
+                                          'Apellido Paterno: ',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            80, 0, 0, 0),
+                                        child: Text(
+                                          '${GlobalVariables.apellidoPaterno}',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          )
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        Text(
-                          '$email',
-                          style: TextStyle(
-                            fontFamily: 'Readex Pro',
-                            color: Colors.grey[200],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 15),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                child: Container(
+                                  width: 394,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color:Colors.white,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15, 0, 0, 0),
+                                        child: Icon(
+                                          Icons.person,
+                                          color:Colors.black,
+                                          size: 40,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 0, 0),
+                                        child: Text(
+                                          'Apellido Materno: ',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          )
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            80, 0, 0, 0),
+                                        child: Text(
+                                          '${GlobalVariables.apellidoMaterno}',
+                                          style: TextStyle(
+                                            fontSize: 16
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 15),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                child: Container(
+                                  width: 394,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15, 0, 0, 0),
+                                        child: Icon(
+                                          Icons.signal_cellular_4_bar,
+                                          color: Colors.black,
+                                          size: 40,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 0, 0),
+                                        child: Text(
+                                          'Telefono:           ',
+                                          style: TextStyle(
+                                            fontSize: 16
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            80, 0, 0, 0),
+                                        child: Text(
+                                          '${GlobalVariables.telefono}',
+                                          style: TextStyle(
+                                            fontSize: 16
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 15),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                child: Container(
+                                  width: 394,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15, 0, 0, 0),
+                                        child: Icon(
+                                          Icons.edit_document,
+                                          color: Colors.black,
+                                          size: 40,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 0, 0),
+                                        child: Text(
+                                          'Documento:     ',
+                                          style: TextStyle(
+                                            fontSize: 16
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            80, 0, 0, 0),
+                                        child: Text(
+                                          '${GlobalVariables.documento}',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 15),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                child: Container(
+                                  width: 394,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15, 0, 0, 0),
+                                        child: Icon(
+                                          Icons.gps_fixed,
+                                          color: Colors.black,
+                                          size: 40,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 0, 0),
+                                        child: Text(
+                                          'Distrito:                    ',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            80, 0, 0, 0),
+                                        child: Text(
+                                          '${GlobalVariables.distrito}',
+                                          style: TextStyle(
+                                            fontSize: 16
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 0.5,
-                        ),
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0, 0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '\$num',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              'Tarjetas Disponibles',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 0.5,
-                        ),
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0, 0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '\$num',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              'Tarjetas Reclamadas',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 5),
-                  child: ListTile(
-                    onTap: () {
-                      // Manejar el toque en "Tus Favoritos"
-                    },
-                    leading: Icon(
-                      Icons.favorite,
-                    ),
-                    title: Text(
-                      'Tus Favoritos',
-                      style: TextStyle(
-                        fontSize: 22,
-                      ),
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                  child: ListTile(
-                    onTap: () {
-                      // Manejar el toque en "Codigo de Referencia"
-                    },
-                    leading: Icon(
-                      Icons.share,
-                    ),
-                    title: Text(
-                      'Codigo de Referencia',
-                      style: TextStyle(
-                        fontSize: 22,
-                      ),
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                  child: ListTile(
-                    onTap: () {
-                      // Manejar el toque en "Promociones"
-                    },
-                    leading: Icon(
-                      Icons.percent,
-                    ),
-                    title: Text(
-                      'Promociones',
-                      style: TextStyle(
-                        fontSize: 22,
-                      ),
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                  child: ListTile(
-                    onTap: () {
-                      // Manejar el toque en "Configuracion"
-                    },
-                    leading: Icon(
-                      Icons.settings,
-                    ),
-                    title: Text(
-                      'Configuracion',
-                      style: TextStyle(
-                        fontSize: 22,
-                      ),
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Auth.logout(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFE700FF),
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: Container(
-                      height: 40,
-                      width: 150,
-                      padding: EdgeInsets.symmetric(horizontal: 24),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Cerrar Sesión',
-                        style: TextStyle(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
-        ),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          selectedIndex: 3,
-          onTabChange: (index) {
-            switch (index) {
-              case 0:
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
-                break;
-              case 1:
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const QRScreen()));
-                break;
-              case 2:
-                Navigator.push(context, MaterialPageRoute(builder: (context) => notificaciones()));
-                break;
-              case 3:
-                // No necesitas hacer nada si ya estás en esta pantalla.
-                break;
-            }
-          },
         ),
       ),
     );

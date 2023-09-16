@@ -1,12 +1,14 @@
   import 'dart:convert';
   import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
-import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
+  import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
   import 'package:fidelo/Screens/QRScreens/QRScreens.dart';
+  import 'package:fidelo/Widgets/Cards.dart';
   import 'package:fidelo/Widgets/NavBar.dart';
   import 'package:flutter/material.dart';
   import '../../models/GlobalVariables.dart';
   import '../screens.dart';
   import 'package:http/http.dart'as http;
+  import 'package:flutter_typeahead/flutter_typeahead.dart';
   class HomePage extends StatefulWidget {
     const HomePage({Key? key}) : super(key: key);
 
@@ -29,12 +31,50 @@ import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
   final _telefonoController = TextEditingController();
   final _documentoController = TextEditingController();
   final _distritoController = TextEditingController();
-    String? _selectedDistrict;
-  List<String> _districts = [
-    'Comas',
-    'Independencia',
-    'Distrito 3',
-    // Agrega aquí la lista completa de distritos de Lima
+    final List<String> distritos = [
+    "Ancon",
+    "Ate",
+    "Barranco",
+    "Breña",
+    "Carabayllo",
+    "Cercado de Lima",
+    "Chaclacayo",
+    "Chorrillos",
+    "Cieneguilla",
+    "Comas",
+    "El Agustino",
+    "Independencia",
+    "Jesús María",
+    "La Molina",
+    "La Victoria",
+    "Lince",
+    "Los Olivos",
+    "Lurigancho"
+    "Lurín",
+    "Magdalena del Mar",
+    "Miraflores",
+    "Pachacamac",
+    "Pucusana",
+    "Pueblo Libre",
+    "Puente Piedra",
+    "Punta Hermosa",
+    "Punta Negra",
+    "Rimac",
+    "San Bartolo",
+    "San Borja",
+    "San Isidro",
+    "San Juan de Lurigancho",
+    "San Juan de Miraflores",
+    "San Luis",
+    "San Martin de Porres",
+    "San Miguel",
+    "Santa Anita",
+    "Santa Maria del Mar",
+    "Santa Rosa",
+    "Santiago de Surco",
+    "Surquillo",
+    "Villa el Salvador",
+    "Villa Maria del Triunfo"
   ];
     @override
     void initState() {
@@ -357,7 +397,7 @@ Opacity(
                 controller: _telefonoController,
                 autofocus: true,
                 obscureText: false,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
                 maxLength: 9, // Limitar la entrada a 9 números
                 decoration: const InputDecoration(
                   labelText: 'Numero de Telefono',
@@ -371,6 +411,7 @@ Opacity(
                   focusedBorder: InputBorder.none,
                   errorBorder: InputBorder.none,
                   focusedErrorBorder: InputBorder.none,
+                  counterText: "",
                 ),
                 style: const TextStyle(fontSize: 16),
               ),
@@ -382,84 +423,84 @@ Opacity(
   ),
 ),
 
-Opacity(
-  opacity: 0.6,
-  child: Padding(
-    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-    child: Container(
-      width: 300,
-      height: 60,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: const Color(0x00F1F4F8),
-          width: 2,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-            child: Icon(
-              Icons.person,
-              color: Colors.black,
-              size: 24,
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-              child: TextFormField(
-                controller: _documentoController,
-                autofocus: true,
-                obscureText: false,
-                keyboardType: TextInputType.number,
-                maxLength: 8, // Limitar la entrada a 8 números
-                decoration: const InputDecoration(
-                  labelText: 'Numero de DNI',
-                  labelStyle: TextStyle(
-                    fontSize: 16,
+ Opacity(
+                    opacity: 0.6,
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: Container(
+                        width: 300,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: const Color(0x00F1F4F8),
+                            width: 2,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Icon(
+                                Icons.person,
+                                color: Colors.black,
+                                size: 24,
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                child: TextFormField(
+                                  controller: _documentoController,
+                                  autofocus: true,
+                                  obscureText: false,
+                                  keyboardType: TextInputType.number,
+                                  maxLength: 8,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Numero de DNI',
+                                    labelStyle: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                    hintStyle: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
+                                    counterText: "",
+                                  ),
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                  hintStyle: TextStyle(
-                    fontSize: 16,
-                  ),
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  focusedErrorBorder: InputBorder.none,
-                ),
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ),
-  ),
-),
-
-                 Opacity(
-      opacity: 0.6,
-      child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-        child: Container(
-          width: 300,
-          height: 60,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: const Color(0x00F1F4F8),
-              width: 2,
-            ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
+  Opacity(
+                      opacity: 0.6,
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                        child: Container(
+                          width: 300,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: const Color(0x00F1F4F8),
+                              width: 2,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+children: [
               const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                 child: Icon(
@@ -471,42 +512,47 @@ Opacity(
               Expanded(
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                  child: DropdownButtonFormField<String>(
-                    value: _selectedDistrict,
-                    onChanged: (newValue) {
-                      setState(() {
-                        _selectedDistrict = newValue;
-                      });
+                  child: TypeAheadFormField(
+                    textFieldConfiguration: TextFieldConfiguration(
+                      controller: _distritoController,
+                      autofocus: true,
+                      decoration: const InputDecoration(
+                        labelText: 'Indique su Distrito',
+                        labelStyle: TextStyle(
+                          fontSize: 16,
+                        ),
+                        hintStyle: TextStyle(
+                          fontSize: 16,
+                        ),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
+                      ),
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    suggestionsCallback: (pattern) {
+                      return distritos.where((distrito) =>
+                          distrito.toLowerCase().contains(pattern.toLowerCase()));
                     },
-                    items: _districts.map((district) {
-                      return DropdownMenuItem<String>(
-                        value: district,
-                        child: Text(district),
+                    itemBuilder: (context, suggestion) {
+                      return ListTile(
+                        title: Text(suggestion),
                       );
-                    }).toList(),
-                    decoration: const InputDecoration(
-                      labelText: 'Indique su Distrito',
-                      labelStyle: TextStyle(
-                        fontSize: 16,
-                      ),
-                      hintStyle: TextStyle(
-                        fontSize: 16,
-                      ),
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      focusedErrorBorder: InputBorder.none,
-                    ),
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
+                    },
+                    onSuggestionSelected: (suggestion) {
+                      _distritoController.text = suggestion;
+                    },
                   ),
                 ),
               ),
             ],
-          ),
-        ),
-      ),),
+                          ),
+                        ),
+                      ),
+                    ),
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: ElevatedButton(
@@ -616,43 +662,105 @@ Opacity(
               children: [
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
-                          child: Text(
-                            "${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",
-                            style: TextStyle(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 24,
-                                ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(1.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              'https://picsum.photos/seed/492/600',
-                              width: 30,
-                              height: 30,
-                              fit: BoxFit.cover,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                            child: Text(
+                              "${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",
+                              style: TextStyle(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 24,
+                                  ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                        Align(
+                          alignment: AlignmentDirectional(1.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                'https://picsum.photos/seed/492/600',
+                                width: 30,
+                                height: 30,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                SizedBox(width: 20,),
-                Text("Empresas disponibles"),
+                Container(
+  width: 350,
+  height: 30,
+  decoration: BoxDecoration(
+    color: Colors.grey[350],
+    borderRadius: BorderRadius.circular(8),
+  ),
+  child: Padding(
+    padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+    child: TextFormField(
+      controller: null,
+      autofocus: false,
+      obscureText: false,
+      decoration: InputDecoration(
+        labelText: 'Busqueda',
+        labelStyle: TextStyle( color: Colors.black),
+        hintStyle: TextStyle(
+          color: Colors.grey[350]
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        errorBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        focusedErrorBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        suffixIcon: Icon(
+          Icons.search,
+        ),
+      ),
+      style: TextStyle(
+        color: Colors.black 
+      ),
+    ),
+  ),
+),
+SizedBox(height: 10,),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 15, 200, 5),
+                  child: Text("Empresas disponibles",)),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                   child: SingleChildScrollView(
@@ -660,245 +768,12 @@ Opacity(
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-        Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-          child: Container(
-            width: 200,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4,
-                  color: Color(0x33000000),
-                  offset: Offset(0, 2),
-                )
-              ],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png',
-                        width: 300,
-                        height: 96,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      height: 54,
-                      decoration: BoxDecoration(
-                        color:
-                            Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Apple',
-                                style:
-                                    TextStyle(
-                                      fontSize: 14
-                                    ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Tecnologia',
-                                style: TextStyle(
-                                      fontFamily: 'Readex Pro',
-                                      color:Colors.grey,
-                                    ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-                Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-          child: Container(
-            width: 200,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4,
-                  color: Color(0x33000000),
-                  offset: Offset(0, 2),
-                )
-              ],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png',
-                        width: 300,
-                        height: 96,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      height: 54,
-                      decoration: BoxDecoration(
-                        color:
-                            Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Apple',
-                                style:
-                                    TextStyle(
-                                      fontSize: 14
-                                    ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Tecnologia',
-                                style: TextStyle(
-                                      fontFamily: 'Readex Pro',
-                                      color:Colors.grey,
-                                    ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-                Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-          child: Container(
-            width: 200,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4,
-                  color: Color(0x33000000),
-                  offset: Offset(0, 2),
-                )
-              ],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png',
-                        width: 300,
-                        height: 96,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      height: 54,
-                      decoration: BoxDecoration(
-                        color:
-                            Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Apple',
-                                style:
-                                    TextStyle(
-                                      fontSize: 14
-                                    ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Tecnologia',
-                                style: TextStyle(
-                                      fontFamily: 'Readex Pro',
-                                      color:Colors.grey,
-                                    ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-                        
-                      ],
+                        SizedBox(height: 5,),
+                        CardRecomend(title: "Apple", subtitle: "Tecnologia", imageUrl: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png"),
+                        CardRecomend(title: "Samsung", subtitle: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Samsung_logo_blue.png"),
+                        CardRecomend(title: "Don Belisario", subtitle: "Polleria", imageUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b862f726165121.56350ab839947.jpg"),
+                        SizedBox(height: 5,),
+                      ]
                     ),
                   ),
                 ),
@@ -919,140 +794,10 @@ Opacity(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                        child: Container(
-                          width: 380,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 4,
-                                color: Color(0x33000000),
-                                offset: Offset(0, 2),
-                                spreadRadius: 5,
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Stack(
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                        child: Container(
-                          width: 380,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 4,
-                                color: Color(0x33000000),
-                                offset: Offset(0, 2),
-                                spreadRadius: 0,
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Stack(
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          15, 0, 0, 0),
-                                      child: Container(
-                                        width: 70,
-                                        height: 70,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(100),
-                                          child: Image.network(
-                                            'https://logodownload.org/wp-content/uploads/2017/10/Starbucks-logo.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(-1.00, 0.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 30, 0, 0),
-                                            child: Text(
-                                              'Starbucks',
-                                              style:
-                                                  TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 12,
-                                                  ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(-1.00, 0.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 10, 0, 0),
-                                            child: Text(
-                                              'Cafeteria',
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  TextStyle(
-                                                    color: Colors.grey,
-                                                    fontSize: 12,
-                                                  )
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.91, 0.04),
-                                child: Icon(
-                                  Icons.navigate_next_outlined,
-                                  color: Colors.black,
-                                  size: 24,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                              
-                            )
-                    ],
-                  ),
-                )),
+                    CustomCard(title: "Starbucks", subtitle: "Cafeteria", imageUrl: "https://logodownload.org/wp-content/uploads/2017/10/Starbucks-logo.png"),
+                    CustomCard(title: "Popeyes", subtitle: "Comida Rapida", imageUrl: "https://download.logo.wine/logo/Popeyes/Popeyes-Logo.wine.png"),
+                    CustomCard(title: "Amazon", subtitle: "Envios", imageUrl: "https://w7.pngwing.com/pngs/732/34/png-transparent-logo-amazon-com-brand-flipkart-others-text-orange-logo.png"),
+                    CustomCard(title: "Dell", subtitle: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1024px-Dell_Logo.svg.png")
               ],
             ),
           ),
