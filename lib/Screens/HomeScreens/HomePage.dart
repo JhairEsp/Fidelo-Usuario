@@ -1,5 +1,6 @@
   import 'dart:convert';
-  import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
+  import 'package:fidelo/Screens/CardScreens/MisCards.dart';
+import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
   import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
   import 'package:fidelo/Screens/QRScreens/QRScreens.dart';
   import 'package:fidelo/Widgets/Cards.dart';
@@ -81,6 +82,44 @@
       super.initState();
       obtenerPerfil(context);
     }
+
+    
+  String? nombreValidator (String? value) {
+    if (value == null || value.isEmpty) {
+      return "El campo no puede estar vacío";
+    }
+    return null;
+  }
+    String? apellidopatValidator (String? value) {
+    if (value == null || value.isEmpty) {
+      return "El campo no puede estar vacío";
+    }
+    return null;
+  }
+    String? apellidomatValidator (String? value) {
+    if (value == null || value.isEmpty) {
+      return "El campo no puede estar vacío";
+    }
+    return null;
+  }
+    String? telefonoValidator (String? value) {
+    if (value == null || value.isEmpty) {
+      return "El campo no puede estar vacío";
+    }
+    return null;
+  }
+    String? dniValidator (String? value) {
+    if (value == null || value.isEmpty) {
+      return "El campo no puede estar vacío";
+    }
+    return null;
+  }
+    String? distritoValidator (String? value) {
+    if (value == null || value.isEmpty) {
+      return "El campo no puede estar vacío";
+    }
+    return null;
+  }
 Future<void> obtenerPerfil(BuildContext context) async {
   final String? user = GlobalVariables.idProfile;
   final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$user');
@@ -113,12 +152,15 @@ Future<void> obtenerPerfil(BuildContext context) async {
         });
       } else {
         // Mostrar un showDialog cuando profileData es nulo
-    showDialog(context: context, builder:(BuildContext context){
+    showDialog(
+      context: context, 
+      barrierDismissible: false,
+      builder:(BuildContext context){
     return Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(30),
         ),
-              insetPadding: EdgeInsets.all(0),
+        insetPadding: EdgeInsets.symmetric(horizontal: 16,vertical:190),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
@@ -199,6 +241,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                                     focusedErrorBorder: InputBorder.none,
                                   ),
                                   style: const TextStyle(fontSize: 16),
+                                  validator: nombreValidator,
                                 ),
                               ),
                             ),
@@ -256,6 +299,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                                   style: const TextStyle(
                                     fontSize: 16,
                                   ),
+                                  validator: apellidopatValidator,
                                 ),
                               ),
                             ),
@@ -313,6 +357,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                                   style: const TextStyle(
                                     fontSize: 16,
                                   ),
+                                  validator: apellidomatValidator,
                                 ),
                               ),
                             ),
@@ -325,17 +370,20 @@ Future<void> obtenerPerfil(BuildContext context) async {
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: ElevatedButton(
                       onPressed: () async {
-                            showDialog(context: context, builder: (BuildContext context){
-      return Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        insetPadding: EdgeInsets.all(0),
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            backgroundColor: Colors.deepPurple[600],
-            body: SingleChildScrollView(
+if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty && _apellidomatController.text.isNotEmpty) {
+                            showDialog(context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext context){
+                  return Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    insetPadding: EdgeInsets.symmetric(horizontal: 16,  vertical: 190),
+                    child: GestureDetector(
+                      onTap: () => FocusScope.of(context).unfocus(),
+                      child: Scaffold(
+              backgroundColor: Colors.deepPurple[600],
+              body: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -364,34 +412,34 @@ Future<void> obtenerPerfil(BuildContext context) async {
                       ),
                     ),
                   ),
-Opacity(
-  opacity: 0.6,
-  child: Padding(
-    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
-    child: Container(
-      width: 300,
-      height: 60,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: const Color(0x00F1F4F8),
-          width: 2,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-            child: Icon(
+            Opacity(
+              opacity: 0.6,
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                child: Container(
+                  width: 300,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color(0x00F1F4F8),
+                      width: 2,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      const Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+              child: Icon(
               Icons.person,
               color: Colors.black,
               size: 24,
-            ),
-          ),
-          Expanded(
-            child: Padding(
+              ),
+                      ),
+                      Expanded(
+              child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
               child: TextFormField(
                 controller: _telefonoController,
@@ -414,16 +462,17 @@ Opacity(
                   counterText: "",
                 ),
                 style: const TextStyle(fontSize: 16),
+                validator: telefonoValidator,
+              ),
+              ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    ),
-  ),
-),
-
- Opacity(
+            
+            Opacity(
                     opacity: 0.6,
                     child: Padding(
                       padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
@@ -475,6 +524,7 @@ Opacity(
                                   style: const TextStyle(
                                     fontSize: 16,
                                   ),
+                                  validator: dniValidator,
                                 ),
                               ),
                             ),
@@ -483,7 +533,7 @@ Opacity(
                       ),
                     ),
                   ),
-  Opacity(
+              Opacity(
                       opacity: 0.6,
                       child: Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
@@ -500,7 +550,7 @@ Opacity(
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-children: [
+            children: [
               const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                 child: Icon(
@@ -532,7 +582,9 @@ children: [
                       style: const TextStyle(
                         fontSize: 16,
                       ),
+                    
                     ),
+                    validator: distritoValidator,
                     suggestionsCallback: (pattern) {
                       return distritos.where((distrito) =>
                           distrito.toLowerCase().contains(pattern.toLowerCase()));
@@ -548,7 +600,7 @@ children: [
                   ),
                 ),
               ),
-            ],
+              ],
                           ),
                         ),
                       ),
@@ -557,6 +609,7 @@ children: [
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: ElevatedButton(
                       onPressed: () async {
+                        if (_telefonoController.text.isNotEmpty && _distritoController.text.isNotEmpty && _distritoController.text.isNotEmpty) {
                         final String nombre = _nombreController.text;
                         final String apellidoPaterno = _apellidopatController.text;
                         final String apellidoMaterno = _apellidomatController.text;
@@ -565,6 +618,11 @@ children: [
                         final String distrito = _distritoController.text;
                         await CreateProfile().enviarDatos(nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(),));
+                        }else{
+                          Dialog(
+                            child: Text("Campos Incompletos"),
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 33, 11, 230),
@@ -596,11 +654,17 @@ children: [
                   ),
                 ],
               ),
-            ),
-          ),
-        ),
-      );
+              ),
+                      ),
+                    ),
+                  );
                             });
+                    
+}else{
+  Dialog(
+    child: Text("Campos Incompletos"),
+  );
+}
                       },
                       style: ElevatedButton.styleFrom(
                         elevation: 3,
@@ -688,7 +752,7 @@ children: [
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                'https://picsum.photos/seed/492/600',
+                                'https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png',
                                 width: 30,
                                 height: 30,
                                 fit: BoxFit.cover,
@@ -810,8 +874,9 @@ SizedBox(height: 10,),
               switch(index){
                 case 0 : null; break;
                 case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
-                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
-                case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen())); break;
+                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyCards())); break;
+                case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
+                case 4: Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen())); break;
               }
             }
             ),

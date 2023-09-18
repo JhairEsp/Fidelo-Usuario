@@ -21,7 +21,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return Container(
       color: Colors.black,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: GNav(
           backgroundColor: Colors.black,
           color: Colors.white,
@@ -33,6 +33,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           tabs: const [
             GButton(icon: Icons.home), //Home
             GButton(icon: Icons.qr_code), //Qr
+            GButton(icon: Icons.credit_card_sharp),//Pantalla de Mis cartas
             GButton(icon: Icons.notifications), //Notificaciones
             GButton(icon: Icons.person_pin), //Profile
           ],

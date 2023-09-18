@@ -74,14 +74,53 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
     });
   }
 
-  Future<void> _register() async {
-    if (_emailError || _passwordError) {
-      // Mostrar un mensaje de error si el correo electrónico o la contraseña son inválidos.
+Future<void> _register() async {
+  if (_emailError || _passwordError) {
+    // Mostrar un mensaje de error si el correo electrónico o la contraseña son inválidos.
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Error"),
+        content: const Text("Por favor, corrige los errores antes de continuar."),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text("Ok"),
+          ),
+        ],
+      ),
+    );
+  } else if (_passwordController.text != _repasswordController.text) {
+    // Mostrar un mensaje de error si las contraseñas no coinciden.
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Error"),
+        content: const Text("Las contraseñas no coinciden."),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text("Ok"),
+          ),
+        ],
+      ),
+    );
+  } else {
+    // El correo electrónico y la contraseña son válidos y las contraseñas coinciden, procede con el registro.
+    final result = await Auth.register(
+      _emailController.text,
+      _passwordController.text,
+    );
+    if (result.containsKey("error")) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: const Text("Error"),
-          content: const Text("Por favor, corrige los errores antes de continuar."),
+          content: const Text("Registro Fallido"),
           actions: [
             ElevatedButton(
               onPressed: () {
@@ -93,30 +132,11 @@ class _Register1State extends State<Register1> with TickerProviderStateMixin {
         ),
       );
     } else {
-      // El correo electrónico y la contraseña son válidos, procede con el registro.
-      final result = await Auth.register(
-          _emailController.text, _passwordController.text);
-      if (result.containsKey("error")) {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text("Error"),
-            content: const Text("Registro Fallido"),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text("Ok"),
-              ),
-            ],
-          ),
-        );
-      } else {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
-      }
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
+}
+
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  const MaterialApp(
       
       debugShowCheckedModeBanner: false, 
       home: SplashScreen(),
@@ -31,7 +31,7 @@ class SplashScreen extends StatelessWidget {
       splash: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFF004CC6), Color(0xFF00A7BF)],
             stops: [0, 1],
@@ -55,7 +55,7 @@ class SplashScreen extends StatelessWidget {
         ])
         
       ),
-      backgroundColor: Color(0xFF004CC6),
+      backgroundColor: const Color(0xFF004CC6),
       nextScreen: Login(),
       duration: 2000,
       splashTransition: SplashTransition.slideTransition,
