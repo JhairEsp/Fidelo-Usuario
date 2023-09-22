@@ -378,7 +378,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
             Positioned(
               top: 16,
               left: 16,
-              child: Text("Version 0.0.4",style: TextStyle(
+              child: Text("Version 0.0.5",style: TextStyle(
               color: Colors.black,fontSize: 12,
             ),))
           ], 

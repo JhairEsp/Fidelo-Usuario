@@ -1,109 +1,89 @@
+import 'package:fidelo/Screens/CardScreens/Categorias/Cafeteria.dart';
+import 'package:fidelo/Screens/CardScreens/Categorias/Comida.dart';
+import 'package:fidelo/Screens/CardScreens/Categorias/Tecnologia.dart';
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
+  final String name;
+  final String category;
   final String imageUrl;
 
-  CustomCard({
-    required this.title,
-    required this.subtitle,
-    required this.imageUrl,
-  });
+  CustomCard({required this.name, required this.category, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-      child: Container(
-        width: 380,
-        height: 100,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 4,
-              color: Color(0x33000000),
-              offset: Offset(0, 2),
-              spreadRadius: 5,
-            )
-          ],
+      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+      child: Card(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        color: Colors.white,
+        elevation: 4,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Stack(
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
-                    child: Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.network(
-                          imageUrl,
-                          width: 70,
-                          height: 70,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
+        child: Align(
+          alignment: AlignmentDirectional(1.00, 0.00),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    imageUrl,
+                    width: 122,
+                    height: 100,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                child: Container(
+                  width: 200,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: Stack(
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                          child: Text(
-                            title,
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
                             style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
+                              fontFamily: 'Readex Pro',
+                              fontSize: 24,
                             ),
                           ),
-                        ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                            child: Text(
+                              category,
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                          child: Text(
-                            subtitle,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12,
-                            ),
-                          ),
+                        alignment: AlignmentDirectional(0.89, -0.03),
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Colors.black,
+                          size: 40,
                         ),
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.91, 0.04),
-              child: Icon(
-                Icons.navigate_next_outlined,
-                color: Colors.black,
-                size: 24,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -111,91 +91,71 @@ class CustomCard extends StatelessWidget {
 }
 
 
-class CardRecomend extends StatelessWidget {
-  final String title;
-  final String subtitle;
+
+class CustomCategoryItem extends StatelessWidget {
+  final String category;
   final String imageUrl;
 
-  CardRecomend({
-    required this.title,
-    required this.subtitle,
-    required this.imageUrl,
-  });
+  CustomCategoryItem({required this.category, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-      child: Container(
-        width: 200,
-        height: 150,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 4,
-              color: Color(0x33000000),
-              offset: Offset(0, 2),
-            )
-          ],
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    imageUrl,
-                    width: 300,
-                    height: 96,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                Container(
-                  width: 200,
-                  height: 54,
+    return InkWell(
+      onTap: () {
+        if (category == "Tecnologia") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => categoritaTecnologia(),));
+        }
+        if (category == "Comida") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => categoriaComida(),));
+        }
+        if (category == "Cafeteria") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => categoriaCafeteria()));
+        }
+      },
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+        child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 90,
+                  height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                          child: Text(
-                            title,
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                          child: Text(
-                            subtitle,
-                            style: TextStyle(
-                              fontFamily: 'Readex Pro',
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(imageUrl), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
+                    ),
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text(
+                  category,
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

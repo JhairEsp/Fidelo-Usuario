@@ -160,7 +160,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
-        insetPadding: EdgeInsets.symmetric(horizontal: 16,vertical:190),
+        insetPadding: EdgeInsets.symmetric(horizontal: 16,vertical:90),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
@@ -378,7 +378,7 @@ if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    insetPadding: EdgeInsets.symmetric(horizontal: 16,  vertical: 190),
+        insetPadding: EdgeInsets.symmetric(horizontal: 16,vertical:90),
                     child: GestureDetector(
                       onTap: () => FocusScope.of(context).unfocus(),
                       child: Scaffold(
@@ -713,7 +713,7 @@ if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty 
 }
     @override
     Widget build(BuildContext context) {
- return GestureDetector(
+      return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
@@ -724,151 +724,113 @@ if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty 
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
-                            child: Text(
-                              "${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",
-                              style: TextStyle(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 24,
-                                  ),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(1.00, 0.00),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.network(
-                                'https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png',
-                                width: 30,
-                                height: 30,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-  width: 350,
-  height: 30,
-  decoration: BoxDecoration(
-    color: Colors.grey[350],
-    borderRadius: BorderRadius.circular(8),
-  ),
-  child: Padding(
-    padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-    child: TextFormField(
-      controller: null,
-      autofocus: false,
-      obscureText: false,
-      decoration: InputDecoration(
-        labelText: 'Busqueda',
-        labelStyle: TextStyle( color: Colors.black),
-        hintStyle: TextStyle(
-          color: Colors.grey[350]
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        errorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedErrorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        suffixIcon: Icon(
-          Icons.search,
-        ),
-      ),
-      style: TextStyle(
-        color: Colors.black 
-      ),
-    ),
-  ),
-),
-SizedBox(height: 10,),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 15, 200, 5),
-                  child: Text("Empresas disponibles",)),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        SizedBox(height: 5,),
-                        CardRecomend(title: "Apple", subtitle: "Tecnologia", imageUrl: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png"),
-                        CardRecomend(title: "Samsung", subtitle: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Samsung_logo_blue.png"),
-                        CardRecomend(title: "Don Belisario", subtitle: "Polleria", imageUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b862f726165121.56350ab839947.jpg"),
-                        SizedBox(height: 5,),
-                      ]
-                    ),
-                  ),
-                ),
                 Align(
-                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, -1.00),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(25, 30, 0, 15),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: Text(
-                      'Mis Tarjetas',
-                      style:TextStyle(
-                        fontSize: 14
+                      'Bienvenido',
+                      style: TextStyle(
+                            fontFamily: 'Readex Pro',
+                            fontSize: 18,
+                          ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                  child: Text(
+                    '${GlobalVariables.nombre}'+" "+"${GlobalVariables.apellidoPaterno}",
+                    style: TextStyle(
+                          fontFamily: 'Readex Pro',
+                          fontSize: 25,
+                        ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 0),
+                  child: Container(
+                    width: 300,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4,
+                          color: Color(0x33000000),
+                          offset: Offset(0, 2),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                      child: TextFormField(
+                        //controller,
+                        autofocus: false,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Buscar',
+                          labelStyle: TextStyle(fontSize: 12,color: Colors.black),
+                          hintStyle: TextStyle(fontSize: 12,color: Colors.black),
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
+                          suffixIcon: Icon(
+                            Icons.search,
+                            size: 15,
+                          ),
+                        ),
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      //Validator
                       ),
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 5),
+                  child: Text(
+                    'Catergorias',
+                    style: TextStyle(
+                      fontSize: 14
+                    ),
+                  ),
+                ),
                 SingleChildScrollView(
-                  child: Column(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    CustomCard(title: "Starbucks", subtitle: "Cafeteria", imageUrl: "https://logodownload.org/wp-content/uploads/2017/10/Starbucks-logo.png"),
-                    CustomCard(title: "Popeyes", subtitle: "Comida Rapida", imageUrl: "https://download.logo.wine/logo/Popeyes/Popeyes-Logo.wine.png"),
-                    CustomCard(title: "Amazon", subtitle: "Envios", imageUrl: "https://w7.pngwing.com/pngs/732/34/png-transparent-logo-amazon-com-brand-flipkart-others-text-orange-logo.png"),
-                    CustomCard(title: "Dell", subtitle: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1024px-Dell_Logo.svg.png")
+                      CustomCategoryItem(category: "Tecnologia", imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaG5vbG9neXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",),
+                      CustomCategoryItem(category: "Comida", imageUrl: "https://barradeideas.com/wp-content/uploads/2019/09/fast-food.jpg"),
+                      CustomCategoryItem(category: "Cafeteria", imageUrl: "https://fondosmil.com/fondo/15480.jpg" ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      CustomCard(name: "Apple", category: "Tecnologia", imageUrl: "https://images.unsplash.com/photo-1621768216002-5ac171876625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBsb2dvfGVufDB8fDB8fHww&w=1000&q=80"),
+                      CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
+                      CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
+                                          CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
+                      CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
+                                          CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
+                      CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-        ] ),
-      ),
-      ),
-      bottomNavigationBar: CustomBottomNavigationBar(
+        ),
+              bottomNavigationBar: CustomBottomNavigationBar(
             selectedIndex: 0, 
             onTabChange: (index){
               switch(index){
@@ -880,6 +842,7 @@ SizedBox(height: 10,),
               }
             }
             ),
-      ));
+      ),
+    );
     }
   }

@@ -36,198 +36,200 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.white,
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.00, 0.00),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 120,
+                          height: 120,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.network(
+                            'https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(1.00, 0.00),
+                          child: Text(
+                            "${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",
+                            style: TextStyle(
+                              fontSize: 16
+                            )
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: 120,
-                        height: 120,
-                        clipBehavior: Clip.antiAlias,
+                        width: 150,
+                        height: 100,
                         decoration: BoxDecoration(
-                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.black,
+                          ),
                         ),
-                        child: Image.network(
-                          'https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png',
-                          fit: BoxFit.cover,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '\$NUM',
+                              style: TextStyle(
+                                fontSize: 14
+                              ),
+                            ),
+                            Text(
+                              'Tarjetas Disponibles',
+                              style:TextStyle(
+                                    fontFamily: 'Readex Pro',
+                                    color: Color(0xFF0F04E5),
+                                  ),
+                            ),
+                          ],
                         ),
                       ),
-                      Align(
-                        alignment: AlignmentDirectional(1.00, 0.00),
-                        child: Text(
-                          "${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",
-                          style: TextStyle(
-                            fontSize: 16
-                          )
+                      Container(
+                        width: 150,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.black,
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '\$num',
+                              style: TextStyle(
+                                fontSize: 14
+                              ),
+                            ),
+                            Text(
+                              'Tarjetas Usadas',
+                              style: TextStyle(
+                                    fontFamily: 'Readex Pro',
+                                    color: Color(0xFF0F04E5),
+                                  ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 150,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '\$NUM',
-                            style: TextStyle(
-                              fontSize: 14
-                            ),
-                          ),
-                          Text(
-                            'Tarjetas Disponibles',
-                            style:TextStyle(
-                                  fontFamily: 'Readex Pro',
-                                  color: Color(0xFF0F04E5),
-                                ),
-                          ),
-                        ],
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.favorite,
+                      color: Color(0xFF0F04E5),
+                    ),
+                    title: Text(
+                      'Favoritos',
+                      style: TextStyle(
+                        fontSize: 14
                       ),
                     ),
-                    Container(
-                      width: 150,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '\$num',
-                            style: TextStyle(
-                              fontSize: 14
-                            ),
-                          ),
-                          Text(
-                            'Tarjetas Usadas',
-                            style: TextStyle(
-                                  fontFamily: 'Readex Pro',
-                                  color: Color(0xFF0F04E5),
-                                ),
-                          ),
-                        ],
+                    tileColor: Colors.white,
+                    dense: false,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.person,
+                      color: Color(0xFF0F04E5),
+                    ),
+                    title: Text(
+                      'Informacion Personal',
+                      style: TextStyle(
+                        fontSize: 14
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.favorite,
-                    color: Color(0xFF0F04E5),
+                    tileColor: Colors.white,
+                    dense: false,
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>DatosPersonales())),
                   ),
-                  title: Text(
-                    'Favoritos',
-                    style: TextStyle(
-                      fontSize: 14
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.settings,
+                      color: Color(0xFF0F04E5),
                     ),
-                  ),
-                  tileColor: Colors.white,
-                  dense: false,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.person,
-                    color: Color(0xFF0F04E5),
-                  ),
-                  title: Text(
-                    'Informacion Personal',
-                    style: TextStyle(
-                      fontSize: 14
+                    title: Text(
+                      'Configuracion',
+                      style: TextStyle(
+                        fontSize: 14
+                      ),
                     ),
+                    tileColor: Colors.white,
+                    dense: false,
                   ),
-                  tileColor: Colors.white,
-                  dense: false,
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>DatosPersonales())),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.settings,
-                    color: Color(0xFF0F04E5),
-                  ),
-                  title: Text(
-                    'Configuracion',
-                    style: TextStyle(
-                      fontSize: 14
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.share,
+                      color: Color(0xFF0F04E5),
                     ),
-                  ),
-                  tileColor: Colors.white,
-                  dense: false,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.share,
-                    color: Color(0xFF0F04E5),
-                  ),
-                  title: Text(
-                    'Compartir con amigos',
-                    style: TextStyle(
-                      fontSize: 14
+                    title: Text(
+                      'Compartir con amigos',
+                      style: TextStyle(
+                        fontSize: 14
+                      ),
                     ),
+                    tileColor: Colors.white,
+                    dense: false,
                   ),
-                  tileColor: Colors.white,
-                  dense: false,
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.logout,
-                    color: Color(0xFF0F04E5),
-                  ),
-                  title: Text(
-                    'Cerrar Sesión',
-                    style: TextStyle(
-                      fontSize: 14
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.logout,
+                      color: Color(0xFF0F04E5),
                     ),
+                    title: Text(
+                      'Cerrar Sesión',
+                      style: TextStyle(
+                        fontSize: 14
+                      ),
+                    ),
+                    tileColor: Colors.white,
+                    onTap: () {
+                      Auth.logout(context);
+                    },
                   ),
-                  tileColor: Colors.white,
-                  onTap: () {
-                    Auth.logout(context);
-                  },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
               bottomNavigationBar: CustomBottomNavigationBar(

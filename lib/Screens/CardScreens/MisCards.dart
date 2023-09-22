@@ -24,13 +24,13 @@ class _MyCardsState extends State<MyCards> {
       
 
                     bottomNavigationBar: CustomBottomNavigationBar(
-            selectedIndex: 3, 
+            selectedIndex: 2, 
             onTabChange: (index){
               switch(index){
                 case 0 : Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),)); break;
                 case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
-                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
-                case 3: null; break;
+                case 2: null ; break;
+                case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
                 case 4: Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen())); break;
               }
             }

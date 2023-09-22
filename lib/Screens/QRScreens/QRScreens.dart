@@ -1,3 +1,4 @@
+import 'package:fidelo/Screens/CardScreens/MisCards.dart';
 import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
 import 'package:fidelo/Widgets/NavBar.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,9 @@ class _QRScreenState extends State<QRScreen> {
             switch(index){
               case 0 : Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),)); break;
               case 1 : null; break;
-              case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
-              case 3: Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(),)); break;
+              case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyCards())); break;
+              case 3: Navigator.push(context, MaterialPageRoute(builder: (context) => notificaciones(),)); break;
+              case 4: Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(),));
             }
           }
           ),
