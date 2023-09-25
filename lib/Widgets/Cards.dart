@@ -32,8 +32,8 @@ class CustomCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   child: Image.network(
                     imageUrl,
-                    width: 122,
-                    height: 100,
+                    width: 50,
+                    height: 50,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -71,7 +71,7 @@ class CustomCard extends StatelessWidget {
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.89, -0.03),
+                        alignment: AlignmentDirectional(2.5, -0.03),
                         child: Icon(
                           Icons.navigate_next,
                           color: Colors.black,
@@ -104,12 +104,6 @@ class CustomCategoryItem extends StatelessWidget {
       onTap: () {
         if (category == "Tecnologia") {
           Navigator.push(context, MaterialPageRoute(builder: (context) => categoritaTecnologia(),));
-        }
-        if (category == "Comida") {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => categoriaComida(),));
-        }
-        if (category == "Cafeteria") {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => categoriaCafeteria()));
         }
       },
       child: Padding(

@@ -134,6 +134,12 @@ Future<void> obtenerPerfil(BuildContext context) async {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic>? profileData = jsonDecode(response.body);
+      if (profileData == null) {
+        setState(() {
+          GlobalVariables.nombre = " ";
+          GlobalVariables.apellidoPaterno = " ";
+        });
+      }
 
       if (profileData != null) {
         setState(() {
@@ -370,7 +376,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: ElevatedButton(
                       onPressed: () async {
-if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty && _apellidomatController.text.isNotEmpty) {
+                            if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty && _apellidomatController.text.isNotEmpty) {
                             showDialog(context: context,
                             barrierDismissible: false,
                             builder: (BuildContext context){
@@ -711,8 +717,12 @@ if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty 
     print('Error en la solicitud: $error');
   }
 }
+
+//Nombre en Home
+
     @override
     Widget build(BuildContext context) {
+
       return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -739,7 +749,8 @@ if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty 
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                  child: Text(
+                  child:    
+                  Text(
                     '${GlobalVariables.nombre}'+" "+"${GlobalVariables.apellidoPaterno}",
                     style: TextStyle(
                           fontFamily: 'Readex Pro',
@@ -819,9 +830,9 @@ if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty 
                       CustomCard(name: "Apple", category: "Tecnologia", imageUrl: "https://images.unsplash.com/photo-1621768216002-5ac171876625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBsb2dvfGVufDB8fDB8fHww&w=1000&q=80"),
                       CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
                       CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
-                                          CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
+                      CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
                       CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
-                                          CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
+                      CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
                       CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
                     ],
                   ),

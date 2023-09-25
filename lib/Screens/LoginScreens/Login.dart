@@ -37,7 +37,7 @@ Auth _auth =Auth();
     });
 
     // Cambiar el estado nuevamente después de 1 segundo
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         _showPassword = !_showPassword;
       });
@@ -72,21 +72,21 @@ Future<void> _login() async {
   if (response.statusCode == 200) {
     // Llamada a obtenerIdProfile para obtener el valor _id
     await _auth.obtenerIdProfile(_emailController.text, _passwordController.text);
-Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePage()));
+Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const HomePage()));
   } else {
     // Login failed, show an error dialog
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Error"),
-        content: Text(
+        title: const Text("Error"),
+        content: const Text(
             "Inicio de sesión fallido. Por favor, verifica tus credenciales."),
         actions: [
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text("OK"),
+            child: const Text("OK"),
           ),
         ],
       ),
@@ -109,9 +109,9 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0, 0),
+                    alignment: const AlignmentDirectional(0, 0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
@@ -123,7 +123,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                       ),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Text(
                       'BIENVENIDO DE VUELTA',
@@ -135,7 +135,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                       ),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
                     child: Text(
                       'Inicia sesión con tu cuenta',
@@ -148,7 +148,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                   Opacity(
                     opacity: 0.6,
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                       child: Container(
                         width: 300,
                         height: 60,
@@ -163,7 +163,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Icon(
                                 Icons.person,
@@ -173,7 +173,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                                 child: Stack(
                                   alignment: AlignmentDirectional.centerEnd,
                                   children: [
@@ -181,7 +181,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                       controller: _emailController,
                                       autofocus: false,
                                       obscureText: false,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         labelText: 'Correo Electrónico',
                                         labelStyle: TextStyle(
                                           fontSize: 16,
@@ -198,7 +198,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                         errorBorder: InputBorder.none,
                                         focusedErrorBorder: InputBorder.none,
                                       ),
-                                      style: TextStyle(fontSize: 16),
+                                      style: const TextStyle(fontSize: 16),
                                       onChanged: (value) {
                                         setState(() {
                                           _emailError = !_validateEmail(value) &&
@@ -207,7 +207,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                       },
                                     ),
                                     if (_emailError)
-                                      Text(
+                                      const Text(
                                         'Correo electrónico no válido',
                                         style: TextStyle(
                                           color: Colors.red,
@@ -226,7 +226,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                   Opacity(
                     opacity: 0.6,
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                       child: Container(
                         width: 300,
                         height: 60,
@@ -241,7 +241,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Icon(
                                 Icons.lock,
@@ -251,12 +251,12 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
                                 child: TextFormField(
                                   controller: _passwordController,
                                   autofocus: false,
                                   obscureText: !_showPassword,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Contraseña',
                                     labelStyle: TextStyle(
                                       fontSize: 16,
@@ -273,7 +273,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                                     errorBorder: InputBorder.none,
                                     focusedErrorBorder: InputBorder.none,
                                   ),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16,
                                   ),
                                 ),
@@ -292,12 +292,12 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                       ),
                     ),
                   ),
-                  Opacity(
+                  const Opacity(
                     opacity: 0.7,
                     child: Align(
                       alignment: AlignmentDirectional(0.60, 0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 100),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 70),
                         child: Text(
                           'Olvidaste tu contraseña?',
                           style: TextStyle(
@@ -309,26 +309,26 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: ElevatedButton(
                       onPressed: () {
                         _login();
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 33, 11, 230),
+                        primary: const Color.fromARGB(255, 33, 11, 230),
                         onPrimary: Colors.black,
                         elevation: 3,
-                        side: BorderSide(
+                        side: const BorderSide(
                           color: Colors.black,
                           width: 2,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        minimumSize: Size(250, 45),
-                        padding: EdgeInsets.symmetric(horizontal: 24),
+                        minimumSize: const Size(250, 45),
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
                       ),
-                      child: Text(
+                      child: const Text(
                         'LOGIN',
                         style: TextStyle(
                           fontFamily: 'Readex Pro',
@@ -342,7 +342,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Align(
+                      const Align(
                         alignment: AlignmentDirectional(0, 0),
                         child: Text(
                           'No tienes cuenta?',
@@ -352,6 +352,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                           ),
                         ),
                       ),
+                      const SizedBox(width: 5,),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -359,13 +360,14 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                               MaterialPageRoute(
                                   builder: (context) => Register1()));
                         },
-                        child: Text(
+                        child: const Text(
                           'Registrate aquí',
                           style: TextStyle(
                             fontFamily: 'Readex Pro',
                             color: Colors.red,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
+                            
                           ),
                         ),
                       ),
@@ -375,7 +377,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePag
                 ],
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 16,
               left: 16,
               child: Text("Version 0.0.5",style: TextStyle(
