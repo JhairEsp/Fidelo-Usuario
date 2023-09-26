@@ -91,8 +91,8 @@ class CustomCard extends StatelessWidget {
 }
 
 
-
 class CustomCategoryItem extends StatelessWidget {
+
   final String category;
   final String imageUrl;
 
@@ -155,3 +155,5 @@ class CustomCategoryItem extends StatelessWidget {
     );
   }
 }
+
+

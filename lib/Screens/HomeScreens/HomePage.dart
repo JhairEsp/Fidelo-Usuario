@@ -17,6 +17,16 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
     State<HomePage> createState() => _HomePageState();
   }
   class _HomePageState extends State<HomePage> {
+  List<CustomCard> customCardList =[
+  CustomCard(name: "Prueba", category: "Comida", imageUrl: "https://img.freepik.com/premium-photo/serene-natural-background-depicting-peaceful-landscape-scenery-ai-generated_523886-6825.jpg"),
+  CustomCard(name: "Prueba2", category: "Comida", imageUrl: "https://expertphotography.b-cdn.net/wp-content/uploads/2022/05/Landscape-Photography-Sophie-Turner.jpg"),
+  CustomCard(name: "Samsung", category: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png"),
+  CustomCard(name: "Apple", category: "Tecnologia", imageUrl: "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  CustomCard(name: "Dell", category: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1024px-Dell_Logo.svg.png"),
+  CustomCard(name: "Cafeteria", category: "Comida", imageUrl: "https://img.freepik.com/vector-gratis/insignia-cafeteria-estilo-vintage_1176-95.jpg")
+  ];
+  final TextEditingController _searchController = TextEditingController();
+  String selectedCategory ="";
     final scaffoldKey = GlobalKey<ScaffoldState>();
     String nombre = "";
     String apellidopaterno = "";
@@ -81,6 +91,7 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
     void initState() {
       super.initState();
       obtenerPerfil(context);
+      
     }
 
     
@@ -720,140 +731,250 @@ Future<void> obtenerPerfil(BuildContext context) async {
 
 //Nombre en Home
 
+List<CustomCard> get filteredCustomCards {
+  return customCardList
+      .where((customCard) {
+        final searchText = _searchController.text.toLowerCase();
+        final matchesSearch = customCard.name.toLowerCase().contains(searchText);
+
+        if (selectedCategory.isEmpty) {
+          // Si no se selecciona una categoría, mostrar todas las tarjetas que coinciden con la búsqueda.
+          return matchesSearch;
+        } else {
+          // Si se selecciona una categoría, mostrar tarjetas que coincidan con la búsqueda y la categoría.
+          return matchesSearch && customCard.category == selectedCategory;
+        }
+      })
+      .toList();
+}
+
     @override
     Widget build(BuildContext context) {
-
-      return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0.00, -1.00),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                    child: Text(
-                      'Bienvenido',
-                      style: TextStyle(
-                            fontFamily: 'Readex Pro',
-                            fontSize: 18,
-                          ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                  child:    
-                  Text(
-                    '${GlobalVariables.nombre}'+" "+"${GlobalVariables.apellidoPaterno}",
+        /*List<CustomCard> filteredCustomCards = customCardList
+        .where((customCard) =>
+            customCard.name.toLowerCase().contains(_searchController.text.toLowerCase())).toList()
+        .toList();*/
+  return GestureDetector(
+    onTap: () => FocusScope.of(context).unfocus(),
+    child: Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        top: true,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0.00, -1.00),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                  child: Text(
+                    'Bienvenido',
                     style: TextStyle(
-                          fontFamily: 'Readex Pro',
-                          fontSize: 25,
-                        ),
+                      fontFamily: 'Readex Pro',
+                      fontSize: 30,
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 0),
-                  child: Container(
-                    width: 300,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4,
-                          color: Color(0x33000000),
-                          offset: Offset(0, 2),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(10),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Text(
+                  '${GlobalVariables.nombre}',
+                  style: TextStyle(
+                    fontFamily: 'Readex Pro',
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 0),
+                child: Container(
+                  width: 300,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                    child: TextFormField(
+                      controller: _searchController,
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Buscar',
+                        labelStyle: TextStyle(fontSize: 14),
+                        hintStyle: TextStyle(fontSize: 12),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
+                        suffixIcon: Icon(
+                          Icons.search,
+                          size: 15,
+                        ),
+                      ),
+                      style: TextStyle(fontSize: 14),
+                      validator: null,
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                      child: TextFormField(
-                        //controller,
-                        autofocus: false,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Buscar',
-                          labelStyle: TextStyle(fontSize: 12,color: Colors.black),
-                          hintStyle: TextStyle(fontSize: 12,color: Colors.black),
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          focusedErrorBorder: InputBorder.none,
-                          suffixIcon: Icon(
-                            Icons.search,
-                            size: 15,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 5),
+                child: Text(
+                  'Categorias',
+                  style: TextStyle(fontSize: 12),
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        // Cambia la categoría seleccionada a 'Tecnologia'
+                        setState(() {
+                          selectedCategory = 'Tecnologia';
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(
+                              width: 0.2,
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                child: Container(
+                                  width: 90,
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: Image.network(
+                                        'https://w0.peakpx.com/wallpaper/566/653/HD-wallpaper-laptop-graphy-camera-thumbnail.jpg',
+                                      ).image,
+                                    ),
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                      width: 0.5,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                                child: Text(
+                                  'Tecnologia',
+                                  style: TextStyle(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      //Validator
                       ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 5),
-                  child: Text(
-                    'Catergorias',
-                    style: TextStyle(
-                      fontSize: 14
+                    GestureDetector(
+                      onTap: () {
+                        // Cambia la categoría seleccionada a 'Comida'
+                        setState(() {
+                          selectedCategory = 'Comida';
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(
+                              width: 0.2,
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                child: Container(
+                                  width: 90,
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: Image.network(
+                                        'https://s3.abcstatics.com/media/gurmesevilla/2012/01/comida-rapida-casera.jpg',
+                                      ).image,
+                                    ),
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                      width: 0.5,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                                child: Text(
+                                  'Comida',
+                                  style: TextStyle(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomCategoryItem(category: "Tecnologia", imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaG5vbG9neXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",),
-                      CustomCategoryItem(category: "Comida", imageUrl: "https://barradeideas.com/wp-content/uploads/2019/09/fast-food.jpg"),
-                      CustomCategoryItem(category: "Cafeteria", imageUrl: "https://fondosmil.com/fondo/15480.jpg" ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      CustomCard(name: "Apple", category: "Tecnologia", imageUrl: "https://images.unsplash.com/photo-1621768216002-5ac171876625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBsb2dvfGVufDB8fDB8fHww&w=1000&q=80"),
-                      CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
-                      CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
-                      CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
-                      CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
-                      CustomCard(name: "Rockys", category: "Comida", imageUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/3e270297243061.Y3JvcCwzOTQ3LDMwODgsNzgsMA.jpg"),
-                      CustomCard(name: "Starbucks", category: "Cafeteria", imageUrl: "https://purepng.com/public/uploads/large/purepng.com-starbucks-logologobrand-logoiconslogos-251519940454ao8bk.png"),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+              ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                children: filteredCustomCards.map((CustomCard) {
+                  return CustomCard;
+                }).toList(),
+              ),
+            ],
           ),
         ),
-              bottomNavigationBar: CustomBottomNavigationBar(
-            selectedIndex: 0, 
-            onTabChange: (index){
-              switch(index){
-                case 0 : null; break;
-                case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
-                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyCards())); break;
-                case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
-                case 4: Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen())); break;
-              }
-            }
-            ),
       ),
-    );
-    }
-  }
+    ),
+  );
+}
+}
+
+  
+  
