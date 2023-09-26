@@ -37,7 +37,30 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
     bool showFoodOnly = false;
     bool showBebidasOnly = false;
     bool showLavanderiaOnly = false;
+    bool showPeluqueriaOnly = false;
+    bool showLavadoAutosOnly = false;
+    bool showLibreriaOnly = false;
   static List<Cards> cards_category =[
+  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
+  Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
+  Cards("Lavanderia Generica", "Lavanderia", "https://s10.s3c.es/imag/_v0/770x420/b/0/2/600x400_lavanderia.jpg"),
+  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
+  Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
+  Cards("Lavanderia Generica", "Lavanderia", "https://s10.s3c.es/imag/_v0/770x420/b/0/2/600x400_lavanderia.jpg"),
+  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
+  Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
+  Cards("Lavanderia Generica", "Lavanderia", "https://s10.s3c.es/imag/_v0/770x420/b/0/2/600x400_lavanderia.jpg"),
+  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
+  Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
+  Cards("Lavanderia Generica", "Lavanderia", "https://s10.s3c.es/imag/_v0/770x420/b/0/2/600x400_lavanderia.jpg"),
+  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
+  Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
+  Cards("Lavanderia Generica", "Lavanderia", "https://s10.s3c.es/imag/_v0/770x420/b/0/2/600x400_lavanderia.jpg"),
   Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
   Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
   Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
@@ -63,7 +86,7 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
       void toggleBebidaFilter() {
     setState(() {
       showBebidasOnly = !showBebidasOnly;
-      if (showFoodOnly) {
+      if (showBebidasOnly) {
         display_list =
             cards_category.where((element) => element.categoria!.toLowerCase() == "bebida").toList();
       } else {
@@ -85,9 +108,43 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
           void toggleLavanderiaFilter() {
     setState(() {
       showLavanderiaOnly = !showLavanderiaOnly;
-      if (showFoodOnly) {
+      if (showLavanderiaOnly) {
         display_list =
             cards_category.where((element) => element.categoria!.toLowerCase() == "lavanderia").toList();
+      } else {
+        display_list = List.from(cards_category);
+      }
+    });
+  }
+
+          void togglePeluqueriaFilter() {
+    setState(() {
+      showPeluqueriaOnly = !showPeluqueriaOnly;
+      if (showPeluqueriaOnly) {
+        display_list =
+            cards_category.where((element) => element.categoria!.toLowerCase() == "peluqueria").toList();
+      } else {
+        display_list = List.from(cards_category);
+      }
+    });
+  }
+            void toggleLavadoAutosFilter() {
+    setState(() {
+      showLavadoAutosOnly = !showLavadoAutosOnly;
+      if (showLavadoAutosOnly) {
+        display_list =
+            cards_category.where((element) => element.categoria!.toLowerCase() == "lavado autos").toList();
+      } else {
+        display_list = List.from(cards_category);
+      }
+    });
+  }
+              void toggleLibreriaOnly() {
+    setState(() {
+      showLibreriaOnly = !showLibreriaOnly;
+      if (showLibreriaOnly) {
+        display_list =
+            cards_category.where((element) => element.categoria!.toLowerCase() == "libreria").toList();
       } else {
         display_list = List.from(cards_category);
       }
@@ -868,6 +925,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
+              SizedBox(width: 10,),
               //Categoria Comida
               GestureDetector(
                 onTap: toggleFoodFilter,
@@ -914,6 +972,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
+              SizedBox(width: 10,),
               //Categoria Bebidas
               GestureDetector(
                 onTap: toggleBebidaFilter,
@@ -960,6 +1019,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
+              SizedBox(width: 10,),
               //Categoria Lavanderia
               GestureDetector(
                 onTap: toggleLavanderiaFilter,
@@ -1005,7 +1065,148 @@ Future<void> obtenerPerfil(BuildContext context) async {
             ],
           ),
         ),
-              )
+              ),
+              SizedBox(width: 10,),
+              //Categoria Peluqueria 
+              GestureDetector(
+                onTap: togglePeluqueriaFilter,
+                child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 90,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text("Peluqueria", 
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+              ),
+              SizedBox(width: 10,),
+              //Categoria Lavado Autos 
+              GestureDetector(
+                onTap: toggleLavadoAutosFilter,
+                child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 90,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text("Lavado Autos", 
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+              ),
+              SizedBox(width: 10,),
+              //categoria libreria
+              GestureDetector(
+                onTap: toggleLavadoAutosFilter,
+                child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 90,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text("Libreria", 
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+              ),
             ],
           ),
         ),
@@ -1020,7 +1221,24 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ))
       ],
     ),
+          bottomNavigationBar: CustomBottomNavigationBar(
+            selectedIndex: 0, 
+            onTabChange: (index){
+              switch(index){
+                case 0 : null; break;
+                case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
+                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyCards())); break;
+                case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
+                case 4: Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen())); break;
+              }
+            }
+            ),
+
+
+
+
   );
+  
 }
 }
 
