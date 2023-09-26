@@ -17,16 +17,7 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
     State<HomePage> createState() => _HomePageState();
   }
   class _HomePageState extends State<HomePage> {
-  List<CustomCard> customCardList =[
-  CustomCard(name: "Prueba", category: "Comida", imageUrl: "https://img.freepik.com/premium-photo/serene-natural-background-depicting-peaceful-landscape-scenery-ai-generated_523886-6825.jpg"),
-  CustomCard(name: "Prueba2", category: "Comida", imageUrl: "https://expertphotography.b-cdn.net/wp-content/uploads/2022/05/Landscape-Photography-Sophie-Turner.jpg"),
-  CustomCard(name: "Samsung", category: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png"),
-  CustomCard(name: "Apple", category: "Tecnologia", imageUrl: "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
-  CustomCard(name: "Dell", category: "Tecnologia", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1024px-Dell_Logo.svg.png"),
-  CustomCard(name: "Cafeteria", category: "Comida", imageUrl: "https://img.freepik.com/vector-gratis/insignia-cafeteria-estilo-vintage_1176-95.jpg")
-  ];
-  final TextEditingController _searchController = TextEditingController();
-  String selectedCategory ="";
+
     final scaffoldKey = GlobalKey<ScaffoldState>();
     String nombre = "";
     String apellidopaterno = "";
@@ -42,6 +33,68 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
   final _telefonoController = TextEditingController();
   final _documentoController = TextEditingController();
   final _distritoController = TextEditingController();
+    bool showTecnologyOnly = false;
+    bool showFoodOnly = false;
+    bool showBebidasOnly = false;
+    bool showLavanderiaOnly = false;
+  static List<Cards> cards_category =[
+  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
+  Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
+  Cards("Lavanderia Generica", "Lavanderia", "https://s10.s3c.es/imag/_v0/770x420/b/0/2/600x400_lavanderia.jpg"),
+  ];
+  List<Cards>display_list=List.from(cards_category);
+  void updateList(String value){
+    setState(() {
+      display_list = cards_category.where((element) => element.titulo!.toLowerCase().contains(value.toLowerCase())).toList();
+    });
+  }
+    void toggleTecnologyFilter() {
+    setState(() {
+      showTecnologyOnly = !showTecnologyOnly;
+      if (showTecnologyOnly) {
+        display_list =
+            cards_category.where((element) => element.categoria!.toLowerCase() == "tecnologia").toList();
+      } else {
+        display_list = List.from(cards_category);
+      }
+    });
+  }
+      void toggleBebidaFilter() {
+    setState(() {
+      showBebidasOnly = !showBebidasOnly;
+      if (showFoodOnly) {
+        display_list =
+            cards_category.where((element) => element.categoria!.toLowerCase() == "bebida").toList();
+      } else {
+        display_list = List.from(cards_category);
+      }
+    });
+  }
+        void toggleFoodFilter() {
+    setState(() {
+      showFoodOnly = !showFoodOnly;
+      if (showFoodOnly) {
+        display_list =
+            cards_category.where((element) => element.categoria!.toLowerCase() == "comida").toList();
+      } else {
+        display_list = List.from(cards_category);
+      }
+    });
+  }
+          void toggleLavanderiaFilter() {
+    setState(() {
+      showLavanderiaOnly = !showLavanderiaOnly;
+      if (showFoodOnly) {
+        display_list =
+            cards_category.where((element) => element.categoria!.toLowerCase() == "lavanderia").toList();
+      } else {
+        display_list = List.from(cards_category);
+      }
+    });
+  }
+
+
     final List<String> distritos = [
     "Ancon",
     "Ate",
@@ -93,7 +146,7 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
       obtenerPerfil(context);
       
     }
-
+    
     
   String? nombreValidator (String? value) {
     if (value == null || value.isEmpty) {
@@ -177,7 +230,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
-        insetPadding: EdgeInsets.symmetric(horizontal: 16,vertical:90),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16,vertical:90),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
@@ -395,7 +448,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-        insetPadding: EdgeInsets.symmetric(horizontal: 16,vertical:90),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16,vertical:90),
                     child: GestureDetector(
                       onTap: () => FocusScope.of(context).unfocus(),
                       child: Scaffold(
@@ -634,15 +687,15 @@ Future<void> obtenerPerfil(BuildContext context) async {
                         final String documento = _documentoController.text;
                         final String distrito = _distritoController.text;
                         await CreateProfile().enviarDatos(nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage(),));
                         }else{
-                          Dialog(
+                          const Dialog(
                             child: Text("Campos Incompletos"),
                           );
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 33, 11, 230),
+                        backgroundColor: const Color.fromARGB(255, 33, 11, 230),
                         elevation: 3,
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         shape: RoundedRectangleBorder(
@@ -678,14 +731,14 @@ Future<void> obtenerPerfil(BuildContext context) async {
                             });
                     
 }else{
-  Dialog(
+  const Dialog(
     child: Text("Campos Incompletos"),
   );
 }
                       },
                       style: ElevatedButton.styleFrom(
                         elevation: 3,
-                        backgroundColor: Color.fromARGB(255, 33, 11, 230),
+                        backgroundColor: const Color.fromARGB(255, 33, 11, 230),
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -731,246 +784,241 @@ Future<void> obtenerPerfil(BuildContext context) async {
 
 //Nombre en Home
 
-List<CustomCard> get filteredCustomCards {
-  return customCardList
-      .where((customCard) {
-        final searchText = _searchController.text.toLowerCase();
-        final matchesSearch = customCard.name.toLowerCase().contains(searchText);
 
-        if (selectedCategory.isEmpty) {
-          // Si no se selecciona una categoría, mostrar todas las tarjetas que coinciden con la búsqueda.
-          return matchesSearch;
-        } else {
-          // Si se selecciona una categoría, mostrar tarjetas que coincidan con la búsqueda y la categoría.
-          return matchesSearch && customCard.category == selectedCategory;
-        }
-      })
-      .toList();
-}
 
     @override
     Widget build(BuildContext context) {
-        /*List<CustomCard> filteredCustomCards = customCardList
-        .where((customCard) =>
-            customCard.name.toLowerCase().contains(_searchController.text.toLowerCase())).toList()
-        .toList();*/
-  return GestureDetector(
-    onTap: () => FocusScope.of(context).unfocus(),
-    child: Scaffold(
-      key: scaffoldKey,
+
+  return Scaffold(
+    backgroundColor: Colors.white,
+    appBar: AppBar(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        top: true,
-        child: SingleChildScrollView(
+      elevation: 0.0,
+    ),
+    body: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("   Bienvenido"+" "+"${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+        const SizedBox(height: 20,),
+        TextField(
+        onChanged: (value) => updateList(value),
+        style: TextStyle(color: Colors.black),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: Colors.black)
+          ),
+          hintText: "Buscar",
+          prefixIcon: Icon(Icons.search),
+          prefixIconColor: Colors.black,
+        ),
+        ),
+        SizedBox(height: 20,),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //Categoria Tecnologia
+              GestureDetector(
+                onTap: toggleTecnologyFilter,
+                child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                  child: Text(
-                    'Bienvenido',
-                    style: TextStyle(
-                      fontFamily: 'Readex Pro',
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Text(
-                  '${GlobalVariables.nombre}',
-                  style: TextStyle(
-                    fontFamily: 'Readex Pro',
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 0),
                 child: Container(
-                  width: 300,
-                  height: 50,
+                  width: 90,
+                  height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 4,
-                        color: Color(0x33000000),
-                        offset: Offset(0, 2),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                    child: TextFormField(
-                      controller: _searchController,
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Buscar',
-                        labelStyle: TextStyle(fontSize: 14),
-                        hintStyle: TextStyle(fontSize: 12),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
-                        suffixIcon: Icon(
-                          Icons.search,
-                          size: 15,
-                        ),
-                      ),
-                      style: TextStyle(fontSize: 14),
-                      validator: null,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://www.eltiempo.com/files/image_1200_680/uploads/2019/12/07/5dec47012d257.jpeg"), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 5),
-                child: Text(
-                  'Categorias',
-                  style: TextStyle(fontSize: 12),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text("Tecnologia", 
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
                 ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        // Cambia la categoría seleccionada a 'Tecnologia'
-                        setState(() {
-                          selectedCategory = 'Tecnologia';
-                        });
-                      },
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: 0.2,
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                                child: Container(
-                                  width: 90,
-                                  height: 70,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: Image.network(
-                                        'https://w0.peakpx.com/wallpaper/566/653/HD-wallpaper-laptop-graphy-camera-thumbnail.jpg',
-                                      ).image,
-                                    ),
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                      width: 0.5,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                                child: Text(
-                                  'Tecnologia',
-                                  style: TextStyle(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // Cambia la categoría seleccionada a 'Comida'
-                        setState(() {
-                          selectedCategory = 'Comida';
-                        });
-                      },
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: 0.2,
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                                child: Container(
-                                  width: 90,
-                                  height: 70,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: Image.network(
-                                        'https://s3.abcstatics.com/media/gurmesevilla/2012/01/comida-rapida-casera.jpg',
-                                      ).image,
-                                    ),
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                      width: 0.5,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                                child: Text(
-                                  'Comida',
-                                  style: TextStyle(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: filteredCustomCards.map((CustomCard) {
-                  return CustomCard;
-                }).toList(),
               ),
             ],
           ),
         ),
-      ),
+              ),
+              //Categoria Comida
+              GestureDetector(
+                onTap: toggleFoodFilter,
+                child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 90,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://img.freepik.com/vector-gratis/kawaii-comida-rapida-lindo-hot-dog-comida-rapida-hamburguesas-papas-fritas-bebida-ilustracion-salsa-tomate_24908-60601.jpg?w=2000"), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text("Comida", 
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+              ),
+              //Categoria Bebidas
+              GestureDetector(
+                onTap: toggleBebidaFilter,
+                child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 90,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://img.freepik.com/foto-gratis/bebidas-gaseosas-coloridas-macro-disparo_53876-18225.jpg"), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text("Bebida", 
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+              ),
+              //Categoria Lavanderia
+              GestureDetector(
+                onTap: toggleLavanderiaFilter,
+                child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.2,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 90,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      width: 0.5,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                child: Text("Lavanderia", 
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+              )
+            ],
+          ),
+        ),
+        SizedBox(height: 20,),
+        Expanded(child: ListView.builder(
+          itemCount: display_list.length,
+          itemBuilder: (context, index) => ListTile(
+            title: Text(display_list[index].titulo!, style: TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
+            subtitle: Text(display_list[index].categoria!,style: TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.normal),),
+            leading: Image.network(display_list[index].img!,width: 60, height: 60, fit: BoxFit.cover,),
+          ),
+          ))
+      ],
     ),
   );
 }
