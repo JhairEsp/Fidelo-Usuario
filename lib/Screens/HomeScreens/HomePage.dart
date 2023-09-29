@@ -205,7 +205,7 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
     }
     
     
-  String? nombreValidator (String? value) {
+    String? nombreValidator (String? value) {
     if (value == null || value.isEmpty) {
       return "El campo no puede estar vacío";
     }
@@ -853,27 +853,46 @@ Future<void> obtenerPerfil(BuildContext context) async {
       elevation: 0.0,
     ),
     body: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("   Bienvenido"+" "+"${GlobalVariables.nombre}"+" "+"${GlobalVariables.apellidoPaterno}",style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+Row(
+  children: [
+    Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("   Bienvenido,", style: const TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.normal)),
+          Text("   ${GlobalVariables.nombre}", style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ),
+    Container(
+      child: Image.asset("assets/logocompleto.png"),
+    )
+  ],
+),
+
         const SizedBox(height: 20,),
-        TextField(
-        onChanged: (value) => updateList(value),
-        style: TextStyle(color: Colors.black),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: Colors.black)
+        Container(
+          width: 300,
+          child: TextField(
+          onChanged: (value) => updateList(value),
+          style: const TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(color: Colors.black)
+            ),
+            hintText: "Buscar",
+            prefixIcon: const Icon(Icons.search),
+            prefixIconColor: Colors.black,
           ),
-          hintText: "Buscar",
-          prefixIcon: Icon(Icons.search),
-          prefixIconColor: Colors.black,
+          ),
         ),
-        ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -896,13 +915,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                 child: Container(
                   width: 90,
                   height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://www.eltiempo.com/files/image_1200_680/uploads/2019/12/07/5dec47012d257.jpeg"), // Usar la URL proporcionada
                     ),
@@ -913,7 +932,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                 child: Text("Tecnologia", 
                   style: TextStyle(
@@ -925,7 +944,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               //Categoria Comida
               GestureDetector(
                 onTap: toggleFoodFilter,
@@ -943,13 +962,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                 child: Container(
                   width: 90,
                   height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://img.freepik.com/vector-gratis/kawaii-comida-rapida-lindo-hot-dog-comida-rapida-hamburguesas-papas-fritas-bebida-ilustracion-salsa-tomate_24908-60601.jpg?w=2000"), // Usar la URL proporcionada
                     ),
@@ -960,7 +979,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                 child: Text("Comida", 
                   style: TextStyle(
@@ -972,7 +991,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               //Categoria Bebidas
               GestureDetector(
                 onTap: toggleBebidaFilter,
@@ -990,13 +1009,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                 child: Container(
                   width: 90,
                   height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://img.freepik.com/foto-gratis/bebidas-gaseosas-coloridas-macro-disparo_53876-18225.jpg"), // Usar la URL proporcionada
                     ),
@@ -1007,7 +1026,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                 child: Text("Bebida", 
                   style: TextStyle(
@@ -1019,7 +1038,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               //Categoria Lavanderia
               GestureDetector(
                 onTap: toggleLavanderiaFilter,
@@ -1037,13 +1056,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                 child: Container(
                   width: 90,
                   height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
                     ),
@@ -1054,7 +1073,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                 child: Text("Lavanderia", 
                   style: TextStyle(
@@ -1066,7 +1085,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               //Categoria Peluqueria 
               GestureDetector(
                 onTap: togglePeluqueriaFilter,
@@ -1084,13 +1103,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                 child: Container(
                   width: 90,
                   height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
                     ),
@@ -1101,7 +1120,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                 child: Text("Peluqueria", 
                   style: TextStyle(
@@ -1113,7 +1132,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               //Categoria Lavado Autos 
               GestureDetector(
                 onTap: toggleLavadoAutosFilter,
@@ -1131,13 +1150,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                 child: Container(
                   width: 90,
                   height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
                     ),
@@ -1148,7 +1167,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                 child: Text("Lavado Autos", 
                   style: TextStyle(
@@ -1160,7 +1179,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
           ),
         ),
               ),
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
               //categoria libreria
               GestureDetector(
                 onTap: toggleLavadoAutosFilter,
@@ -1178,13 +1197,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                 child: Container(
                   width: 90,
                   height: 70,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
                     ),
@@ -1195,7 +1214,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                 child: Text("Libreria", 
                   style: TextStyle(
@@ -1210,12 +1229,12 @@ Future<void> obtenerPerfil(BuildContext context) async {
             ],
           ),
         ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
         Expanded(child: ListView.builder(
           itemCount: display_list.length,
           itemBuilder: (context, index) => ListTile(
-            title: Text(display_list[index].titulo!, style: TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
-            subtitle: Text(display_list[index].categoria!,style: TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.normal),),
+            title: Text(display_list[index].titulo!, style: const TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
+            subtitle: Text(display_list[index].categoria!,style: const TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.normal),),
             leading: Image.network(display_list[index].img!,width: 60, height: 60, fit: BoxFit.cover,),
           ),
           ))
