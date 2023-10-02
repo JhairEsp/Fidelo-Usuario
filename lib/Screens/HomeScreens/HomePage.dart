@@ -1,5 +1,6 @@
   import 'dart:convert';
-  import 'package:fidelo/Screens/CardScreens/MisCards.dart';
+  import 'package:fidelo/Screens/CardScreens/DetallesCardScreen.dart';
+import 'package:fidelo/Screens/CardScreens/MisCards.dart';
 import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
   import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
   import 'package:fidelo/Screens/QRScreens/QRScreens.dart';
@@ -41,7 +42,7 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
     bool showLavadoAutosOnly = false;
     bool showLibreriaOnly = false;
   static List<Cards> cards_category =[
-  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
+  Cards("Apple", "Tecnologia", "https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg",),
   Cards("Rockys", "Comida", "https://static.mercadonegro.pe/wp-content/uploads/2019/12/22202114/Screenshot_8.jpg"),
   Cards("Starbucks", "Bebida", "https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png"),
   Cards("Lavanderia Generica", "Lavanderia", "https://s10.s3c.es/imag/_v0/770x420/b/0/2/600x400_lavanderia.jpg"),
@@ -845,7 +846,6 @@ Future<void> obtenerPerfil(BuildContext context) async {
 
     @override
     Widget build(BuildContext context) {
-
   return Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(
@@ -867,17 +867,20 @@ Row(
         ],
       ),
     ),
-    Container(
-      width: 100,
-      height: 100,
-      child: Image.asset("assets/logo.png"),
-    )
+    Padding(
+      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+      child: Container(
+        width: 100,
+        height: 100,
+        child: Image.asset("assets/logohorizontalnegro.png"),
+      ),
+    ),
   ],
 ),
-
         const SizedBox(height: 20,),
         Container(
           width: 300,
+          height: 50,
           child: TextField(
           onChanged: (value) => updateList(value),
           style: const TextStyle(color: Colors.black),
@@ -901,8 +904,13 @@ Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //Categoria Tecnologia
-              GestureDetector(
-                onTap: toggleTecnologyFilter,
+              InkWell(
+                onTap: () {
+                  toggleTecnologyFilter();
+                }, 
+                splashColor: Colors.black,
+                highlightColor: Colors.black,
+
                 child: Container(
           width: 100,
           height: 100,
@@ -948,8 +956,10 @@ Row(
               ),
               const SizedBox(width: 10,),
               //Categoria Comida
-              GestureDetector(
+              InkWell(
                 onTap: toggleFoodFilter,
+                splashColor: Colors.black,
+                highlightColor: Colors.black,
                 child: Container(
           width: 100,
           height: 100,
@@ -995,8 +1005,10 @@ Row(
               ),
               const SizedBox(width: 10,),
               //Categoria Bebidas
-              GestureDetector(
+              InkWell(
                 onTap: toggleBebidaFilter,
+                                splashColor: Colors.black,
+                highlightColor: Colors.black,
                 child: Container(
           width: 100,
           height: 100,
@@ -1042,8 +1054,10 @@ Row(
               ),
               const SizedBox(width: 10,),
               //Categoria Lavanderia
-              GestureDetector(
+              InkWell(
                 onTap: toggleLavanderiaFilter,
+                                splashColor: Colors.black,
+                highlightColor: Colors.black,
                 child: Container(
           width: 100,
           height: 100,
@@ -1136,7 +1150,7 @@ Row(
               ),
               const SizedBox(width: 10,),
               //Categoria Lavado Autos 
-              GestureDetector(
+              InkWell(
                 onTap: toggleLavadoAutosFilter,
                 child: Container(
           width: 100,
@@ -1183,7 +1197,7 @@ Row(
               ),
               const SizedBox(width: 10,),
               //categoria libreria
-              GestureDetector(
+              InkWell(
                 onTap: toggleLavadoAutosFilter,
                 child: Container(
           width: 100,
@@ -1234,11 +1248,17 @@ Row(
         const SizedBox(height: 20,),
         Expanded(child: ListView.builder(
           itemCount: display_list.length,
-          itemBuilder: (context, index) => ListTile(
-            title: Text(display_list[index].titulo!, style: const TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
-            subtitle: Text(display_list[index].categoria!,style: const TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.normal),),
-            leading: Image.network(display_list[index].img!,width: 60, height: 60, fit: BoxFit.cover,),
+          itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DetallesCardScreen(titulo: display_list[index].titulo, cateogira: display_list[index].categoria, imagen: display_list[index].img),));
+            },
+            child: ListTile(
+              title: Text(display_list[index].titulo!, style: const TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
+              subtitle: Text(display_list[index].categoria!,style: const TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.normal),),
+              leading: Image.network(display_list[index].img!,width: 60, height: 60, fit: BoxFit.cover,),
+            ),
           ),
+          
           ))
       ],
     ),

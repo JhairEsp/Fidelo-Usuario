@@ -380,7 +380,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
             const Positioned(
               top: 16,
               left: 16,
-              child: Text("Version 0.0.6",style: TextStyle(
+              child: Text("Version 0.0.7",style: TextStyle(
               color: Colors.black,fontSize: 12,
             ),))
           ], 
