@@ -111,7 +111,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                   Align(
                     alignment: const AlignmentDirectional(0, 0),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 45, 0, 0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
@@ -352,7 +352,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                           ),
                         ),
                       ),
-                      const SizedBox(width: 5,),
+                      const SizedBox(width: 5),
                       InkWell(
                         onTap: () {
                           Navigator.push(

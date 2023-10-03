@@ -5,14 +5,9 @@ import 'package:flutter/material.dart';
 
 import '../screens.dart';
 
-class QRScreen extends StatefulWidget {
+class QRScreen extends StatelessWidget {
   const QRScreen({super.key});
 
-  @override
-  State<QRScreen> createState() => _QRScreenState();
-}
-
-class _QRScreenState extends State<QRScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -32,6 +27,5 @@ class _QRScreenState extends State<QRScreen> {
           ),
       
     );
-    
   }
 }

@@ -6,7 +6,7 @@ class DetallesCardScreen extends StatelessWidget {
   String? cateogira;
   String? imagen;
 
-   DetallesCardScreen({required this.titulo, required this.cateogira, required this.imagen});
+  DetallesCardScreen({required this.titulo, required this.cateogira, required this.imagen});
 
   
   @override
@@ -22,11 +22,11 @@ return GestureDetector(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  alignment: const AlignmentDirectional(-1.00, 0.00),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.chevron_left,
                         color: Colors.black,
                         size: 24,
@@ -39,7 +39,7 @@ return GestureDetector(
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
@@ -51,23 +51,23 @@ return GestureDetector(
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                   child: Container(
                     width: double.infinity,
                     height: 900,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(-1.00, -1.00),
+                          alignment: const AlignmentDirectional(-1.00, -1.00),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
                             child: Text(
                               titulo!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 30,
                                   ),
@@ -75,18 +75,18 @@ return GestureDetector(
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: const AlignmentDirectional(-1.00, 0.00),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                             child: Text(
                               cateogira!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14
                               ),
                             ),
                           ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 30),
                           child: Text(
                             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
@@ -101,14 +101,14 @@ return GestureDetector(
               print('boton presionadp');
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
+              backgroundColor: Colors.blue,
               elevation: 3,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
             ),
-            child: Text(
+            child: const Text(
               'Afiliarte',
               style: TextStyle(
             fontFamily: 'Readex Pro',
@@ -116,7 +116,6 @@ return GestureDetector(
                   ),
             ),
           ),
-          
                       ],
                     ),
                   ),

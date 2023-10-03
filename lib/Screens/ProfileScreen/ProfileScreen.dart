@@ -10,27 +10,18 @@ import '../../models/GlobalVariables.dart';
 import '../NotificacionesScreens/NotificacionScreen.dart';
 import '../QRScreens/QRScreens.dart';
 
-class ProfileScreen extends StatefulWidget {
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
+class ProfileScreen extends StatelessWidget {
   String nombre = "";
+
   String apellidoPaterno = "";
+
   String apellidoMaterno = "";
+
   String email = "";
 
   @override
-  void initState() {
-    //obtenerPerfil();
-    super.initState();
-
-  }
-
-  @override
   Widget build(BuildContext context) {
- return GestureDetector(
+  return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: Colors.white,
