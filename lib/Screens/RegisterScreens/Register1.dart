@@ -1,12 +1,12 @@
-import 'package:fidelo/Screens/HomeScreens/HomePage.dart';
-import 'package:fidelo/Screens/Profiles/CreateProfile.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import "package:fidelo/Screens/screens.dart";
 import '../../models/Auth.dart';
-import '../LoginScreens/Login.dart'; // Importa la biblioteca para manejar el retraso
 
 class Register1 extends StatefulWidget {
+  const Register1({super.key});
+
+
   @override
   State<Register1> createState() => _Register1State();
 }

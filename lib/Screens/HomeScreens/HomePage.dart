@@ -848,15 +848,13 @@ Future<void> obtenerPerfil(BuildContext context) async {
     Widget build(BuildContext context) {
   return Scaffold(
     backgroundColor: Colors.white,
-    appBar: AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0.0,
-    ),
     body: Column(
+      
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
 Row(
   children: [
+    SizedBox(height:20,),
     Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -1250,7 +1248,7 @@ Row(
           itemCount: display_list.length,
           itemBuilder: (context, index) => InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => DetallesCardScreen(titulo: display_list[index].titulo, cateogira: display_list[index].categoria, imagen: display_list[index].img),));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DetallesCardScreen(titulo: display_list[index].titulo, categoria: display_list[index].categoria, imagen: display_list[index].img),));
             },
             child: ListTile(
               title: Text(display_list[index].titulo!, style: const TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
@@ -1268,7 +1266,7 @@ Row(
               switch(index){
                 case 0 : null; break;
                 case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
-                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyCards())); break;
+                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> MyCards())); break;
                 case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
                 case 4: Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen())); break;
               }

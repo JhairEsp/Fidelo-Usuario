@@ -1,9 +1,6 @@
-import 'package:fidelo/Screens/CardScreens/MisCards.dart';
-import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
 import 'package:fidelo/Widgets/NavBar.dart';
 import 'package:flutter/material.dart';
-
-import '../screens.dart';
+import 'package:fidelo/Screens/screens.dart';
 
 class QRScreen extends StatelessWidget {
   const QRScreen({super.key});
@@ -19,8 +16,8 @@ class QRScreen extends StatelessWidget {
             switch(index){
               case 0 : Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),)); break;
               case 1 : null; break;
-              case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyCards())); break;
-              case 3: Navigator.push(context, MaterialPageRoute(builder: (context) => notificaciones(),)); break;
+              case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=>  MyCards())); break;
+              case 3: Navigator.push(context, MaterialPageRoute(builder: (context) => const notificaciones(),)); break;
               case 4: Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(),));
             }
           }

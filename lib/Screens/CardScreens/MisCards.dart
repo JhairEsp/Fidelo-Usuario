@@ -1,3 +1,5 @@
+import 'package:fidelo/Screens/CardScreens/DetallesCardScreen.dart';
+import 'package:fidelo/Screens/CardScreens/ProgessCard.dart';
 import 'package:fidelo/Screens/HomeScreens/HomePage.dart';
 import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
 import 'package:fidelo/Screens/ProfileScreen/ProfileScreen.dart';
@@ -6,20 +8,33 @@ import 'package:flutter/material.dart';
 
 import '../../Widgets/NavBar.dart';
 
-class MyCards extends StatefulWidget {
-  const MyCards({super.key});
+class MyCards extends StatelessWidget {
+  String? titulo;
+  String? categoria;
+  String? imagen;
 
-  @override
-  State<MyCards> createState() => _MyCardsState();
-}
+  MyCards({this.titulo,this.categoria,this.imagen});
 
-class _MyCardsState extends State<MyCards> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Text("Mis cards screen"),
         color: Colors.white,
+        child: Column(
+          children: [
+            InkWell(
+              onTap: () {
+                _navigate(context);
+              },
+              child: ListTile(
+                title: Text(titulo!, style: const TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
+                subtitle: Text(categoria!,style: const TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.normal),),
+                leading: Image.network(imagen!,width: 60, height: 60, fit: BoxFit.cover,),
+              ),
+            )
+          ],
+        ),
       ),
       
 
@@ -36,5 +51,8 @@ class _MyCardsState extends State<MyCards> {
             }
             ),
     );
+  }
+  void _navigate(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ProgressCard(imagen: imagen, titulo: titulo,),));
   }
 }

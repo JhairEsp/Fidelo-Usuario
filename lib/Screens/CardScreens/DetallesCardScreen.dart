@@ -1,12 +1,13 @@
+import 'package:fidelo/Screens/CardScreens/MisCards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class DetallesCardScreen extends StatelessWidget {
   String? titulo;
-  String? cateogira;
+  String? categoria;
   String? imagen;
 
-  DetallesCardScreen({required this.titulo, required this.cateogira, required this.imagen});
+  DetallesCardScreen({required this.titulo, required this.categoria, required this.imagen});
 
   
   @override
@@ -79,7 +80,7 @@ return GestureDetector(
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                             child: Text(
-                              cateogira!,
+                              categoria!,
                               style: const TextStyle(
                                 fontSize: 14
                               ),
@@ -98,7 +99,13 @@ return GestureDetector(
                         ),
           ElevatedButton(
             onPressed: () {
-              print('boton presionadp');
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyCards(titulo: titulo,categoria: categoria,imagen: imagen),));
+            print("Tarjeta Afiliada");
+            AlertDialog(actions: [
+              Text("Empresa Afiliada")
+
+            ],);
+
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue,

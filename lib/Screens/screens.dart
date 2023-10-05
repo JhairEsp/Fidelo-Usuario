@@ -9,3 +9,7 @@ export 'package:fidelo/Screens/LoginScreens/ForgotPassword.dart';
 export 'package:fidelo/Screens/LoginScreens/Login.dart';
 //RegisterScreens
 export 'package:fidelo/Screens/RegisterScreens/Register1.dart';
+//NotificacionesScreens
+export 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
+//MyCardsScreens
+export 'package:fidelo/Screens/CardScreens/MisCards.dart';

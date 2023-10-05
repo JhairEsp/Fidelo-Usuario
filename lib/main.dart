@@ -2,7 +2,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import "package:fidelo/Screens/screens.dart";
 import 'package:flutter/material.dart';
-import 'Screens/LoginScreens/Login.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -56,7 +55,7 @@ class SplashScreen extends StatelessWidget {
         
       ),
       backgroundColor: const Color(0xFF004CC6),
-      nextScreen: HomePage(),
+      nextScreen: Login(),
       duration: 2000,
       splashTransition: SplashTransition.slideTransition,
     );
