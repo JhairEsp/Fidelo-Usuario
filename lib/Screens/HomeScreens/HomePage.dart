@@ -280,388 +280,100 @@ Future<void> obtenerPerfil(BuildContext context) async {
         });
       } else {
         // Mostrar un showDialog cuando profileData es nulo
-    showDialog(
-      context: context, 
-      barrierDismissible: false,
-      builder:(BuildContext context){
-    return Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        insetPadding: const EdgeInsets.symmetric(horizontal: 16,vertical:90),
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            backgroundColor: Colors.deepPurple[600],
-            body: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                      child: Text(
-                        'Completa tus datos',
-                        style: TextStyle(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.white,
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
+                  showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0)
                   ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                      child: Image.network(
-                        'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
-                      child: Container(
-                        width: 300,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x00F1F4F8),
-                            width: 2,
+                  backgroundColor: Colors.blue,
+                  content: IntrinsicHeight(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                                            const Align(
+                      alignment: AlignmentDirectional(0, 0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                        child: Text(
+                          'Completa tus datos',
+                          style: TextStyle(
+                            fontFamily: 'Readex Pro',
+                            color: Colors.black,
+                            fontSize: 25,
                           ),
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                                child: TextFormField(
-                                  controller: _nombreController, // controller
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Nombre',
-                                    labelStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    hintStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: const TextStyle(fontSize: 16),
-                                  validator: nombreValidator,
-                                ),
-                              ),
-                            ),
-                          ],
+                      ),
+                                      ),
+                                      Opacity(
+                      opacity: 0.6,
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                        child: Image.network(
+                          'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
+                          width: 100,
+                          height: 100,
                         ),
                       ),
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                      child: Container(
-                        width: 300,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x00F1F4F8),
-                            width: 2,
+                                      ),
+                                      Opacity(
+                      opacity: 0.6,
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                        child: Container(
+                          width: 300,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: const Color(0x00F1F4F8),
+                              width: 2,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Icon(
+                                  Icons.person,
+                                  color: Colors.black,
+                                  size: 24,
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                  child: TextFormField(
+                                    controller: _nombreController, // controller
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Nombre',
+                                      labelStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: const TextStyle(fontSize: 16),
+                                    validator: nombreValidator,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                                child: TextFormField(
-                                  controller: _apellidopatController,//controller
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Apellido Paterno',
-                                    labelStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    hintStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  validator: apellidopatValidator,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                      child: Container(
-                        width: 300,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x00F1F4F8),
-                            width: 2,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                                child: TextFormField(
-                                  controller: _apellidomatController, //Controller
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Apellido Materno',
-                                    labelStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    hintStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  validator: apellidomatValidator,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: ElevatedButton(
-                      onPressed: () async {
-                            if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty && _apellidomatController.text.isNotEmpty) {
-                            showDialog(context: context,
-                            barrierDismissible: false,
-                            builder: (BuildContext context){
-                  return Dialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-        insetPadding: const EdgeInsets.symmetric(horizontal: 16,vertical:90),
-                    child: GestureDetector(
-                      onTap: () => FocusScope.of(context).unfocus(),
-                      child: Scaffold(
-              backgroundColor: Colors.deepPurple[600],
-              body: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                      child: Text(
-                        'Completa tus datos',
-                        style: TextStyle(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.white,
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                      child: Image.network(
-                        'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                    ),
-                  ),
-            Opacity(
-              opacity: 0.6,
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
-                child: Container(
-                  width: 300,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: const Color(0x00F1F4F8),
-                      width: 2,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-              child: Icon(
-              Icons.person,
-              color: Colors.black,
-              size: 24,
-              ),
-                      ),
-                      Expanded(
-              child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-              child: TextFormField(
-                controller: _telefonoController,
-                autofocus: true,
-                obscureText: false,
-                keyboardType: TextInputType.phone,
-                maxLength: 9, // Limitar la entrada a 9 números
-                decoration: const InputDecoration(
-                  labelText: 'Numero de Telefono',
-                  labelStyle: TextStyle(
-                    fontSize: 16,
-                  ),
-                  hintStyle: TextStyle(
-                    fontSize: 16,
-                  ),
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  focusedErrorBorder: InputBorder.none,
-                  counterText: "",
-                ),
-                style: const TextStyle(fontSize: 16),
-                validator: telefonoValidator,
-              ),
-              ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            
-            Opacity(
-                    opacity: 0.6,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                      child: Container(
-                        width: 300,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x00F1F4F8),
-                            width: 2,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                                child: TextFormField(
-                                  controller: _documentoController,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  keyboardType: TextInputType.number,
-                                  maxLength: 8,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Numero de DNI',
-                                    labelStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    hintStyle: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                    counterText: "",
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                  validator: dniValidator,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-              Opacity(
+                                      ),
+                                      Opacity(
                       opacity: 0.6,
                       child: Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
@@ -678,159 +390,440 @@ Future<void> obtenerPerfil(BuildContext context) async {
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-            children: [
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                child: Icon(
-                  Icons.person,
-                  color: Colors.black,
-                  size: 24,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                  child: TypeAheadFormField(
-                    textFieldConfiguration: TextFieldConfiguration(
-                      controller: _distritoController,
-                      autofocus: true,
-                      decoration: const InputDecoration(
-                        labelText: 'Indique su Distrito',
-                        labelStyle: TextStyle(
-                          fontSize: 16,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Icon(
+                                  Icons.person,
+                                  color: Colors.black,
+                                  size: 24,
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                  child: TextFormField(
+                                    controller: _apellidopatController,//controller
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Apellido Paterno',
+                                      labelStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                    validator: apellidopatValidator,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        hintStyle: TextStyle(
-                          fontSize: 16,
+                      ),
+                                      ),
+                                      Opacity(
+                      opacity: 0.6,
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                        child: Container(
+                          width: 300,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: const Color(0x00F1F4F8),
+                              width: 2,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Icon(
+                                  Icons.person,
+                                  color: Colors.black,
+                                  size: 24,
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                  child: TextFormField(
+                                    controller: _apellidomatController, //Controller
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Apellido Materno',
+                                      labelStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                    validator: apellidomatValidator,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
                       ),
-                      style: const TextStyle(
-                        fontSize: 16,
+                                      ),
+                                      Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                              if (_nombreController.text.isNotEmpty && _apellidopatController.text.isNotEmpty && _apellidomatController.text.isNotEmpty) {
+                              showDialog(context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context){
+                                      return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                    
-                    ),
-                    validator: distritoValidator,
-                    suggestionsCallback: (pattern) {
-                      return distritos.where((distrito) =>
-                          distrito.toLowerCase().contains(pattern.toLowerCase()));
-                    },
-                    itemBuilder: (context, suggestion) {
-                      return ListTile(
-                        title: Text(suggestion),
+                      
+                            insetPadding: const EdgeInsets.symmetric(horizontal: 16,vertical:90),
+                            backgroundColor: Colors.blue,
+                      content:  IntrinsicHeight(
+                                
+                                  child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Align(
+                                                      alignment: AlignmentDirectional(0, 0),
+                                                      child: Padding(
+                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                                        child: Text(
+                                                          'Completa tus datos',
+                                                          style: TextStyle(
+                                                            fontFamily: 'Readex Pro',
+                                                            color: Colors.white,
+                                                            fontSize: 25,
+                                                          ),
+                                                        ),
+                                                      ),
+                                      ),
+                                      Opacity(
+                                                      opacity: 0.6,
+                                                      child: Padding(
+                                                        padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                                        child: Image.network(
+                                                          'https://cdn-icons-png.flaticon.com/512/1792/1792211.png',
+                                                          width: 100,
+                                                          height: 100,
+                                                        ),
+                                                      ),
+                                      ),
+                                                                Opacity(
+                                  opacity: 0.6,
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                                    child: Container(
+                                      width: 300,
+                                      height: 60,
+                                      decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      border: Border.all(
+                                                        color: const Color(0x00F1F4F8),
+                                                        width: 2,
+                                                      ),
+                                      ),
+                                      child: Row(
+                                                      mainAxisSize: MainAxisSize.max,
+                                                      children: [
+                                                        const Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                  child: Icon(
+                                  Icons.person,
+                                  color: Colors.black,
+                                  size: 24,
+                                  ),
+                                                        ),
+                                                        Expanded(
+                                  child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                  child: TextFormField(
+                                    controller: _telefonoController,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    keyboardType: TextInputType.phone,
+                                    maxLength: 9, // Limitar la entrada a 9 números
+                                    decoration: const InputDecoration(
+                                      labelText: 'Numero de Telefono',
+                                      labelStyle: TextStyle(
+                                                      fontSize: 16,
+                                      ),
+                                      hintStyle: TextStyle(
+                                                      fontSize: 16,
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                      counterText: "",
+                                    ),
+                                    style: const TextStyle(fontSize: 16),
+                                    validator: telefonoValidator,
+                                  ),
+                                  ),
+                                                        ),
+                                                      ],
+                                      ),
+                                    ),
+                                  ),
+                                                                ),
+                                                                
+                                                                Opacity(
+                                                      opacity: 0.6,
+                                                      child: Padding(
+                                                        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                                        child: Container(
+                                                          width: 300,
+                                                          height: 60,
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            border: Border.all(
+                                                              color: const Color(0x00F1F4F8),
+                                                              width: 2,
+                                                            ),
+                                                          ),
+                                                          child: Row(
+                                                            mainAxisSize: MainAxisSize.max,
+                                                            children: [
+                                                              const Padding(
+                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                child: Icon(
+                                  Icons.person,
+                                  color: Colors.black,
+                                  size: 24,
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                  child: TextFormField(
+                                    controller: _documentoController,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    keyboardType: TextInputType.number,
+                                    maxLength: 8,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Numero de DNI',
+                                      labelStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                      counterText: "",
+                                    ),
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                    validator: dniValidator,
+                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                      ),
+                                  Opacity(
+                                                        opacity: 0.6,
+                                                        child: Padding(
+                                                          padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                                          child: Container(
+                                                            width: 300,
+                                                            height: 60,
+                                                            decoration: BoxDecoration(
+                                                              color: Colors.white,
+                                                              borderRadius: BorderRadius.circular(10),
+                                                              border: Border.all(
+                                                                color: const Color(0x00F1F4F8),
+                                                                width: 2,
+                                                              ),
+                                                            ),
+                                                            child: Row(
+                                                              mainAxisSize: MainAxisSize.max,
+                                                                children: [
+                                  const Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                    child: Icon(
+                                      Icons.person,
+                                      color: Colors.black,
+                                      size: 24,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                                      child: TypeAheadFormField(
+                                                      textFieldConfiguration: TextFieldConfiguration(
+                                                        controller: _distritoController,
+                                                        autofocus: true,
+                                                        decoration: const InputDecoration(
+                                                          labelText: 'Indique su Distrito',
+                                                          labelStyle: TextStyle(
+                                                            fontSize: 16,
+                                                          ),
+                                                          hintStyle: TextStyle(
+                                                            fontSize: 16,
+                                                          ),
+                                                          enabledBorder: InputBorder.none,
+                                                          focusedBorder: InputBorder.none,
+                                                          errorBorder: InputBorder.none,
+                                                          focusedErrorBorder: InputBorder.none,
+                                                        ),
+                                                        style: const TextStyle(
+                                                          fontSize: 16,
+                                                        ),
+                                                      
+                                                      ),
+                                                      validator: distritoValidator,
+                                                      suggestionsCallback: (pattern) {
+                                                        return distritos.where((distrito) =>
+                                                            distrito.toLowerCase().contains(pattern.toLowerCase()));
+                                                      },
+                                                      itemBuilder: (context, suggestion) {
+                                                        return ListTile(
+                                                          title: Text(suggestion),
+                                                        );
+                                                      },
+                                                      onSuggestionSelected: (suggestion) {
+                                                        _distritoController.text = suggestion;
+                                                      },
+                                      ),
+                                    ),
+                                  ),
+                                  ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                      Padding(
+                                                      padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                                      child: ElevatedButton(
+                                                        onPressed: () async {
+                                                          if (_telefonoController.text.isNotEmpty && _distritoController.text.isNotEmpty && _distritoController.text.isNotEmpty) {
+                                                          final String nombre = _nombreController.text;
+                                                          final String apellidoPaterno = _apellidopatController.text;
+                                                          final String apellidoMaterno = _apellidomatController.text;
+                                                          final String telefono = _telefonoController.text;
+                                                          final String documento = _documentoController.text;
+                                                          final String distrito = _distritoController.text;
+                                                          await CreateProfile().enviarDatos(nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
+                                                          Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage(),));
+                                                          }else{
+                                                            const AlertDialog(
+                                                              content: Text("Campos Incompletos"),
+                                                            );
+                                                          }
+                                                        },
+                                                        style: ElevatedButton.styleFrom(
+                                                          backgroundColor: const Color.fromARGB(255, 33, 11, 230),
+                                                          elevation: 3,
+                                                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                                                          shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.circular(20),
+                                                          ),
+                                                        ),
+                                                        child: const Row(
+                                                          mainAxisSize: MainAxisSize.min,
+                                                          children: [
+                                                            Icon(
+                                                              Icons.navigate_next,
+                                                              color: Colors.white,
+                                                              size: 15,
+                                                            ),
+                                                            SizedBox(width: 8),
+                                                            Text(
+                                                              'Continuar',
+                                                              style: TextStyle(
+                                                                fontFamily: 'Readex Pro',
+                                                                color: Colors.white,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                      ),
+                                    ],
+                                  ),
+                                  ),
+                                ),
+                                      );
+                              });
+                      
+                    }else{
+                      const Dialog(
+                        child: Text("Campos Incompletos"),
                       );
-                    },
-                    onSuggestionSelected: (suggestion) {
-                      _distritoController.text = suggestion;
-                    },
-                  ),
-                ),
-              ),
-              ],
+                    }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 3,
+                          backgroundColor: const Color.fromARGB(255, 33, 11, 230),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          
                           ),
                         ),
-                      ),
-                    ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        if (_telefonoController.text.isNotEmpty && _distritoController.text.isNotEmpty && _distritoController.text.isNotEmpty) {
-                        final String nombre = _nombreController.text;
-                        final String apellidoPaterno = _apellidopatController.text;
-                        final String apellidoMaterno = _apellidomatController.text;
-                        final String telefono = _telefonoController.text;
-                        final String documento = _documentoController.text;
-                        final String distrito = _distritoController.text;
-                        await CreateProfile().enviarDatos(nombre, apellidoPaterno, apellidoMaterno, telefono, documento, distrito);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage(),));
-                        }else{
-                          const Dialog(
-                            child: Text("Campos Incompletos"),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 33, 11, 230),
-                        elevation: 3,
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.navigate_next,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            'Continuar',
-                            style: TextStyle(
-                              fontFamily: 'Readex Pro',
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.navigate_next,
                               color: Colors.white,
+                              size: 15,
                             ),
-                          ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Continuar',
+                              style: TextStyle(
+                                fontFamily: 'Readex Pro',
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                                      ),
                         ],
                       ),
                     ),
                   ),
-                ],
-              ),
-              ),
-                      ),
-                    ),
-                  );
-                            });
-                    
-}else{
-  const Dialog(
-    child: Text("Campos Incompletos"),
-  );
-}
-                      },
-                      style: ElevatedButton.styleFrom(
-                        elevation: 3,
-                        backgroundColor: const Color.fromARGB(255, 33, 11, 230),
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        
-                        ),
-                      ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.navigate_next,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            'Continuar',
-                            style: TextStyle(
-                              fontFamily: 'Readex Pro',
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-    );
+                );
+              },
+            );
       }
     } else {
       print('Error al obtener el perfil. Código de estado: ${response.statusCode}');
