@@ -280,6 +280,7 @@ Future<void> obtenerPerfil(BuildContext context) async {
         });
       } else {
         // Mostrar un showDialog cuando profileData es nulo
+                  // ignore: use_build_context_synchronously
                   showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -840,26 +841,25 @@ Future<void> obtenerPerfil(BuildContext context) async {
     @override
     Widget build(BuildContext context) {
   return Scaffold(
+    appBar: PreferredSize(preferredSize: const Size.fromHeight(10), child: AppBar(automaticallyImplyLeading: false,elevation: 0,backgroundColor: Colors.white,)),
     backgroundColor: Colors.white,
     body: Column(
-      
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
 Row(
   children: [
-    SizedBox(height:20,),
     Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("   Bienvenido,", style: const TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.normal)),
-          Text("   ${GlobalVariables.nombre}", style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold)),
+          const Text("   Bienvenido,", style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.normal)),
+          Text("   ${GlobalVariables.nombre}", style: const TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold)),
         ],
       ),
     ),
     Padding(
-      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
       child: Container(
         width: 100,
         height: 100,
@@ -868,25 +868,25 @@ Row(
     ),
   ],
 ),
-        const SizedBox(height: 20,),
         Container(
-          width: 300,
-          height: 50,
+          width: 350,height: 40,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.black)
+            
+          ),
+          child: Padding(padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
           child: TextField(
-          onChanged: (value) => updateList(value),
-          style: const TextStyle(color: Colors.black),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Colors.black)
+            onChanged: (value) => updateList(value),
+            style: const TextStyle(
+              color: Colors.black,
             ),
-            hintText: "Buscar",
-            prefixIcon: const Icon(Icons.search),
-            prefixIconColor: Colors.black,
+            decoration: const InputDecoration(filled: true,fillColor: Colors.white,hintText: "Buscador",prefixIcon: Icon(Icons.search),prefixIconColor: Colors.black,),
+            
           ),
           ),
+          
         ),
         const SizedBox(height: 20,),
         SingleChildScrollView(

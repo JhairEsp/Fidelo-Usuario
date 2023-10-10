@@ -19,19 +19,366 @@ class MyCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(preferredSize: const Size.fromHeight(10), child: AppBar(automaticallyImplyLeading: false,elevation: 0,backgroundColor: Colors.white,)),
       body: Container(
         color: Colors.white,
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
-            InkWell(
-              onTap: () {
-                _navigate(context);
-              },
-              child: ListTile(
-                title: Text(titulo!, style: const TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),),
-                subtitle: Text(categoria!,style: const TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.normal),),
-                leading: Image.network(imagen!,width: 60, height: 60, fit: BoxFit.cover,),
+            Align(
+              alignment: AlignmentDirectional(0, -1),
+              child: Text("Mis Cartas",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+            ),
+            SizedBox(height: 20,),
+            ExpansionTile(
+            title: Row(
+              children: [
+                CircleAvatar(
+                backgroundImage: NetworkImage("https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
               ),
+              SizedBox(width: 5,),
+              Text("Apple")
+              ],
+            ),
+            textColor: Colors.black,
+            children: [
+              Column(
+  mainAxisSize: MainAxisSize.max,
+  children: [
+    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+      child: Text(
+        'Obten un 30% en la compra de un Iphone X',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+              fontFamily: 'Readex Pro',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+      ),
+    ),
+    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+        ],
+      ),
+    ),
+    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+        ],
+      ),
+    ),
+    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white ,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+        ],
+      ),
+    ),
+    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: Color(0x33000000),
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.star,
+              color: Colors.black,
+              size: 15,
+            ),
+          ),
+        ],
+      ),
+    ),
+    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+ElevatedButton(
+  onPressed: () {
+    print('Registrar button pressed ...');
+  },
+  style: ElevatedButton.styleFrom( // Color del botón
+    elevation: 3, // Elevación del botón
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8), // Borde del botón
+    ),
+  ),
+  child: Padding(
+    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+    child: Text(
+      'Registrar',
+      style: TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.white,
+      ),
+    ),
+  ),
+),
+
+ElevatedButton(
+  onPressed: () {
+    print('Reclamar button pressed ...');
+  },
+  style: ElevatedButton.styleFrom(
+
+    elevation: 3, // Elevación del botón
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8), // Borde del botón
+    ),
+  ),
+  child: Padding(
+    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+    child: Text(
+      'Reclamar',
+      style: TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.white,
+      ),
+    ),
+  ),
+),
+
+        ],
+      ),
+    ),
+  ],
+)
+
+            ],
             )
           ],
         ),
@@ -52,7 +399,5 @@ class MyCards extends StatelessWidget {
             ),
     );
   }
-  void _navigate(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ProgressCard(imagen: imagen, titulo: titulo,),));
-  }
+
 }
