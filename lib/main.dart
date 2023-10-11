@@ -55,7 +55,7 @@ class SplashScreen extends StatelessWidget {
         
       ),
       backgroundColor: const Color(0xFF004CC6),
-      nextScreen: Login(),
+      nextScreen: HomePage(),
       duration: 2000,
       splashTransition: SplashTransition.slideTransition,
     );

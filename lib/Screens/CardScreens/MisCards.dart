@@ -25,13 +25,13 @@ class MyCards extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Align(
+            const Align(
               alignment: AlignmentDirectional(0, -1),
               child: Text("Mis Cartas",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
             ),
-            SizedBox(height: 20,),
-            ExpansionTile(
-            title: Row(
+            const SizedBox(height: 20,),
+            ExpansionTile(  
+            title: const Row(
               children: [
                 CircleAvatar(
                 backgroundImage: NetworkImage("https://1000marcas.net/wp-content/uploads/2019/11/Apple-Logo.jpg"),
@@ -45,7 +45,7 @@ class MyCards extends StatelessWidget {
               Column(
   mainAxisSize: MainAxisSize.max,
   children: [
-    Padding(
+    const Padding(
       padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
       child: Text(
         'Obten un 30% en la compra de un Iphone X',
@@ -58,7 +58,7 @@ class MyCards extends StatelessWidget {
       ),
     ),
     Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -66,7 +66,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -76,7 +76,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -85,7 +85,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -95,7 +95,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -104,7 +104,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -114,7 +114,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -124,7 +124,7 @@ class MyCards extends StatelessWidget {
       ),
     ),
     Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -132,7 +132,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -142,7 +142,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -151,7 +151,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -161,7 +161,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -170,7 +170,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -180,7 +180,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -190,7 +190,7 @@ class MyCards extends StatelessWidget {
       ),
     ),
     Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -198,7 +198,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -208,7 +208,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -217,7 +217,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white ,
               boxShadow: [
                 BoxShadow(
@@ -227,7 +227,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -236,7 +236,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -246,7 +246,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -256,7 +256,7 @@ class MyCards extends StatelessWidget {
       ),
     ),
     Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -264,7 +264,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -274,7 +274,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -283,7 +283,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -293,7 +293,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -302,7 +302,7 @@ class MyCards extends StatelessWidget {
           Container(
             width: 50,
             height: 50,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -312,7 +312,7 @@ class MyCards extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(
+            child: const Icon(
               Icons.star,
               color: Colors.black,
               size: 15,
@@ -322,7 +322,7 @@ class MyCards extends StatelessWidget {
       ),
     ),
     Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -337,7 +337,7 @@ ElevatedButton(
       borderRadius: BorderRadius.circular(8), // Borde del botón
     ),
   ),
-  child: Padding(
+  child: const Padding(
     padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
     child: Text(
       'Registrar',
@@ -360,7 +360,7 @@ ElevatedButton(
       borderRadius: BorderRadius.circular(8), // Borde del botón
     ),
   ),
-  child: Padding(
+  child: const Padding(
     padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
     child: Text(
       'Reclamar',
@@ -389,7 +389,7 @@ ElevatedButton(
             selectedIndex: 2, 
             onTabChange: (index){
               switch(index){
-                case 0 : Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),)); break;
+                case 0 : Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage(),)); break;
                 case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
                 case 2: null ; break;
                 case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;

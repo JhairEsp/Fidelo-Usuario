@@ -21,297 +21,365 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        top: true,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
+return Scaffold(
+  backgroundColor: Colors.white,
+  appBar: AppBar(
+    backgroundColor: Color(0xFF0F04E5),
+    automaticallyImplyLeading: false,
+    title: Align(
+      alignment: AlignmentDirectional(0.00, 0.00),
+      child: Text(
+        'Configuracion',
+        style: TextStyle(
+              fontFamily: 'Outfit',
+              color: Colors.white,
+              fontSize: 22,
+            ),
+      ),
+    ),
+    actions: [],
+    centerTitle: false,
+    elevation: 2,
+  ),
+  body: SingleChildScrollView(
+    child: SafeArea(
+      top: true,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          ListView(
+            padding: EdgeInsets.zero,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
             children: [
-              Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                  child: Text(
-                    'Perfil',
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.person,
+                    color: Color(0xFF0F04E5),
+                  ),
+                  title: Text(
+                    'Mi Cuenta',
                     style: TextStyle(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.black,
-                          fontSize: 26,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black
+                    ),
+                  ),
+                  tileColor:
+                      Colors.white,
+                  dense: false,
+                  contentPadding:
+                      EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
+                ),
+              ),
+      ExpansionTile(
+      title: Text(
+      '          Datos Personales',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+        color: Colors.grey[600],
+      ),
+      ),
+      trailing: Icon(
+      Icons.arrow_forward_ios,
+      color: Colors.grey[600],
+      size: 20,
+      ),
+      backgroundColor: Colors.white,
+      childrenPadding: EdgeInsetsDirectional.fromSTEB(55, 0, 20, 0),
+      expandedCrossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+                        title: Text(
+                          '${GlobalVariables.nombre}',
+                          style: TextStyle(
+                            fontSize: 18
+                          ),
                         ),
-                  ),
+                        subtitle: Text(
+                          "Nombre",
+                          style: TextStyle(
+                            fontSize: 14
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.location_history,
+                          color: Color(0xFF0F04E5),
+                          size: 20,
+                        ),
+                        tileColor:
+                            Colors.white,
+                        dense: false,
+                      ),
+                              
+          
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: ListTile(
+                        title: Text(
+                          '${GlobalVariables.apellidoPaterno}',
+                          style: TextStyle(
+                            fontSize: 18
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Apellido Paterno',
+                          style: TextStyle(
+                            fontSize: 14
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.person_4,
+                          color: Color(0xFF0F04E5),
+                          size: 20,
+                        ),
+                        tileColor:
+                            Colors.white,
+                        dense: false,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: ListTile(
+                        title: Text(
+                          '${GlobalVariables.apellidoMaterno}',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        subtitle: Text(
+                          "Apellido Materno",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        trailing: Icon(
+                          Icons.person_2,
+                          color: Color(0xFF0F04E5),
+                          size: 20,
+                        ),
+                        tileColor:
+                            Colors.white,
+                        dense: false,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: ListTile(
+                        title: Text(
+                          '${GlobalVariables.telefono}',
+                          style:TextStyle(fontSize: 18)
+                        ),
+                        subtitle: Text(
+                          'Numero de Telefono',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        trailing: Icon(
+                          Icons.settings_cell,
+                          color: Color(0xFF0F04E5),
+                          size: 20,
+                        ),
+                        tileColor:
+                            Colors.white,
+                        dense: false,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: ListTile(
+                        title: Text(
+                          '${GlobalVariables.documento}',
+                          style: TextStyle(
+                            fontSize: 18
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Numero de DNI',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        trailing: Icon(
+                          Icons.perm_identity,
+                          color: Color(0xFF0F04E5),
+                          size: 20,
+                        ),
+                        tileColor:
+                            Colors.white,
+                        dense: false,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: ListTile(
+                        title: Text(
+                          '${GlobalVariables.distrito}',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        subtitle: Text(
+                          '${GlobalVariables.distrito}',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        trailing: Icon(
+                          Icons.location_city,
+                          color: Color(0xFF0F04E5),
+                          size: 20,
+                        ),
+                        tileColor:
+                            Colors.white,
+                        dense: false,
+                      ),
+                    ),
+      ],
+      ),
+      
+              ListTile(
+                title: Text(
+                  'Cambiar Contraseña',
+                  style:TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey[600],
+                  ), 
                 ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.grey[600],
+                  size: 20,
+                ),
+                tileColor: Colors.white,
+                dense: false,
+                contentPadding:
+                    EdgeInsetsDirectional.fromSTEB(55, 0, 20, 0),
+              ),
+                            ListTile(
+                              onTap: () {
+                                showDialog(context: context, builder: (BuildContext context){
+                                  return AlertDialog(
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    title: Text("Privacidad y Seguridad"),
+                                    content: Text(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis tortor vel ante tristique, eu malesuada nisi malesuada. In hac habitasse platea dictumst. Maecenas sagittis orci id enim vulputate, ac facilisis justo lacinia. Nunc ac malesuada elit, et efficitur odio. Maecenas fringilla, urna eu vulputate feugiat, tortor nisi pharetra elit, sit amet fermentum purus odio vitae urna. Sed hendrerit purus id velit bibendum, nec imperdiet arcu sagittis. Nulla facilisi. Nunc vel massa id ipsum malesuada condimentum. Vivamus sed elit et purus aliquam varius. Curabitur vel nisi eu sem sollicitudin bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc venenatis ac est in gravida. Integer malesuada tincidunt odio, vel tempus elit imperdiet sit amet. Sed eu erat ac nunc fermentum fermentum. Quisque quis tortor et ante ultricies dapibus. "),
+                                  );
+                                });
+                              },
+                title: Text(
+                  'Privacidad y Seguridad',
+                  style:TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey[600],
+                  ), 
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.grey[600],
+                  size: 20,
+                ),
+                tileColor: Colors.white,
+                dense: false,
+                contentPadding:
+                    EdgeInsetsDirectional.fromSTEB(55, 0, 20, 0),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                child: Container(
-                  width: 120,
-                  height: 120,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.volume_up,
+                    color: Color(0xFF0F04E5),
                   ),
-                  child: Image.network("https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg",fit: BoxFit.cover,)
+                  title: Text(
+                    'Notificaciones',
+                    style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  ),
+                  tileColor:
+                      Colors.white,
+                  dense: false,
+                  contentPadding:
+                      EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                child: Text(
-                  '${GlobalVariables.nombre}'+" "+"${GlobalVariables.apellidoPaterno}",
+              ListTile(
+                title: Text(
+                  'Notificaciones',
                   style: TextStyle(
-                    fontSize: 14
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey[600],
                   ),
                 ),
+                trailing: Icon(
+                  Icons.notifications,
+                  color: Colors.grey[600],
+                  size: 20,
+                ),
+                tileColor: Colors.white,
+                dense: false,
+                contentPadding:
+                    EdgeInsetsDirectional.fromSTEB(55, 0, 20, 0),
               ),
-              Text(
-                'Correo electronico',
-                style: TextStyle(
-                  fontSize: 14
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                child: Container(
-                  width: double.infinity,
-                  height: 600,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 10,
-                        color: Color(0x33000000),
-                        offset: Offset(0, 2),
-                        spreadRadius: 2,
-                      )
-                    ],
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(0),
-                      bottomRight: Radius.circular(0),
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                    ),
-                  ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 30),
-                          child: ListTile(
-                            title: Text(
-                              'Cambiar Contraseña',
-                              style: TextStyle(
-                                fontSize: 22
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                              size: 20,
-                            ),
-                            tileColor: Colors.white,
-                            dense: false,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 25),
-                          child: ExpansionTile(
-                            title: Text(
-                              'Datos Personales',
-                              style: TextStyle(
-                                fontSize: 22
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                              size: 20,
-                            ),
-                            children: [
-                                Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                child: Center(
-                                  child: Text("Mis datos Personales"),
-                                ),
-                                ),
-                                Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: ListTile(
-                      title: Text(
-                        'Nombre',
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
-                      ),
-                      subtitle: Text(
-                        '${GlobalVariables.nombre}',
-                        style: TextStyle(
-                          fontSize: 14
-                        ),
-                      ),
-                      trailing: Icon(
-                        Icons.location_history,
-                        color: Color(0xFF0F04E5),
-                        size: 20,
-                      ),
-                      tileColor:
-                          Colors.white,
-                      dense: false,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: ListTile(
-                      title: Text(
-                        'Apellido Paterno',
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
-                      ),
-                      subtitle: Text(
-                        '${GlobalVariables.apellidoPaterno}',
-                        style: TextStyle(
-                          fontSize: 14
-                        ),
-                      ),
-                      trailing: Icon(
-                        Icons.person_4,
-                        color: Color(0xFF0F04E5),
-                        size: 20,
-                      ),
-                      tileColor:
-                          Colors.white,
-                      dense: false,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: ListTile(
-                      title: Text(
-                        'Apellido Materno',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      subtitle: Text(
-                        '${GlobalVariables.apellidoMaterno}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                      trailing: Icon(
-                        Icons.person_2,
-                        color: Color(0xFF0F04E5),
-                        size: 20,
-                      ),
-                      tileColor:
-                          Colors.white,
-                      dense: false,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: ListTile(
-                      title: Text(
-                        'Número de telefono',
-                        style:TextStyle(fontSize: 18)
-                      ),
-                      subtitle: Text(
-                        '${GlobalVariables.telefono}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                      trailing: Icon(
-                        Icons.settings_cell,
-                        color: Color(0xFF0F04E5),
-                        size: 20,
-                      ),
-                      tileColor:
-                          Colors.white,
-                      dense: false,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: ListTile(
-                      title: Text(
-                        'Numero de DNI',
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
-                      ),
-                      subtitle: Text(
-                        '${GlobalVariables.documento}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                      trailing: Icon(
-                        Icons.perm_identity,
-                        color: Color(0xFF0F04E5),
-                        size: 20,
-                      ),
-                      tileColor:
-                          Colors.white,
-                      dense: false,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                    child: ListTile(
-                      title: Text(
-                        'Distrito',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      subtitle: Text(
-                        '${GlobalVariables.distrito}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                      trailing: Icon(
-                        Icons.location_city,
-                        color: Color(0xFF0F04E5),
-                        size: 20,
-                      ),
-                      tileColor:
-                          Colors.white,
-                      dense: false,
-                    ),
-                  ),
-                            ],
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 25),
-                          child: ListTile(
-                            onTap: () => Auth.logout(context),
-                            title: Text(
-                              'Cerrar Sesión',
-                              style: TextStyle(
-                                fontSize: 22
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                              size: 20,
-                            ),
-                            tileColor: Colors.white,
-                            dense: false,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 30,)
-                      ],
-                    ),
+              ListTile(
+                title: Text(
+                  'Tema Oscuro',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey[600],
                   ),
                 ),
+                trailing: Icon(
+                  Icons.dark_mode,
+                  color: Colors.grey[600],
+                  size: 20,
+                ),
+                tileColor: Colors.white,
+                dense: false,
+                contentPadding:
+                    EdgeInsetsDirectional.fromSTEB(55, 0, 20, 0),
               ),
             ],
           ),
-        ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+            child: ElevatedButton(
+      onPressed: () {
+      Auth.logout(context);
+      },
+      child: Text(
+      'Cerrar Sesión',
+      style: TextStyle(
+        fontFamily: 'Readex Pro',
+        color: Colors.white,
       ),
-    );
+      ),
+      style: ElevatedButton.styleFrom(
+      backgroundColor: Color(0xFF0F04E5),
+      onPrimary: Colors.white,
+      elevation: 3,
+      padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      ),
+      )
+      
+          ),
+        ],
+      ),
+    ),
+  ),
+            bottomNavigationBar: CustomBottomNavigationBar(
+            selectedIndex: 4, 
+            onTabChange: (index){
+              switch(index){
+                case 0 : Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),));break;
+                case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
+                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> MyCards())); break;
+                case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
+                case 4: null;break;
+              }
+            }
+            ),
+);
   }
 }
