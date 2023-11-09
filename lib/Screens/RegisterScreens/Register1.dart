@@ -1,3 +1,4 @@
+import 'package:fidelo/Screens/pages.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import "package:fidelo/Screens/screens.dart";
@@ -132,7 +133,7 @@ Future<void> _register() async {
         ),
       );
     } else {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Pages()));
     }
   }
 }

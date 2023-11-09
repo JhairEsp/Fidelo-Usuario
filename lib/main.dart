@@ -1,64 +1,60 @@
-
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:fidelo/Screens/pages.dart';
 import "package:fidelo/Screens/screens.dart";
+import 'package:fidelo/Widgets/SplashScreen.dart';
+import 'package:fidelo/models/Auth.dart';
+import 'package:fidelo/models/GlobalVariables.dart';
 import 'package:flutter/material.dart';
-Future main() async {
+import 'package:shared_preferences/shared_preferences.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return  const MaterialApp(
-      
-      debugShowCheckedModeBanner: false, 
-      home: SplashScreen(),
-      
-      );
-      
-  }
+  State<MyApp> createState() => _MyAppState();
 }
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+
+class _MyAppState extends State<MyApp> {
+  bool isLoading = true;
 
   @override
+  void initState() {
+    checkId();
+    super.initState();
+    print("${GlobalVariables.idProfile}");
+  }
+
+  Future<void> checkId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? idProfile = prefs.getString("id");
+    if (idProfile != null) {
+      GlobalVariables.idProfile = idProfile;
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-      splash: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFF004CC6), Color(0xFF00A7BF)],
-            stops: [0, 1],
-            begin: AlignmentDirectional(0, -1),
-            end: AlignmentDirectional(0, 1),
-          ),
-        ),
-        child:  Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    'assets/logoblanco.png',
-                    width: 300,
-                    height: 200,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-        ])
-        
-      ),
-      backgroundColor: const Color(0xFF004CC6),
-      nextScreen: HomePage(),
-      duration: 2000,
-      splashTransition: SplashTransition.slideTransition,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: getMainScreen()
     );
   }
+  Widget getMainScreen() {
+  if (isLoading) {
+    return SplashScreen();
+  } else {
+    if (GlobalVariables.idProfile == "sin datos") {
+      return Login();
+    } else {
+      return Pages();
+    }
+  }
 }
-
+}

@@ -33,13 +33,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_barcode_scanner: ^2.0.0
   flutter_typeahead: ^4.7.0
   font_awesome_flutter: ^10.5.0
   google_nav_bar: ^5.0.6
   http: ^1.1.0
   login_model: ^0.0.1
   percent_indicator: ^4.2.3
-  url_launcher: ^6.1.12
+  permission_handler: ^11.0.1
+  qr_flutter: ^4.1.0
+  shared_preferences: ^2.2.2
+  video_player: ^2.8.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

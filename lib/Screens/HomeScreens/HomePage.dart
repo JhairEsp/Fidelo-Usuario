@@ -869,20 +869,20 @@ Row(
   ],
 ),
         Container(
-          width: 350,height: 40,
+          width: 379,height: 40,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.black)
+            border: Border.all(color: Colors.black54)
             
           ),
           child: Padding(padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
           child: TextField(
             onChanged: (value) => updateList(value),
             style: const TextStyle(
-              color: Colors.black,
+              color: Colors.black54,
             ),
-            decoration: const InputDecoration(filled: true,fillColor: Colors.white,hintText: "Buscador",prefixIcon: Icon(Icons.search),prefixIconColor: Colors.black,),
+            decoration: const InputDecoration(filled: true,fillColor: Colors.white,hintText: "Buscador",prefixIcon: Icon(Icons.search),prefixIconColor: Colors.black54,),
             
           ),
           ),
@@ -892,349 +892,259 @@ Row(
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+  mainAxisSize: MainAxisSize.max,
+  mainAxisAlignment: MainAxisAlignment.spaceAround,
+  children: [
+    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
+      child: InkWell(
+        onTap: () => toggleFoodFilter(),
+        child: Container(
+          width: 100,
+          height: 130,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 4,
+                color: Color(0x33000000),
+                offset: Offset(0, 2),
+                spreadRadius: 2,
+              )
+            ],
+            borderRadius: BorderRadius.circular(80),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
-              //Categoria Tecnologia
-              InkWell(
-                onTap: () {
-                  toggleTecnologyFilter();
-                }, 
-                splashColor: Colors.black,
-                highlightColor: Colors.black,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.network(
+                    'https://images3.alphacoders.com/131/1313839.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Text(
+                'Comida',
+                style: TextStyle(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 12,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+        Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
+      child: InkWell(
+        onTap: () => toggleTecnologyFilter(),
+        child: Container(
+          width: 100,
+          height: 130,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 4,
+                color: Color(0x33000000),
+                offset: Offset(0, 2),
+                spreadRadius: 2,
+              )
+            ],
+            borderRadius: BorderRadius.circular(80),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.network(
+                    'https://images8.alphacoders.com/123/1239331.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Text(
+                'Tecnologia',
+                style: TextStyle(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 12,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+            Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
+      child: InkWell(
+        onTap: () => toggleLavanderiaFilter(),
+        child: Container(
+          width: 100,
+          height: 130,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 4,
+                color: Color(0x33000000),
+                offset: Offset(0, 2),
+                spreadRadius: 2,
+              )
+            ],
+            borderRadius: BorderRadius.circular(80),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.network(
+                    'https://img.freepik.com/fotos-premium/linea-ropa-tienda_33765-29.jpg?w=360',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Text(
+                'Lavanderia',
+                style: TextStyle(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 12,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+                Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
+      child: InkWell(
+        onTap: () => togglePeluqueriaFilter(),
+        child: Container(
+          width: 100,
+          height: 130,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 4,
+                color: Color(0x33000000),
+                offset: Offset(0, 2),
+                spreadRadius: 2,
+              )
+            ],
+            borderRadius: BorderRadius.circular(80),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.network(
+                    'https://i.pinimg.com/originals/80/55/0b/80550b2d2521bf459037ba822e23dd5a.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Text(
+                'Peluqueria',
+                style: TextStyle(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 12,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+                    Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
+      child: InkWell(
+        onTap: () => toggleBebidaFilter(),
+        child: Container(
+          width: 100,
+          height: 130,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 4,
+                color: Color(0x33000000),
+                offset: Offset(0, 2),
+                spreadRadius: 2,
+              )
+            ],
+            borderRadius: BorderRadius.circular(80),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.network(
+                    'https://w0.peakpx.com/wallpaper/371/679/HD-wallpaper-sanax-beber-bebidas-calor-fresco-sol-verano.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Text(
+                'Bebidas',
+                style: TextStyle(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 12,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+    
 
-                child: Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              width: 0.2,
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Container(
-                  width: 90,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://www.eltiempo.com/files/image_1200_680/uploads/2019/12/07/5dec47012d257.jpeg"), // Usar la URL proporcionada
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                child: Text("Tecnologia", 
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-              ),
-              const SizedBox(width: 10,),
-              //Categoria Comida
-              InkWell(
-                onTap: toggleFoodFilter,
-                splashColor: Colors.black,
-                highlightColor: Colors.black,
-                child: Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              width: 0.2,
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Container(
-                  width: 90,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://img.freepik.com/vector-gratis/kawaii-comida-rapida-lindo-hot-dog-comida-rapida-hamburguesas-papas-fritas-bebida-ilustracion-salsa-tomate_24908-60601.jpg?w=2000"), // Usar la URL proporcionada
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                child: Text("Comida", 
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-              ),
-              const SizedBox(width: 10,),
-              //Categoria Bebidas
-              InkWell(
-                onTap: toggleBebidaFilter,
-                                splashColor: Colors.black,
-                highlightColor: Colors.black,
-                child: Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              width: 0.2,
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Container(
-                  width: 90,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://img.freepik.com/foto-gratis/bebidas-gaseosas-coloridas-macro-disparo_53876-18225.jpg"), // Usar la URL proporcionada
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                child: Text("Bebida", 
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-              ),
-              const SizedBox(width: 10,),
-              //Categoria Lavanderia
-              InkWell(
-                onTap: toggleLavanderiaFilter,
-                                splashColor: Colors.black,
-                highlightColor: Colors.black,
-                child: Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              width: 0.2,
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Container(
-                  width: 90,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                child: Text("Lavanderia", 
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-              ),
-              const SizedBox(width: 10,),
-              //Categoria Peluqueria 
-              GestureDetector(
-                onTap: togglePeluqueriaFilter,
-                child: Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              width: 0.2,
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Container(
-                  width: 90,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                child: Text("Peluqueria", 
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-              ),
-              const SizedBox(width: 10,),
-              //Categoria Lavado Autos 
-              InkWell(
-                onTap: toggleLavadoAutosFilter,
-                child: Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              width: 0.2,
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Container(
-                  width: 90,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                child: Text("Lavado Autos", 
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-              ),
-              const SizedBox(width: 10,),
-              //categoria libreria
-              InkWell(
-                onTap: toggleLavadoAutosFilter,
-                child: Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              width: 0.2,
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                child: Container(
-                  width: 90,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://postgradoindustrial.com/wp-content/uploads/lavanderia-industrial.jpg"), // Usar la URL proporcionada
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                child: Text("Libreria", 
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-              ),
-            ],
-          ),
+  ],
+)
+
         ),
         const SizedBox(height: 20,),
         Expanded(child: ListView.builder(
@@ -1253,19 +1163,7 @@ Row(
           ))
       ],
     ),
-          bottomNavigationBar: CustomBottomNavigationBar(
-            selectedIndex: 0, 
-            onTabChange: (index){
-              switch(index){
-                case 0 : null; break;
-                case 1 : Navigator.push(context, MaterialPageRoute(builder: (context)=>const QRScreen())); break;
-                case 2: Navigator.push(context, MaterialPageRoute(builder: (context)=> MyCards())); break;
-                case 3: Navigator.push(context, MaterialPageRoute(builder: (context)=> const notificaciones())); break;
-                case 4: Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen())); break;
-              }
-            }
-            ),
-
+    
 
 
 
@@ -1275,4 +1173,4 @@ Row(
 }
 
   
-  
+    

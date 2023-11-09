@@ -1,5 +1,6 @@
+import 'package:shared_preferences/shared_preferences.dart';
 class GlobalVariables {
-  static String? idProfile;
+  static String? idProfile ="sin datos";
   static String? cookie;
 
   //Datos

@@ -3,11 +3,26 @@ import 'dart:core';
 import 'package:fidelo/Screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Screens/LoginScreens/Login.dart';
 import 'GlobalVariables.dart';
 
 class Auth{
+  LoginIn()async {
+    if ("${GlobalVariables.idProfile}" != null) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool("tokken", true);
+      prefs.setString("id", "${GlobalVariables.idProfile}");
+    }else{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool("tokken", false);
+    }
+  }
+  static LogedIn()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString("id", "${GlobalVariables.idProfile}");    
+    }
+
   //LOGIN
 static Future<http.Response> login(
     BuildContext context, String email, String password) async {
@@ -19,11 +34,10 @@ static Future<http.Response> login(
     "usuario": email,
     "contrasena": password,
   });
-  final response = await http.post(url, headers: headers, body: body);
+  final response =  await http.post(url, headers: headers, body: body);
   if(response.statusCode == 200){
     final cookies = response.headers["set-cookie"];
     GlobalVariables.cookie= cookies;
-    print(GlobalVariables.cookie);
   }else{
     print("No pasa nada");
   }
@@ -50,7 +64,6 @@ static Future<http.Response> login(
       final data = jsonDecode(response.body);
       final idProfile = data["id"];
       GlobalVariables.idProfile = idProfile;
-      print("la id traida de registro es " + idProfile);
       final cookies = response.headers["set-cookie"];
       GlobalVariables.cookie = cookies;
       return data;
@@ -68,6 +81,9 @@ static Future<http.Response> login(
   final response = await http.post(logoutUrl);
 
   if (response.statusCode == 200) {
+    GlobalVariables.idProfile = "sin datos";
+    LogedIn();
+    print("${GlobalVariables.idProfile}");
     // Logout successful, you can perform any necessary actions here
     Navigator.pushReplacement(
       context,
@@ -93,9 +109,10 @@ Future<void> obtenerIdProfile(String email, String password) async {
     final responseData = jsonDecode(response.body);
     // Busca el valor de "_id" en la respuesta
     final idProfile = responseData["id"];
-    // Guarda el valor en la variable global
     GlobalVariables.idProfile = idProfile;
-      print("esta es la otra pint"+ idProfile) ;
+    LoginIn();
+    // Guarda el valor en la variable global
+      print("esta es la otra print + ${GlobalVariables.idProfile}");
   } else {
     // Maneja el error si la solicitud no fue exitosa
     print("Error en la solicitud: ${response.statusCode}");

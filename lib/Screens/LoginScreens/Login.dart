@@ -1,8 +1,8 @@
 import 'dart:convert';
+import 'package:fidelo/Screens/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:fidelo/Screens/screens.dart';
 import '../../models/Auth.dart';
-
 
 class Login extends StatefulWidget {
   @override
@@ -63,8 +63,8 @@ Future<void> _login() async {
   if (response.statusCode == 200) {
     // Llamada a obtenerIdProfile para obtener el valor _id
     await _auth.obtenerIdProfile(_emailController.text, _passwordController.text);
-Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const HomePage()));
-  } else {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Pages(),));
+  }else{
     // Login failed, show an error dialog
     showDialog(
       context: context,
@@ -85,13 +85,18 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
   }
 }
 
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        top: true,
+      body: Container(
+        height: double.maxFinite,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF004CC6),Color(0xFF00A7BF)])
+        ),
         child: Stack(
           children:[ SingleChildScrollView(
             child: Column(
@@ -104,7 +109,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        "assets/logo.png",
+                        "assets/logoblanco.png",
                         width: 150,
                         height: 150,
                         fit: BoxFit.contain, 
@@ -113,29 +118,31 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                   child: Text(
-                    'BIENVENIDO DE VUELTA',
+                    'Bienvenido de vuelta',
                     style: TextStyle(
                       fontFamily: 'Readex Pro',
-                      color: Colors.black,
-                      fontSize: 25,
+                      color: Colors.white,
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
                   child: Text(
-                    'Inicia sesión con tu cuenta',
+                    'INICIAR SESIÓN',
                     style: TextStyle(
                       fontFamily: 'Readex Pro',
-                      color: Colors.black,
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                 ),
                 Opacity(
-                  opacity: 0.6,
+                  opacity:1,
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                     child: Container(
@@ -213,7 +220,7 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                   ),
                 ),
                 Opacity(
-                  opacity: 0.6,
+                  opacity: 1,
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                     child: Container(
@@ -282,11 +289,11 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                   ),
                 ),
                 const Opacity(
-                  opacity: 0.7,
+                  opacity: 1,
                   child: Align(
                     alignment: AlignmentDirectional(0.60, 0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 70),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 50),
                       child: Text(
                         'Olvidaste tu contraseña?',
                         style: TextStyle(
@@ -299,12 +306,12 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                  child: ElevatedButton(
+                  child: ElevatedButton(  
                     onPressed: () {
                       _login();
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: const Color.fromARGB(255, 33, 11, 230),
+                      primary: const Color(0xFF004CC6),
                       onPrimary: Colors.black,
                       elevation: 3,
                       side: const BorderSide(
@@ -314,62 +321,59 @@ Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const H
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      minimumSize: const Size(250, 45),
+                      minimumSize: const Size(250, 60),
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                     ),
                     child: const Text(
                       'LOGIN',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        fontSize: 20,
                       ),
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Text(
-                        'No tienes cuenta?',
-                        style: TextStyle(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.black,
-                        ),
+                SizedBox(height: 20,),
+                Text("O",style: TextStyle(color: Colors.white, fontSize: 16,fontWeight: FontWeight.bold),),
+                SizedBox(height: 20,),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Register1(),));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: const Color.fromRGBO(255, 255, 255, 0.27),
+                      onPrimary: Colors.black,
+                      elevation: 3,
+                      side: const BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      minimumSize: const Size(250, 60),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                    ),
+                    child: const Text(
+                      'Registrarse',
+                      style: TextStyle(
+                        fontFamily: 'Readex Pro',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20,
                       ),
                     ),
-                    const SizedBox(width: 5),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Register1()));
-                      },
-                      child: const Text(
-                        'Registrate aquí',
-                        style: TextStyle(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.red,
-                          fontWeight: FontWeight.w600,
-                          decoration: TextDecoration.underline,
-                          
-                        ),
-                      ),
-                    ),
-                    
-                  ],
-                ),
+                  ),
+
               ],
             ),
           ),
           const Positioned(
             top: 16,
             left: 16,
-            child: Text("Version 0.0.7",style: TextStyle(
+            child: Text("Version 0.0.8",style: TextStyle(
             color: Colors.black,fontSize: 12,
           ),))
         ], 
