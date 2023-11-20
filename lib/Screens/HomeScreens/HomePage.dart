@@ -244,7 +244,7 @@ import 'package:fidelo/Screens/NotificacionesScreens/NotificacionScreen.dart';
   }
 Future<void> obtenerPerfil(BuildContext context) async {
   final String? user = GlobalVariables.idProfile;
-  final apiUrl = Uri.parse('http://192.168.0.101:4000/api/profile/$user');
+  final apiUrl = Uri.parse('http://api.fidelo.pe:4000/api/profile/$user');
 
   try {
     final response = await http.get(

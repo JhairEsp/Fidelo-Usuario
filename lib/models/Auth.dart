@@ -26,7 +26,7 @@ class Auth{
   //LOGIN
 static Future<http.Response> login(
     BuildContext context, String email, String password) async {
-  final url = Uri.parse("http://192.168.0.101:4000/api/auth/login");
+  final url = Uri.parse("http://api.fidelo.pe:4000/api/auth/login");
   final headers = {
     "Content-Type": "application/json",
   };
@@ -48,7 +48,7 @@ static Future<http.Response> login(
 
 //REGISTRO
   static Future<Map<String, dynamic>> register(String email, String password) async {
-    final url = Uri.parse("http://192.168.0.101:4000/api/auth/register");
+    final url = Uri.parse("http://api.fidelo.pe:4000/api/auth/register");
     final headers = {
       'Content-Type': 'application/json',
     };
@@ -77,7 +77,7 @@ static Future<http.Response> login(
 
 //LOGOUT
   static Future logout(BuildContext context) async {
-  final logoutUrl = Uri.parse('http://192.168.0.101:4000/api/auth/logout');
+  final logoutUrl = Uri.parse('http://api.fidelo.pe:4000/api/auth/logout');
   final response = await http.post(logoutUrl);
 
   if (response.statusCode == 200) {
@@ -95,7 +95,7 @@ static Future<http.Response> login(
 }
 
 Future<void> obtenerIdProfile(String email, String password) async {
-  final url = Uri.parse("http://192.168.0.101:4000/api/auth/login");
+  final url = Uri.parse("http://api.fidelo.pe:4000/api/auth/login");
   final headers = {
     "Content-Type": "application/json",
   };
