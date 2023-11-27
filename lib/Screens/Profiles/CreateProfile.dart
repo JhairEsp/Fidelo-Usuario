@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class CreateProfile {
   Future<void> enviarDatos(String nombre, String apellidoPaterno, String apellidoMaterno,String telefono, String documento, String distrito) async {
-  const url = 'http://192.168.0.101:4000/api/profile';
+  const url = 'http://api.fidelo.pe:4000/api/profile';
   final String? cookie = GlobalVariables.cookie;
   final headers = {'Content-Type': 'application/json', 'Cookie': '$cookie'};
   
